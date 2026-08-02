@@ -178,7 +178,7 @@ strict tree, which is appropriate to a reconstruction-free, confluence-first sta
 ## 7. Limitations and scope
 
 The distance is corpus- and aligner-dependent, and the two-dimensional figure is a shadow of the full matrix.
-Only consonants are used here; vowels are deliberately deferred (see §9). One family is shown; scaling to many is
+Only consonants are used here; vowels are deliberately deferred. One family is shown; scaling to many is
 the programme's separate workstream. Direction and time are out of scope — those belong to the directed-layer
 paper. Branch labels are only as good as the Glottolog classification we score against, and singleton branches
 limit what purity can express (hence the graded-distance reading in §4).
@@ -190,26 +190,33 @@ limit what purity can express (hence the graded-distance reading in §4).
 (`MINSLOT`, `THR`, `MAXLANG`, `KNN`, feature subset) are environment-overridable in `src/compute_network.py`, and
 the derived outputs live in `data/results/`. Code is MIT; text, figures and data are CC BY 4.0.
 
-## 9. Future work — planned expansions
+## 9. References
 
-Two expansions are already scoped for when they are needed.
-
-1. **The full Indo-European cloud, minor languages and dialects included.** The present 28 doculects are a
-   convenience sample. A complete run — every adequately attested Indo-European variety, down to minor languages
-   and dialects — would turn the sparse cloud into a dense manifold, in which dialect continua should appear as
-   local ridges and the singleton-branch problem of §4 largely dissolves (Armenian, Albanian, Celtic gain
-   neighbours). This is a scaling exercise on the same pipeline, not a change of method.
-
-2. **A word-level point cloud (with vowels).** The present cloud has one point per *language*. A second database
-   would place one point per *word*: each attested form embedded by its correspondence behaviour, so that we can
-   see **how words themselves group** — whether coderivative sets form tight sub-clouds, where borrowings sit,
-   whether some concepts are phonologically more conservative than others. This word-level view **must include
-   vowels**, which the system-level consonant skeleton deliberately omits; the operator and distance definitions
-   extend to vowels directly, at the cost of the extra alignment noise vowels introduce. Together the two clouds
-   — languages and words — would let the same geometry be read at two grains.
-
-## References *(to complete)*
-
-Reuse the pilot's reference set; add: classical MDS (Torgerson 1952); lexical-distance phylogenetics; the Balkan
-*Sprachbund* (e.g. Joseph; Friedman) and contact linguistics (Thomason & Kaufman) for the areal contrast set;
-panphon (Mortensen et al.) and LexStat (List) for the tooling.
+1. Toledo Martínez, A. (2026). *Additive Structure of Phonological Correspondences: A protoform-agnostic method
+   for discovering mathematical patterns in documented linguistic systems* (pilot study).
+   https://github.com/toledoal/phonological-correspondences
+2. Torgerson, W. S. (1952). Multidimensional scaling: I. Theory and method. *Psychometrika* 17(4), 401–419.
+3. Needleman, S. B., & Wunsch, C. D. (1970). A general method applicable to the search for similarities in the
+   amino acid sequence of two proteins. *Journal of Molecular Biology* 48(3), 443–453.
+4. Mortensen, D. R., Littell, P., Bharadwaj, A., Goyal, K., Dyer, C., & Levin, L. (2016). PanPhon: A resource for
+   mapping IPA segments to articulatory feature vectors. *Proc. COLING 2016*, 3475–3484.
+5. List, J.-M. (2012). LexStat: Automatic detection of cognates in multilingual wordlists. *Proc. EACL 2012
+   Workshop on Language Technology for Cultural Heritage*, 117–125.
+6. List, J.-M., Forkel, R., Greenhill, S. J., Rzymski, C., Englisch, J., & Gray, R. D. (2022). Lexibank, a
+   public repository of standardized wordlists with computed phonological and lexical features. *Scientific Data*
+   9, 316.
+7. Hammarström, H., Forkel, R., Haspelmath, M., & Bank, S. (2023). *Glottolog 4.8*. Max Planck Institute for
+   Evolutionary Anthropology. https://glottolog.org
+8. Thomason, S. G., & Kaufman, T. (1988). *Language Contact, Creolization, and Genetic Linguistics*. University
+   of California Press.
+9. Joseph, B. D. (1983). *The Synchrony and Diachrony of the Balkan Infinitive: A Study in Areal, General, and
+   Historical Linguistics*. Cambridge University Press.
+10. Friedman, V. A. (2006). Balkans as a linguistic area. In K. Brown (Ed.), *Encyclopedia of Language &
+    Linguistics* (2nd ed., pp. 657–672). Elsevier.
+11. François, A. (2014). Trees, waves and linkages: Models of language diversification. In C. Bowern & B. Evans
+    (Eds.), *The Routledge Handbook of Historical Linguistics* (pp. 161–189). Routledge.
+12. Schuchardt, H. (1922). *Hugo Schuchardt-Brevier: Ein Vademekum der allgemeinen Sprachwissenschaft* (L. Spitzer,
+    Ed.). Niemeyer. [On mixture and the limits of the family tree.]
+13. Kruskal, J. B., & Wish, M. (1978). *Multidimensional Scaling*. Sage.
+14. Rousseeuw, P. J. (1987). Silhouettes: A graphical aid to the interpretation and validation of cluster
+    analysis. *Journal of Computational and Applied Mathematics* 20, 53–65.
