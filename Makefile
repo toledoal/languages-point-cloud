@@ -53,3 +53,11 @@ paper:
 
 clean:
 	rm -f data/results/_tn_*.tsv
+
+manifest-ie:
+	LEX_PATH=$${LEX_PATH} FAMILY="Indo-European" MAXLANG=$(IE_MAXLANG) $(VENV) src/manifest.py
+manifest-an:
+	LEX_PATH=$${LEX_PATH} FAMILY="Austronesian" MAXLANG=$(AN_MAXLANG) $(VENV) src/manifest.py
+manifest-nd:
+	LEX_PATH=$${LEX_PATH} FAMILY="Nakh-Daghestanian" MAXLANG=$(ND_MAXLANG) $(VENV) src/manifest.py
+manifest-all: manifest-ie manifest-an manifest-nd

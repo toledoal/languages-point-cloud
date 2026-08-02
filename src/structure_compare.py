@@ -54,18 +54,21 @@ def signatures(D, branch, seed=0, B=2000):
             (win if branch[i] == branch[j] else bet).append(D[i, j])
     win, bet = np.array(win), np.array(bet)
     ratio = win.mean()/bet.mean()
-    # silhouette + purity, and each family's OWN label-permutation null → chance-adjusted purity
+    # silhouette + purity, and each field's OWN label-permutation null → chance-adjusted purity + Monte-Carlo p
     sil = silhouette(D, branch); pur = purity(D, branch)
     import random
-    rng = random.Random(seed); lab = list(branch); nulls = []
+    rng = random.Random(seed); lab = list(branch); pn = []; sn = []
     for _ in range(B):
-        rng.shuffle(lab); nulls.append(purity(D, lab))
-    pnull = float(np.nanmean(nulls))
+        rng.shuffle(lab); pn.append(purity(D, lab)); sn.append(silhouette(D, lab))
+    pn = np.array(pn); sn = np.array(sn)
+    pnull = float(np.nanmean(pn))
     padj = (pur-pnull)/(1-pnull) if not np.isnan(pur) and pnull < 1 else float("nan")
+    p_pur = (int(np.sum(pn >= pur - 1e-9))+1)/(B+1)
+    p_sil = (int(np.sum(sn >= sil - 1e-9))+1)/(B+1)
     return {"n": n, "median_d": float(np.median(off)), "var2": float(var2), "pr": float(pr),
             "negin": float(negin), "dim80": dim80, "within": float(win.mean()), "between": float(bet.mean()),
             "ratio": float(ratio), "silhouette": sil, "purity": pur, "purity_null": pnull, "purity_adj": padj,
-            "eig": w, "off_norm": off/np.median(off)}
+            "p_purity": p_pur, "p_silhouette": p_sil, "eig": w, "off_norm": off/np.median(off)}
 
 
 def silhouette(D, labels):
@@ -102,15 +105,14 @@ def main():
         D, br = load(s); sig[s] = signatures(D, br)
     print("=== abstract structural comparison (SEPARATE fields; complete observed matrices, 0 imputed values;")
     print("    no shared space, no coordinate alignment; PR computed over positive eigenvalues) ===")
-    hdr = ["family", "n", "median d", "%var 2D", "neg.inertia", "eff.dim(PR)", "within/between",
-           "silhouette", "purity", "chance", "adj.purity"]
-    print("  ".join(f"{h:>14}" for h in hdr))
+    hdr = ["family", "n", "eff.dim(PR)", "silhouette", "sil.p", "purity", "chance", "adj.purity", "pur.p"]
+    print("  ".join(f"{h:>13}" for h in hdr))
     for s in slugs:
         g = sig[s]
         print("  ".join(str(x) for x in [
-            f"{LABELS.get(s, s):>14}", f"{g['n']:>14}", f"{g['median_d']:>14.2f}", f"{100*g['var2']:>13.1f}%",
-            f"{100*g['negin']:>13.1f}%", f"{g['pr']:>14.1f}", f"{g['ratio']:>14.2f}", f"{g['silhouette']:>+14.3f}",
-            f"{g['purity']:>14.2f}", f"{g['purity_null']:>14.2f}", f"{g['purity_adj']:>14.2f}"]))
+            f"{LABELS.get(s, s):>13}", f"{g['n']:>13}", f"{g['pr']:>13.1f}", f"{g['silhouette']:>+13.3f}",
+            f"{g['p_silhouette']:>13.4f}", f"{g['purity']:>13.2f}", f"{g['purity_null']:>13.2f}",
+            f"{g['purity_adj']:>13.2f}", f"{g['p_purity']:>13.4f}"]))
 
     # figure: (A) normalized scree overlay  (B) within/between + silhouette bars  (C) normalized dissimilarity dist
     fig, ax = plt.subplots(1, 3, figsize=(13, 4.2))

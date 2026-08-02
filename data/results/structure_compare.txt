@@ -1,6 +1,6 @@
 === abstract structural comparison (SEPARATE fields; complete observed matrices, 0 imputed values;
     no shared space, no coordinate alignment; PR computed over positive eigenvalues) ===
-        family               n        median d         %var 2D     neg.inertia     eff.dim(PR)  within/between      silhouette          purity          chance      adj.purity
- Indo-European              50            3.16           28.9%            7.3%            13.3            0.62          +0.332            0.96            0.16            0.95
-Nakh-Daghestanian              45            2.65           38.0%            2.7%             9.4            0.68          +0.313            0.98            0.29            0.97
-  Austronesian              13            2.28           51.0%           13.4%             4.9            0.61          +0.221            0.83            0.64            0.54
+       family              n    eff.dim(PR)     silhouette          sil.p         purity         chance     adj.purity          pur.p
+Indo-European             50           13.3         +0.332         0.0005           0.96           0.16           0.95         0.0005
+Nakh-Daghestanian             45            9.4         +0.313         0.0005           0.98           0.29           0.97         0.0005
+ Austronesian             14            3.8         +0.283         0.0025           0.93           0.51           0.86         0.0090

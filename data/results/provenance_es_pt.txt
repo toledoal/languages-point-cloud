@@ -1,0 +1,8 @@
+provenance: keypano-Spanish  vs  keypano-Portuguese   (1305 shared concepts; showing first 6 with a consonant difference)
+concept                form A           form B           aligned Δ (cons slots)                  
+abstainfromfood        aʝunaɾ           ʒɨʒwaɾ           n/w:{cont,nas,ant,cor,lab,back,round,hi}
+accuse                 akusaɾ           ɐkuzaɾ           s/z:{voi}
+acorn                  beʎota           bulɔtɐ           ʎ/l:{ant,hi}
+acquit                 aβsolβɛɾ         ɐbsɔlˠveɾ        β/b:{cont}  l/lˠ:{hi}  β/v:{strid}
+adjudicate             xuðɣaɾ           ʒulˠgaɾ          x/ʒ:{voi,cor,back,strid,hi}  ð/lˠ:{hi,son}  ɣ/g:{cont}
+admit                  aðmitiɾ          ɐdmitiɾ          ð/d:{cont}

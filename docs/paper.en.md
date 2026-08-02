@@ -29,11 +29,12 @@ our purity and an unfiltered all-concept baseline matches or beats it — so the
 lexical-phonological similarity, not an artefact of the coderivation filter. The claimed contribution is
 **feature-level attribution**: the dissimilarity decomposes additively into per-feature components (demonstrated
 on real pairs; the attribution is conditional on the chosen alignment), computed on the same correspondence
-units, by construction, as the operator repertoire of the pilot study. As a portability check, the same pipeline
-is run unchanged on two further families — Nakh-Daghestanian and Austronesian — each as a **separate field** (never
-a shared distance space), recovering above-chance branch structure in each; we draw **no comparison between
-families**, and the Austronesian field is sharply limited by corpus sparsity (a complete matrix survives for only
-13 of 45 doculects). We make no areal claim.
+units, by construction, as the operator repertoire of the pilot study. As a portability check (Appendix B), the
+same pipeline runs unchanged on Nakh-Daghestanian, which shows strong branch association, and on a small complete
+Austronesian subset (14 of 45 doculects survive the completeness requirement, and they fall almost entirely within
+one Oceanic subgroup) which shows positive but weaker association — too small and branch-imbalanced for a robust
+portability claim. Each family is a **separate field** (never a shared distance space); we draw **no comparison
+between families** and make no areal claim.
 
 ---
 
@@ -81,19 +82,25 @@ Let $\phi_f(x)\in\{+,-,0\}$ be primary feature $f$ of segment $x$ (panphon). For
 $$\mathrm{fd}(a,b)=\bigl\lvert\{f\in\text{PRIM}:\phi_f(a)\neq\phi_f(b)\}\bigr\rvert,$$
 over the twelve consonantal features `cont, voi, nas, ant, cor, lab, back, round, strid, hi, lo, son`.
 
-Coderivative sets are detected with LexStat (no etymologies, protoforms, or family labels supplied). Within each
-set, each language pair is aligned by a feature-cost Needleman–Wunsch, and we average $\mathrm{fd}$ over slots
-where both aligned segments are consonants:
+Family membership is used only to *delimit each field* — i.e. to select which doculects enter a given run; no
+internal branch classification, tree, or protoform enters the dissimilarity computation. Coderivative sets are
+detected with LexStat (no etymologies, protoforms, or family labels supplied). Within each set, each language pair
+is aligned by a feature-cost Needleman–Wunsch, and we average $\mathrm{fd}$ over slots where both aligned segments
+are consonants:
 $$d(\ell,\ell')=\operatorname{mean}\{\mathrm{fd}(a,b):(a,b)\ \text{a shared consonant slot of}\ \ell,\ell'\},$$
 defined only when at least `MINSLOT` slots are observed. Observed range here $\approx[0.5,3.5]$ (theoretical
 $[0,12]$).
 
-**Missing pairs are never imputed.** If a pair has fewer than `MINSLOT` shared slots, $d$ is undefined for it; the
-analysis then uses the largest **complete observed submatrix**, obtained by greedily dropping the doculect with
-the most undefined pairs until none remain. (An earlier internal version filled undefined entries with the global
-mean; that manufactures artificial equidistance and was removed — see §7, where its effect on Austronesian is
-documented rather than hidden.) Every matrix reported in this paper has **zero imputed entries**, and each field
-reports how many doculects the completeness requirement removed.
+**Missing pairs are never imputed.** If a pair has fewer than `MINSLOT` shared slots, $d$ is undefined for it. Form
+the *observed-distance graph* — one vertex per doculect, an edge wherever $d$ is defined — and take its **maximum
+clique**: the largest set of doculects that are all pairwise observed. The analysis matrix is the (complete)
+submatrix on that clique, computed exactly by Bron–Kerbosch (feasible at these sizes; ≤ 50 vertices). When more
+than one maximum clique exists we report the count and take the first in input order; for the fields here the
+choice is inconsequential (Indo-European and Nakh-Daghestanian graphs are already complete, so the clique is the
+whole sample). This replaces an earlier internal version that filled undefined entries with the global mean —
+which manufactures artificial equidistance and was removed (see Appendix B, where its effect on Austronesian is
+documented rather than hidden). Every matrix reported here has **zero imputed entries**, the surviving doculects
+are listed explicitly (Appendix A / B), and each field reports how many the clique requirement removed.
 
 **We call $d$ a dissimilarity, not a metric.** Because each pair is computed on its own set of shared slots, the
 triangle inequality and identity-of-indiscernibles are not guaranteed. It is symmetric and non-negative; that is
@@ -139,7 +146,7 @@ agree to two decimals here, but they are not the same estimator.)
 | Denominator | purity |
 |---|---:|
 | All doculects (multi-member branches) | 0.958 (46/48) |
-| Multi-branch, creoles excluded | 0.977 (43/44), Wilson 95% [0.88, 1.00] |
+| Multi-branch, creoles excluded | 0.977 (43/44), descriptive Wilson 95% [0.88, 1.00] (ignores neighbour dependence) |
 | Macro-average by branch | 0.935 |
 | After collapsing near-duplicate pairs ($d<1.3$; 15 dropped) | 0.966 (28/29) |
 
@@ -168,9 +175,11 @@ On the multi-branch non-creole set (n = 44), same corpus and concepts:
 | **All-concept** dissimilarity, no LexStat filter | 1.000 | +0.324 |
 | **Ours** (pairwise feature dissimilarity) | 0.977 | +0.338 |
 
-Honest readings. (i) **Branch recovery is generic**: edit distance ties our purity; the unfiltered all-concept
-variant matches or beats it. (ii) **Not a double-dipping artefact**: removing the similarity-based coderivation
-filter *strengthens* the structure, so the signal is not manufactured by LexStat's selection. (iii) The +0.014
+Three readings. (i) **Branch recovery is generic**: edit distance ties our purity; the unfiltered all-concept
+variant matches or beats it. (ii) **The structure is not generated by the LexStat coderivation filter**: removing
+that similarity-based filter *strengthens* the structure rather than destroying it. (This rules out the filter as
+the source; it does not remove every alignment↔scoring dependency, since both still use phonological information
+and the baselines are not perfectly matched.) (iii) The +0.014
 silhouette edge over the all-concept baseline is **small and untested for stability** (a paired concept-bootstrap
 is future work), and the baselines are not perfectly matched (the all-concept variant uses one form per concept);
 we do not rest any claim on that margin. (iv) The marginal baseline (0.477) confirms that the pairwise comparison
@@ -186,18 +195,22 @@ defined on, so the two studies' quantities compose.
 By construction $d(\ell,\ell')=\sum_f d_f(\ell,\ell')$, where $d_f$ is the fraction of aligned consonant slots on
 which feature $f$ differs. Real values from the analysis matrix (`src/decompose.py`):
 
-| Pair | cont | voi | nas | ant | cor | lab | back | round | strid | hi | lo | son | total | slots |
+| Pair (doculects) | cont | voi | nas | ant | cor | lab | back | round | strid | hi | lo | son | total | slots |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| Spanish–Portuguese | 0.20 | 0.15 | 0.07 | 0.18 | 0.16 | 0.09 | 0.10 | 0.00 | 0.16 | 0.19 | 0.07 | 0.14 | **1.51** | 4276 |
-| Persian–Hindi | 0.27 | 0.24 | 0.20 | 0.23 | 0.21 | 0.14 | 0.17 | 0.01 | 0.16 | 0.21 | 0.10 | 0.31 | **2.25** | 532 |
-| Spanish–Hindi | 0.36 | 0.30 | 0.23 | 0.29 | 0.25 | 0.18 | 0.18 | 0.00 | 0.18 | 0.40 | 0.19 | 0.30 | **2.86** | 374 |
+| Spanish–Portuguese (`keypano`) | 0.20 | 0.15 | 0.07 | 0.18 | 0.16 | 0.09 | 0.10 | 0.00 | 0.16 | 0.19 | 0.07 | 0.14 | **1.51** | 4276 |
+| Persian–Hindi (`idsseg`/`neur`) | 0.27 | 0.24 | 0.20 | 0.23 | 0.21 | 0.14 | 0.17 | 0.01 | 0.16 | 0.21 | 0.10 | 0.31 | **2.25** | 532 |
+| Spanish–Hindi (`keypano`/`neur`) | 0.36 | 0.30 | 0.23 | 0.29 | 0.25 | 0.18 | 0.18 | 0.00 | 0.18 | 0.40 | 0.19 | 0.30 | **2.86** | 374 |
 
-The decomposition is exact and interpretable: the close Romance pair differs mostly in continuancy and height
-(lenition-type oppositions); the cross-branch pair adds weight on height (`hi` 0.40) and continuancy. One caveat
-is declared: the alignment itself is optimized with a feature cost, so per-feature attribution is conditional on
-the chosen alignment; a fixed-alignment sensitivity check is future work.
+(Doculects are named to avoid ambiguity — the corpus holds two Spanish and two Portuguese; here both are from the
+`keypano` dataset.) The sum reproduces the total exactly. We read it cautiously: in each pair *continuancy* and
+*high* are the largest individual components, but several other features (anterior, coronal, strident, voicing)
+contribute at comparable levels, so these are aggregate feature-difference frequencies, not process labels —
+identifying a change like lenition would require inspecting the underlying correspondences (a per-concept ledger is
+available from `src/decompose.py`; a worked example is in Appendix C). One caveat is declared: the alignment is
+optimized with a feature cost, so per-feature attribution is conditional on the chosen alignment; a fixed-alignment
+sensitivity check is future work.
 
-## 6. Cross-branch proximities — rare, and barely areal
+## 6. Cross-branch proximities: rare and insufficient to identify contact
 
 Of the 50 systems, four have a nearest neighbour in another branch — two of which are the Albanian labelling
 artefact of §4:
@@ -215,46 +228,11 @@ rather than hide: because the headline purity of §4 excludes creoles (per the s
 proximity cannot lower that headline — it is visible only here. We make **no areal claim**: a proper test requires
 a contact matrix defined *before* inspecting the map — deferred.
 
-## 7. Portability check — the same pipeline on two further families
+*A portability check — running the identical pipeline on two further families (Nakh-Daghestanian and a small
+Austronesian subset), held in separate fields — is reported in **Appendix B**. It is not part of the paper's
+claims.*
 
-As a portability check only, we ran the identical pipeline on two further families, each on its **own field**
-(never a shared distance space, which would assert a direct relation between families we do not claim). We report
-each field's own scale-free structural signatures side by side; we do **not** compare the families or interpret the
-differences between their signatures — the samples are not commensurable (see below), and any question about *how*
-a family diversified is out of scope and belongs to future, matched-sampling work.
-
-**A correction made and disclosed.** An earlier version of this section filled unobserved pairs with the global
-mean. For Austronesian this was fatal: 52.6% of its 990 pairs were fill values, which *manufactures* a flat,
-nearly-equidistant, high-dimensional geometry — exactly the "signature" we had reported. That analysis was wrong
-and is withdrawn. Under the zero-imputation policy, the Austronesian corpus in Lexibank supports a complete matrix
-for only **13 of 45** doculects: the corpus is too sparse in shared concepts for a large Austronesian field, and
-that sparsity — not family history — dominated the earlier picture.
-
-| Field (complete observed matrix) | n | missing pairs dropped-to-complete | eff. dim. (PR) | within/between | silhouette | purity | chance | **adj. purity** |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| Indo-European | 50 | 0 of 1225 | 13.3 | 0.62 | +0.33 | 0.96 | 0.16 | **0.95** |
-| Nakh-Daghestanian | 45 | 0 of 990 | 9.4 | 0.68 | +0.31 | 0.98 | 0.29 | **0.97** |
-| Austronesian | 13 | (32 doculects removed) | 4.9 | 0.61 | +0.22 | 0.83 | 0.64 | **0.54** |
-
-"Chance" is each field's own 2,000× label-permutation null and *adj. purity* $=(P_{obs}-P_{null})/(1-P_{null})$ —
-the comparable quantity, since branch granularity differs across samples. (This table is computed on the bundled
-*network* matrices with all doculects included — hence IE purity 0.96 here versus §4's 0.977, which is the
-analysis matrix with creoles excluded; the denominators are stated in each place.)
-
-The purpose of this section is only to show that **the same pipeline runs unchanged on other families and recovers
-above-chance branch structure in each** (adjusted purity 0.95 for Indo-European, 0.97 for Nakh-Daghestanian; the
-Austronesian field is n=13 after the completeness requirement, too small and too coarse in branch partition to
-read into, adjusted 0.54). We **make no comparison between the families and draw no conclusion from the differences
-in their signatures.** The samples are not comparable — Nakh-Daghestanian is dialect-dense and largely
-single-source, Indo-European mixes ancient, modern and creole doculects, Austronesian is sparse — so the numbers in
-this table are not commensurable and are reported per-field, for transparency, not as a contrast. Any attempt to
-relate a family's geometric signature to *how* it diversified would require matched sampling (one doculect per
-Glottocode, fixed taxonomic depth, shared concept lists, equated branch-size distributions) and lies entirely
-outside this paper. Figure 2 displays the three fields side by side under these caveats.
-
-![The same pipeline on three families, each on its own complete observed matrix, shown side by side (not compared, and never in a shared space). (A) normalised MDS spectra; (B) branch separation; (C) each field's dissimilarity distribution normalised by its own median. The Austronesian field is n=13 (corpus sparsity) and is shown for transparency only.](figure-structure-compare.pdf|w=0.98)
-
-## 8. Controls and robustness
+## 7. Controls and robustness
 
 The label-permutation test (§4) is the primary significance check. The following controls were run on the n=50
 configuration with the zero-imputation policy (`make controls`; outputs in `data/results/controls_ie_n50.txt`):
@@ -273,10 +251,19 @@ configuration with the zero-imputation policy (`make controls`; outputs in `data
   completeness requirement). The result is not a knife-edge of the threshold. (The LexStat detection threshold
   `THR` is *not* varied here — a sweep over it, gap penalties, and alignment costs is future work.)
 - **Feature subsets:** dropping stridency leaves the result unchanged (0.977/+0.323); dropping all five place
-  features gives 0.955/+0.319; manner-only gives 0.932/+0.329 — mild, honest variation, no knife-edge.
+  features gives 0.955/+0.319; manner-only gives 0.932/+0.329 — mild variation, no knife-edge.
 - **Subsampling:** drawing 22 of 50 systems 500× keeps purity at mean 0.934, 95% CI [0.79, 1.00].
+- **One doculect per Glottocode** (metadata-based, addressing near-twin/duplication effects directly): collapsing
+  the 7 duplicated Glottocodes (Bulgarian, Romanian, Spanish, Modern Greek, Portuguese, Western Farsi, Dutch) to
+  one representative each leaves 39 systems with purity **1.000** (37/37) — the branch structure is not carried by
+  duplicate doculects. Macro-averaged purity by branch is 0.982.
+- **Leave-one-dataset-out** (source-confound control): dropping each of the four contributing Lexibank datasets in
+  turn keeps purity in **[0.935, 0.976]** — no single source drives the result.
+- **Branch-cut granularity:** varying the Glottolog tree-cut fraction `TF_BRANCH_MAXFRAC` $\in\{0.25,0.33,0.5,0.67\}$
+  (which changes what counts as a "branch") gives purity 0.955 / 0.977 / 0.977 / 0.977 — the result does not depend
+  on the particular branch definition.
 
-## 9. Limitations and scope
+## 8. Limitations and scope
 
 The input is concept-aligned lexical data, not phonology alone. The dissimilarity is corpus- and aligner-dependent,
 is not a metric, ignores gaps and consonant–vowel correspondences, and weights concepts by their consonant count
@@ -288,16 +275,20 @@ represented — relevant for Nakh-Daghestanian). Branch recovery is not distinct
 near-duplicate collapse uses $d$ itself; the silhouette margin over the strongest baseline is untested for
 stability. Direction and time are out of scope (the directed-layer paper).
 
-## 10. Reproducibility
+## 9. Reproducibility
 
 Pinned dependencies (`requirements.txt`, exact versions; Python 3.12.13). Each experiment's `MAXLANG` is fixed in
 the `Makefile`: `LEX_PATH=… make compute` reproduces the n=50 Indo-European field; `make compute-nd` /
-`make compute-an` the other fields; `make analysis` §4–§6; `make compare` §7 (all three slugs by default);
-`make controls` §8; `make manifest` Appendix A; `make figure` redraws from bundled results without the corpus.
-Permutation seeds are fixed in the scripts; complete observed matrices, coordinates, manifests and analysis logs
-are bundled under `data/results/`. Code MIT; text, figures, data CC BY 4.0.
+`make compute-an` the other fields (Appendix B); `make analysis` §4–§6; `make compare` the portability figure
+(all three slugs by default); `make controls` §7; `make manifest-all` the three manifests (Appendix A);
+`make figure` redraws from bundled results without the corpus. Analysis/control caches are keyed by `MAXLANG` so a
+different configuration cannot silently reuse them. Permutation seeds are fixed in the scripts; the maximum-clique
+selection is exact (Bron–Kerbosch). The one irreducible source of run-to-run variation is LexStat's stochastic
+scorer (`get_scorer`), which we do not seed — hence the small second-decimal differences between the analysis
+matrix and the independently-regenerated figure matrix, disclosed in §3. Complete observed matrices, coordinates,
+manifests, survivor lists and analysis logs are bundled under `data/results/`. Code MIT; text, figures, data CC BY 4.0.
 
-## 11. References
+## 10. References
 
 1. Toledo Martínez, A. (2026). *Additive Structure of Phonological Correspondences* (pilot study).
    https://github.com/toledoal/phonological-correspondences
@@ -329,9 +320,54 @@ are bundled under `data/results/`. Code MIT; text, figures, data CC BY 4.0.
 ## Appendix A — Doculect manifests
 
 The doculects of all three fields, with Lexibank dataset, doculect ID, Glottocode, branch used for scoring, and
-concept count, are in `data/results/doculect_manifest_{ie,an,nd}.csv` (regenerate with `make manifest`). Each
+concept count, are in `data/results/doculect_manifest_{ie,an,nd}.csv` (regenerate with `make manifest-all`). Each
 manifest lists the **candidate pool** (the top-`MAXLANG` doculects by form count); the analysed field can be
 smaller after the completeness requirement — in particular the Austronesian manifest lists 45 candidates while the
-complete-matrix field is n=13. Provenance is exposed so source/transcription confounds can be audited — e.g.
+complete-matrix field is n=14. Provenance is exposed so source/transcription confounds can be audited — e.g.
 several near-twin systems share a source dataset, and most Nakh-Daghestanian doculects come from a single
 segmented source, which the reader should weigh when comparing fields.
+
+## Appendix B — Portability check on two further families (not part of the paper's claims)
+
+The identical pipeline runs on two other families, each on its **own field** (a separate distance space — never
+shared, which would assert a direct relation between families we do not claim). Each field's analysis matrix is the
+maximum observed clique (§2). We **compare descriptive, scale-normalised outputs, but draw no historical or causal
+inference from their differences, because the samples are not commensurable** (Indo-European mixes ancient, modern
+and creole doculects; Nakh-Daghestanian is dialect-dense and largely single-source; the Austronesian clique falls
+almost entirely within one Oceanic subgroup). Significance is each field's own 10⁻³-resolution label-permutation
+test (2,000 permutations); *adj. purity* $=(P_{obs}-P_{null})/(1-P_{null})$.
+
+| Field (own max-clique matrix) | n | eff. dim. (PR) | silhouette (p) | purity | chance | adj. purity (p) |
+|---|---:|---:|---:|---:|---:|---:|
+| Indo-European | 50 | 13.3 | +0.33 (p≈.0005) | 0.96 | 0.16 | 0.95 (p≈.0005) |
+| Nakh-Daghestanian | 45 | 9.4 | +0.31 (p≈.0005) | 0.98 | 0.29 | 0.97 (p≈.0005) |
+| Austronesian | 14 | 3.8 | +0.28 (p≈.003) | 0.93 | 0.51 | 0.86 (p≈.009) |
+
+**Reading.** Nakh-Daghestanian shows strong branch association, confirming the pipeline is portable to a very
+different consonant system. The 14-doculect Austronesian subset shows positive, significant association, but it is
+too small and too branch-imbalanced (one Oceanic subgroup dominates, so chance purity is already 0.51) to support
+a robust portability claim; we report it for transparency, not as evidence. The surviving doculects of each field
+are listed in `data/results/cloud_{ie,nd,an}.txt`.
+
+**A correction made and disclosed.** An earlier version of this section filled unobserved pairs with the global
+mean. For Austronesian this was fatal: 52.6% of its 990 candidate pairs were the fill constant, which *manufactures*
+a flat, nearly-equidistant, high-dimensional geometry — exactly the "signature" we had then reported and
+interpreted. That analysis was wrong and is withdrawn; the zero-imputation / max-clique policy above replaces it.
+
+![The same pipeline on three families, each on its own complete observed matrix, shown side by side (descriptive only; never a shared space, and no cross-family inference). (A) normalised MDS spectra; (B) branch separation; (C) each field's dissimilarity distribution normalised by its own median. The Austronesian field is n=14 and branch-imbalanced.](figure-structure-compare.pdf|w=0.98)
+
+## Appendix C — Provenance of the feature ledger (worked example)
+
+Each unit of the dissimilarity opens not only into features (§5.1) but into the **specific correspondences** that
+produced them. For Spanish–Portuguese (`keypano`), a few shared concepts and their differing consonant slots
+(`src/provenance.py`):
+
+| Concept | Spanish | Portuguese | differing consonant slots |
+|---|---|---|---|
+| accuse | akusaɾ | ɐkuzaɾ | s/z : {voi} |
+| acorn | beʎota | bulɔtɐ | ʎ/l : {ant, hi} |
+| acquit | aβsolβɛɾ | ɐbsɔlˠveɾ | β/b : {cont} · β/v : {strid} |
+| adjudicate | xuðɣaɾ | ʒulˠgaɾ | ɣ/g : {cont} · … |
+
+This is the difference between an opaque aggregate distance and an auditable one: the 0.15 voicing component of the
+Spanish–Portuguese ledger (§5.1) is, concretely, correspondences like *s/z* in *accuse*.

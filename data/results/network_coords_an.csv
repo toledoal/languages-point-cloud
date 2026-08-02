@@ -1,14 +1,15 @@
 lang,name,branch,x,y
-idssegmented-hawaiian,Hawaiian,Central Pacific linkage,-0.0982,1.1254
-idssegmented-maori,Maori,Central Pacific linkage,-1.4035,-0.8561
-idssegmented-tongan,Tongan,Central Pacific linkage,-0.2757,0.5264
-idssegmented-rotuman,Rotuman,Central Pacific linkage,0.9453,-0.3237
-idssegmented-rapanui,Rapa Nui,Central Pacific linkage,-0.4046,-0.5954
-abvdphilippines-638,Taokas Ts82,Western Plains Austronesian,1.8536,-1.3064
-abvdphilippines-636,Hoanya Ts82,Western Plains Austronesian,2.1141,0.1978
-abvdoceanic-Chuukese_349,Chuukese,Micronesian,0.6019,1.6354
-tryonsolomon-sikaiana,Sikaiana,Central Pacific linkage,-0.4339,-0.2665
-abvdoceanic-RapanuiEasterIsland_264,Rapanui (Easter Island),Central Pacific linkage,-1.0428,-0.0636
-tryonsolomon-tikopia,Tikopia,Central Pacific linkage,-0.1614,-0.1105
-abvdoceanic-Marquesan_38,Marquesan,Central Pacific linkage,-1.1432,0.0691
-tryonsolomon-rennell,Rennell,Central Pacific linkage,-0.5515,-0.0318
+tryonsolomon-kwaio,Kwaio,Southeast Solomonic,-1.1535,0.1565
+tryonsolomon-samasodu,Samasodu,Western Oceanic linkage,1.3525,1.6087
+tryonsolomon-nggela,Nggela,Southeast Solomonic,0.1133,-0.8584
+tryonsolomon-mbirao,Mbirao,Southeast Solomonic,-0.4673,-0.4469
+tryonsolomon-launorth,Lau North,Southeast Solomonic,-0.9344,-0.0834
+tryonsolomon-nduke,Nduke,Western Oceanic linkage,0.3006,-0.0392
+tryonsolomon-vaghua,Vaghua,Western Oceanic linkage,0.3072,0.6787
+tryonsolomon-kia,Kia,Western Oceanic linkage,1.4265,0.7075
+abvdoceanic-Toambaita_223,To'ambaita,Southeast Solomonic,-1.8050,0.1711
+tryonsolomon-leleghia,Leleghia,Western Oceanic linkage,2.1165,-0.2307
+tryonsolomon-toambaita,To'ambaita,Southeast Solomonic,-1.3046,0.5246
+tryonsolomon-malango,Malango,Southeast Solomonic,-0.3437,-0.4713
+tryonsolomon-saa2,Sa'a (2),Southeast Solomonic,-0.9765,-0.1188
+tryonsolomon-dhadhaje,Dhadhaje,Southeast Solomonic,1.3684,-1.5984

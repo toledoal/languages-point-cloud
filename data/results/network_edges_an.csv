@@ -1,40 +1,43 @@
 src,dst,dist
-Hawaiian,Sikaiana,1.665
-Hawaiian,Marquesan,1.744
-Hawaiian,Rapanui (Easter Island),1.893
-Maori,Rapanui (Easter Island),1.0
-Maori,Tikopia,1.112
-Maori,Sikaiana,1.549
-Tongan,Tikopia,0.772
-Tongan,Sikaiana,1.0
-Tongan,Rapanui (Easter Island),1.487
-Rotuman,Tikopia,1.325
-Rotuman,Sikaiana,1.484
-Rotuman,Tongan,2.098
-Rapa Nui,Rapanui (Easter Island),0.339
-Rapa Nui,Sikaiana,0.851
-Rapa Nui,Tikopia,1.28
-Taokas Ts82,Rotuman,2.434
-Taokas Ts82,Rapa Nui,2.75
-Taokas Ts82,Tikopia,2.75
-Hoanya Ts82,Tikopia,2.689
-Hoanya Ts82,Rapa Nui,2.782
-Hoanya Ts82,Hawaiian,2.814
-Chuukese,Tikopia,1.822
-Chuukese,Tongan,1.952
-Chuukese,Hawaiian,2.179
-Sikaiana,Rapa Nui,0.851
-Sikaiana,Tongan,1.0
-Sikaiana,Tikopia,1.057
-Rapanui (Easter Island),Rapa Nui,0.339
-Rapanui (Easter Island),Tikopia,0.835
-Rapanui (Easter Island),Maori,1.0
-Tikopia,Tongan,0.772
-Tikopia,Rapanui (Easter Island),0.835
-Tikopia,Sikaiana,1.057
-Marquesan,Rennell,1.088
-Marquesan,Sikaiana,1.123
-Marquesan,Tikopia,1.309
-Rennell,Marquesan,1.088
-Rennell,Sikaiana,1.411
-Rennell,Tikopia,1.531
+Kwaio,Lau North,1.013
+Kwaio,To'ambaita,1.104
+Kwaio,To'ambaita,1.206
+Samasodu,Kia,1.549
+Samasodu,Leleghia,2.2
+Samasodu,Vaghua,2.479
+Nggela,Dhadhaje,1.232
+Nggela,Mbirao,1.377
+Nggela,Malango,1.467
+Mbirao,Malango,0.753
+Mbirao,Nggela,1.377
+Mbirao,Kwaio,1.51
+Lau North,To'ambaita,0.314
+Lau North,To'ambaita,0.335
+Lau North,Sa'a (2),1.011
+Nduke,Vaghua,1.669
+Nduke,Sa'a (2),1.845
+Nduke,Malango,2.041
+Vaghua,Nduke,1.669
+Vaghua,Mbirao,1.739
+Vaghua,Nggela,2.0
+Kia,Samasodu,1.549
+Kia,Dhadhaje,2.312
+Kia,Nggela,2.327
+To'ambaita,To'ambaita,0.073
+To'ambaita,Lau North,0.335
+To'ambaita,Kwaio,1.104
+Leleghia,Dhadhaje,1.384
+Leleghia,Samasodu,2.2
+Leleghia,Nduke,2.421
+To'ambaita,To'ambaita,0.073
+To'ambaita,Lau North,0.314
+To'ambaita,Kwaio,1.206
+Malango,Mbirao,0.753
+Malango,Lau North,1.241
+Malango,Kwaio,1.425
+Sa'a (2),Lau North,1.011
+Sa'a (2),To'ambaita,1.329
+Sa'a (2),To'ambaita,1.557
+Dhadhaje,Nggela,1.232
+Dhadhaje,Leleghia,1.384
+Dhadhaje,Malango,1.986

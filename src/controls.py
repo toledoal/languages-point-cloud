@@ -20,7 +20,7 @@ from compute_network import feat, is_cons, align, LEX, FAMILY, MAXLANG, PRIM
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RES = os.path.join(HERE, "..", "data", "results")
-CACHE = os.path.join(HERE, "..", "data", "db", "_controls.pkl")
+CACHE = os.path.join(HERE, "..", "data", "db", f"_controls_{MAXLANG}.pkl")
 MINSLOT = 40
 CREOLE_MARK = ("creole", "jamaic", "negerhol", "sranan", "papiam", "krio", "pidgin", "saramacc", "seychelles")
 NPERM = 3
@@ -104,13 +104,11 @@ def matrix(SUMF, NS, langs, feats=None, minslot=MINSLOT):
                 if NS.get(p, 0) >= minslot:
                     M[i, j] = M[j, i] = SUMF[p][sel].sum()/NS[p]
         return M
-    D = build(keep)
-    while np.isnan(D).any():
-        worst = int(np.isnan(D).sum(axis=1).argmax())
-        keep = keep[:worst] + keep[worst+1:]
-        D = build(keep)
+    from compute_network import max_cliques
+    _, cliques = max_cliques(keep, lambda a, b: NS.get(tuple(sorted((a, b))), 0) >= minslot)
+    keep = [l for l in keep if l in cliques[0]]
     idx = {l: i for i, l in enumerate(keep)}
-    return D, keep, idx
+    return build(keep), keep, idx
 
 
 def silhouette(D, labels):

@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
-"""System point cloud — reconstruction-free pairwise distance between language systems, MDS layout, and a
-nearest-neighbour network, computed from phonological correspondences alone.
+"""System point cloud — a reconstruction-free pairwise DISSIMILARITY between language systems, MDS layout, and a
+nearest-neighbour network. The input is concept-aligned lexical data (NOT "phonology alone"): coderivative sets
+are detected statistically with LexStat, and only then is phonology compared.
 
-Distance d(ℓ,ℓ') = mean, over aligned consonant slots between statistically detected coderivative sets of the two
-languages, of the number of primary phonological features that differ (identity = 0). It is PAIRWISE (it keeps the
-information a per-language marginal profile discards), reconstruction-free, and family-tree-free. We then embed the
-distance matrix with classical MDS and connect each system to its k nearest neighbours. Branch labels are used
-ONLY afterwards, to colour and score the picture (neighbour purity, silhouette) — never to build it.
+Dissimilarity d(ℓ,ℓ') = mean, over aligned consonant slots between coderivative sets of the two languages, of the
+number of primary phonological features that differ (identity = 0). It is PAIRWISE (keeps information a marginal
+profile discards), reconstruction-free and family-tree-free (family membership only delimits the field; no branch
+labels enter d). Undefined pairs are NEVER imputed: the analysis matrix is the MAXIMUM observed clique (exact
+Bron–Kerbosch). We embed with classical MDS and connect each system to its k nearest neighbours; branch labels are
+used ONLY afterwards, to colour and score (purity, silhouette), never to build.
 
-Requires a Lexibank-style CLDF lexicon (forms.csv, languages.csv) pointed at by $LEX_PATH. Outputs (bundled in the
-repo so the figure reproduces without the corpus): data/results/network_{coords,edges,dist}_<slug>.csv (slug ie/an).
+Requires a Lexibank-style CLDF lexicon (forms.csv, languages.csv) pointed at by $LEX_PATH. Outputs (bundled so the
+figure reproduces without the corpus): data/results/network_{coords,edges,dist}_<slug>.csv (slug ie/an/nd).
 
 Usage:  LEX_PATH=/path/to/lexibank FAMILY="Indo-European" ./.venv/bin/python src/compute_network.py
 """
@@ -108,6 +110,33 @@ def silhouette(D, labels):
     return float(np.mean(s)) if s else float("nan")
 
 
+def max_cliques(cand, observed):
+    """All MAXIMUM cliques of the observed-distance graph over `cand` (Bron–Kerbosch w/ pivot + size bound).
+    `observed(a,b)` → True if the pair's distance is defined. Returns (best_size, list_of_cliques)."""
+    import itertools
+    adj = {u: set() for u in cand}
+    for a, b in itertools.combinations(cand, 2):
+        if observed(a, b):
+            adj[a].add(b); adj[b].add(a)
+    best = [0]; found = []
+
+    def bk(R, P, X):
+        if not P and not X:
+            if len(R) > best[0]:
+                best[0] = len(R); found.clear(); found.append(set(R))
+            elif len(R) == best[0]:
+                found.append(set(R))
+            return
+        if len(R) + len(P) < best[0]:
+            return
+        pivot = max(P | X, key=lambda u: len(adj[u] & P))
+        for v in list(P - adj[pivot]):
+            bk(R | {v}, P & adj[v], X & adj[v])
+            P = P - {v}; X = X | {v}
+    bk(set(), set(cand), set())
+    return best[0], found
+
+
 def main():
     from lingpy import LexStat
     assign, _, _ = branch_map(FAMILY)
@@ -159,24 +188,23 @@ def main():
                     M[i, j] = M[j, i] = SUM[p]/NS[p]
         return M
 
-    # NO global-mean imputation (it manufactures equidistance / flatness). Main analysis uses a COMPLETE
-    # observed submatrix: greedily drop the doculect with the most missing pairs until no NaN remains.
-    Dm = build_D(keep)
+    # NO global-mean imputation (it manufactures equidistance / flatness). Main analysis uses the MAXIMUM
+    # complete observed submatrix: the maximum clique of the graph whose edges are observed (>=MINSLOT) pairs.
     n_all = len(keep)
-    miss_before = int(np.isnan(Dm[np.triu_indices(n_all, 1)]).sum())
+    Dfull = build_D(keep)
+    miss_before = int(np.isnan(Dfull[np.triu_indices(n_all, 1)]).sum())
     total_before = n_all*(n_all-1)//2
-    dropped = []
-    while np.isnan(Dm).any():
-        missing_per = np.isnan(Dm).sum(axis=1)
-        worst = int(missing_per.argmax())
-        dropped.append(keep[worst])
-        keep = keep[:worst] + keep[worst+1:]
-        Dm = build_D(keep)
+    observed = lambda a, b: NS.get(tuple(sorted((a, b))), 0) >= MINSLOT
+    size, cliques = max_cliques(keep, observed)
+    chosen = cliques[0]
+    keep = [l for l in keep if l in chosen]           # preserve deterministic input order
     n = len(keep); idx = {l: i for i, l in enumerate(keep)}
+    Dm = build_D(keep)
     labels = [assign[l] for l in keep]
     print(f"missingness: {miss_before}/{total_before} pairs unobserved (<{MINSLOT} slots) among {n_all} doculects")
-    print(f"complete observed submatrix: kept {n}/{n_all} doculects (dropped {len(dropped)}: "
-          f"{', '.join(name.get(d, d)[:16] for d in dropped[:8])}{'…' if len(dropped) > 8 else ''}); 0 imputed values")
+    print(f"maximum complete submatrix (max clique): {n}/{n_all} doculects; "
+          f"{len(cliques)} maximum clique(s) of size {size}; 0 imputed values")
+    print(f"kept: {', '.join(name.get(l, l) for l in keep)}")
 
     brc = defaultdict(int)
     for l in keep:

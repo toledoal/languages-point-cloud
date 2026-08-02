@@ -1,4 +1,5 @@
-complete observed submatrix: kept 13/45 doculects (dropped 32: Lote, Malo, Takia, Sengga, Ririo, Buma, Marquesan, Hawaiian…); 0 imputed values
-=== system point cloud · Austronesian · 13 languages ===
-nearest-neighbour purity (multi-branch, no creoles) = 10/12 = 0.83
-silhouette by branch = +0.221
+maximum complete submatrix (max clique): 14/45 doculects; 1 maximum clique(s) of size 14; 0 imputed values
+kept: Kwaio, Samasodu, Nggela, Mbirao, Lau North, Nduke, Vaghua, Kia, To'ambaita, Leleghia, To'ambaita, Malango, Sa'a (2), Dhadhaje
+=== system point cloud · Austronesian · 14 languages ===
+nearest-neighbour purity (multi-branch, no creoles) = 13/14 = 0.93
+silhouette by branch = +0.283

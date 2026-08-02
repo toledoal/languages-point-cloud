@@ -22,7 +22,7 @@ from compute_network import feat, is_cons, cost, LEX, FAMILY, MAXLANG, PRIM
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RES = os.path.join(HERE, "..", "data", "results")
-CACHE = os.path.join(HERE, "..", "data", "db", "_av2.pkl")
+CACHE = os.path.join(HERE, "..", "data", "db", f"_av2_{MAXLANG}.pkl")
 MINSLOT = 40
 DEDUP_D = 1.3           # collapse near-duplicate systems below this dissimilarity
 CREOLE_MARK = ("creole", "jamaic", "negerhol", "sranan", "papiam", "krio", "pidgin", "saramacc", "seychelles")
@@ -154,7 +154,8 @@ def build_allconcept(per, langs):
 
 
 def dmatrix(SUMF, NCC, langs, minslot=MINSLOT):
-    """Complete observed submatrix — NO imputation. Greedily drop the doculect with most missing pairs."""
+    """MAXIMUM complete observed submatrix (max clique of the observed-pair graph) — NO imputation."""
+    from compute_network import max_cliques
     keep = [l for l in langs if any(NCC.get(tuple(sorted((l, o))), 0) >= minslot for o in langs if o != l)]
 
     def build(ls):
@@ -167,13 +168,11 @@ def dmatrix(SUMF, NCC, langs, minslot=MINSLOT):
                 if NCC.get(p, 0) >= minslot:
                     M[i, j] = M[j, i] = SUMF[p].sum()/NCC[p]
         return M
-    D = build(keep)
-    while np.isnan(D).any():
-        worst = int(np.isnan(D).sum(axis=1).argmax())
-        keep = keep[:worst] + keep[worst+1:]
-        D = build(keep)
+    _, cliques = max_cliques(keep, lambda a, b: NCC.get(tuple(sorted((a, b))), 0) >= minslot)
+    chosen = cliques[0]
+    keep = [l for l in keep if l in chosen]
     idx = {l: i for i, l in enumerate(keep)}
-    return D, keep, idx
+    return build(keep), keep, idx
 
 
 def valmatrix(M, keep):
@@ -299,9 +298,8 @@ def main():
         br[assign[keep[i]]].append(i)
     macro = []
     for b, ids in br.items():
-        if len(ids) > 1:
-            sub = D[np.ix_(range(n), range(n))]
-            hitb = sum(1 for i in ids if assign[keep[min((k for k in range(n) if k != i), key=lambda k: D[i, k])]] == b)
+        if len(ids) > 1:   # neighbours restricted to the non-creole universe `nc`, same as the headline metric
+            hitb = sum(1 for i in ids if assign[keep[min((k for k in nc if k != i), key=lambda k: D[i, k])]] == b)
             macro.append(hitb/len(ids))
     keepidx, dropped = dedup(Dnc, [keep[i] for i in nc])
     lab_dd = [lab_nc[i] for i in keepidx]
@@ -310,6 +308,42 @@ def main():
           f"multi-branch non-creole={p_nc:.3f} ({h_nc}/{k_nc}) Wilson95 [{lo:.2f},{hi:.2f}]")
     print(f"    macro-by-branch mean={np.mean(macro):.3f}   "
           f"after near-dup dedup (d<{DEDUP_D}: dropped {len(dropped)})={p_dd:.3f} ({h_dd}/{k_dd})")
+
+    # 3b — metadata control: ONE doculect per Glottocode (keep the best-covered), then purity on the collapsed set
+    gc_group = defaultdict(list)
+    for i in nc:
+        gc_group[gcode.get(keep[i], keep[i])].append(i)
+    dup_gc = {g: [keep[i] for i in ids] for g, ids in gc_group.items() if len(ids) > 1}
+    reps = []
+    for g, ids in gc_group.items():
+        reps.append(max(ids, key=lambda i: np.nansum(D[i])))     # representative = most total dissimilarity mass ≈ best covered
+    rep_lab = [assign[keep[i]] for i in reps]
+    Drep = D[np.ix_(reps, reps)]
+    p_gc, k_gc, h_gc = nn_purity(Drep, rep_lab)
+    print(f"    ONE-per-Glottocode ({len(reps)} reps; collapsed {sum(len(v)-1 for v in dup_gc.values())} duplicates "
+          f"across {len(dup_gc)} glottocodes): purity={p_gc:.3f} ({h_gc}/{k_gc})")
+    if dup_gc:
+        print("    duplicate glottocodes: " + "; ".join(f"{g}:{len(v)}" for g, v in list(dup_gc.items())[:12]))
+
+    # 3c — leave-one-dataset-out: drop each source dataset in turn, repurify on the rest (non-creole)
+    dsof = {i: keep[i].split("-")[0] for i in nc}
+    datasets = sorted(set(dsof.values()))
+    lodo = []
+    for ds in datasets:
+        sub = [i for i in nc if dsof[i] != ds]
+        if len(sub) >= 6:
+            pp2, kk2, _ = nn_purity(D[np.ix_(sub, sub)], [assign[keep[i]] for i in sub])
+            lodo.append(pp2)
+    print(f"    leave-one-dataset-out ({len(datasets)} datasets): purity range [{min(lodo):.3f}, {max(lodo):.3f}]")
+
+    # 3d — branch-cut sensitivity: relabel with several TF_BRANCH_MAXFRAC and repurify the SAME matrix
+    print("    branch-cut sensitivity (TF_BRANCH_MAXFRAC):", end=" ")
+    for mf in (0.25, 0.33, 0.5, 0.67):
+        a2, _, _ = branch_map(FAMILY, maxfrac=mf)
+        idx_nc = [i for i in nc if keep[i] in a2]
+        pmf, kmf, _ = nn_purity(D[np.ix_(idx_nc, idx_nc)], [a2[keep[i]] for i in idx_nc])
+        print(f"{mf}:{pmf:.3f}(n={kmf})", end="  ")
+    print()
 
     # 4 — coverage
     covd = []
