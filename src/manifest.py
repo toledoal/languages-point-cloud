@@ -8,7 +8,7 @@ from compute_network import LEX, FAMILY, MAXLANG
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RES = os.path.join(HERE, "..", "data", "results")
-SLUG = {"Indo-European": "ie", "Austronesian": "an"}.get(FAMILY, FAMILY.split("-")[0].lower())
+SLUG = {"Indo-European": "ie", "Austronesian": "an", "Nakh-Daghestanian": "nd"}.get(FAMILY, FAMILY.split("-")[0].lower())
 
 
 def main():

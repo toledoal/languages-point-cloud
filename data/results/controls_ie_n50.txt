@@ -1,13 +1,13 @@
-(cache)
 === CONTROLS · Languages Point Cloud · Indo-European · 50 langs ===
 [A] observed:  purity = 0.977 (44 langs)   silhouette = +0.324   (random-neighbour chance purity = 0.158)
 [B] concept-permuted ablation (3 reruns, reported qualitatively — too few for a null tail):  purity = 0.284 (range 0.195-0.375)   silhouette = -0.025   → collapses toward chance (0.158); significance is carried by the 10k label-permutation test in analysis.py, not by this ablation
 [C] subsampling 22/50 (500x):  purity mean 0.934  95% CI [0.787, 1.000]   silhouette 95% CI [+0.209, +0.418]
 [D] MINSLOT sensitivity:
       MINSLOT=20  n=50  purity=0.977 (44)  silhouette=+0.324
-      MINSLOT=30  n=50  purity=0.977 (44)  silhouette=+0.324
       MINSLOT=40  n=50  purity=0.977 (44)  silhouette=+0.324
-      MINSLOT=60  n=50  purity=0.977 (44)  silhouette=+0.324
+      MINSLOT=100  n=50  purity=0.977 (44)  silhouette=+0.324
+      MINSLOT=200  n=48  purity=0.977 (43)  silhouette=+0.336
+      MINSLOT=400  n=27  purity=1.000 (21)  silhouette=+0.353
 [E] feature-subset sensitivity (drop a group; full = all 12):
       full (12)                              purity=0.977  silhouette=+0.324
       no strident                            purity=0.977  silhouette=+0.323

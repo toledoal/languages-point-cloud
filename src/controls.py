@@ -203,7 +203,7 @@ def main():
 
     # D — MINSLOT sensitivity
     print("[D] MINSLOT sensitivity:")
-    for ms in (20, 30, 40, 60):
+    for ms in (20, 40, 100, 200, 400):
         Dm, km, _ = matrix(SUMF, NS, langs, minslot=ms)
         p, m = purity(Dm, km, assign, name)
         print(f"      MINSLOT={ms:>2}  n={len(km)}  purity={p:.3f} ({m})  silhouette={silhouette(Dm,[assign[l] for l in km]):+.3f}")

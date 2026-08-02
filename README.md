@@ -18,15 +18,17 @@ Correspondences](https://github.com/toledoal/phonological-correspondences)*.
 
 | Measure | Value | Meaning |
 |---|---:|---|
-| Nearest-neighbour purity | **0.98** (43/44) | a system's closest system is almost always its own branch |
+| Nearest-neighbour purity | **0.98** (43/44, multi-member branches, creoles excluded; 0.958 over all doculects) | a system's closest system is almost always its own branch |
 | Silhouette by branch | **+0.34** | branches are separated in the dissimilarity geometry |
-| Label-permutation significance | **p ≈ 0.0001** | vs a 10,000× null on the fixed matrix |
+| Label-permutation significance | **p < 10⁻⁴** | 0 of 10,000 label permutations reach the observed values |
 | Branch labels used to build the map | **0** | placement is from correspondences only |
 
 **Honesty notes, up front.** Branch recovery is *not* the contribution — a plain edit distance ties our purity and
 an unfiltered all-concept baseline matches or beats it. The claimed value is **feature-level attribution**
-(`src/decompose.py`: the dissimilarity factors into which features change, connecting to the pilot's operator
-repertoire) plus a slightly cleaner margin (silhouette). Cross-branch proximities are rare and we make **no areal
+(`src/decompose.py`: every matrix entry opens into an exact per-feature ledger, $d=\sum_f d_f$, on the same
+correspondence units as the pilot's operators — a narrow claim relative to feature-aware traditions like ALINE,
+which score alignments by features; ours is an additive decomposition of the final system-level dissimilarity)
+plus a slightly cleaner margin (silhouette). Cross-branch proximities are rare and we make **no areal
 claim**. The matrices used in analysis are **complete observed submatrices — zero imputed values** (an earlier
 internal version mean-imputed missing pairs; that is removed, and the Austronesian corpus turns out to be too
 sparse in Lexibank to support a large complete field — disclosed in the paper, not hidden).

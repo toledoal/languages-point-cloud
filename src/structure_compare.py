@@ -96,7 +96,7 @@ def purity(D, labels):
 
 
 def main():
-    slugs = sys.argv[1:] or ["ie", "an"]
+    slugs = sys.argv[1:] or ["ie", "an", "nd"]
     sig = {}
     for s in slugs:
         D, br = load(s); sig[s] = signatures(D, br)
