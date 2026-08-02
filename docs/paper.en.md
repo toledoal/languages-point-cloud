@@ -1,6 +1,6 @@
 # A Point Cloud of Languages
 
-### A reconstruction-free, feature-decomposable dissimilarity between language systems: an Indo-European study, with exploratory Nakh-Daghestanian and Austronesian fields
+### A reconstruction-free, feature-decomposable dissimilarity between language systems: an Indo-European study, with a portability check on two further families
 
 **Alejandro Toledo Martínez** — Independent researcher (ORCID: 0009-0000-1277-9697)
 
@@ -29,11 +29,11 @@ our purity and an unfiltered all-concept baseline matches or beats it — so the
 lexical-phonological similarity, not an artefact of the coderivation filter. The claimed contribution is
 **feature-level attribution**: the dissimilarity decomposes additively into per-feature components (demonstrated
 on real pairs; the attribution is conditional on the chosen alignment), computed on the same correspondence
-units, by construction, as the operator repertoire of the pilot study. Two further
-families — Nakh-Daghestanian and Austronesian — are built as **separate fields**, never a shared distance space;
-their comparison is exploratory and, for Austronesian, sharply limited by corpus sparsity (a complete matrix
-survives for only 13 of 45 doculects). We make no areal claim and no cross-family "diversification fingerprint"
-claim; both are stated only as directions requiring matched sampling.
+units, by construction, as the operator repertoire of the pilot study. As a portability check, the same pipeline
+is run unchanged on two further families — Nakh-Daghestanian and Austronesian — each as a **separate field** (never
+a shared distance space), recovering above-chance branch structure in each; we draw **no comparison between
+families**, and the Austronesian field is sharply limited by corpus sparsity (a complete matrix survives for only
+13 of 45 doculects). We make no areal claim.
 
 ---
 
@@ -215,11 +215,13 @@ rather than hide: because the headline purity of §4 excludes creoles (per the s
 proximity cannot lower that headline — it is visible only here. We make **no areal claim**: a proper test requires
 a contact matrix defined *before* inspecting the map — deferred.
 
-## 7. Cross-family fields — exploratory, with the data limits disclosed
+## 7. Portability check — the same pipeline on two further families
 
-We built two further clouds with the identical pipeline, each on its **own field** (never a shared distance space,
-which would assert a direct relation between families we do not claim), and compare only scale-free structural
-signatures of each complete observed matrix.
+As a portability check only, we ran the identical pipeline on two further families, each on its **own field**
+(never a shared distance space, which would assert a direct relation between families we do not claim). We report
+each field's own scale-free structural signatures side by side; we do **not** compare the families or interpret the
+differences between their signatures — the samples are not commensurable (see below), and any question about *how*
+a family diversified is out of scope and belongs to future, matched-sampling work.
 
 **A correction made and disclosed.** An earlier version of this section filled unobserved pairs with the global
 mean. For Austronesian this was fatal: 52.6% of its 990 pairs were fill values, which *manufactures* a flat,
@@ -237,17 +239,20 @@ that sparsity — not family history — dominated the earlier picture.
 "Chance" is each field's own 2,000× label-permutation null and *adj. purity* $=(P_{obs}-P_{null})/(1-P_{null})$ —
 the comparable quantity, since branch granularity differs across samples. (This table is computed on the bundled
 *network* matrices with all doculects included — hence IE purity 0.96 here versus §4's 0.977, which is the
-analysis matrix with creoles excluded; the denominators are stated in each place.) Read honestly: Indo-European and
-Nakh-Daghestanian both show strong chance-adjusted branch structure (0.95, 0.97); the Austronesian field is too
-small and its branch partition too coarse for a meaningful comparison (adjusted 0.54 on n=13). The samples are
-also not matched — Nakh-Daghestanian is dialect-dense and largely single-source, Indo-European mixes ancient,
-modern and creole doculects — so **we do not attribute the differences to diversification history**. The earlier
-"spread-zone vs residual-zone fingerprint" reading is withdrawn; it survives only as a hypothesis whose test
-requires matched sampling (one doculect per Glottocode, fixed taxonomic depth, shared concept lists, equated
-branch-size distributions, hundreds of stratified resamples) and simulation of diversification models. Figure 2
-shows the three fields' signatures under these caveats.
+analysis matrix with creoles excluded; the denominators are stated in each place.)
 
-![Abstract comparison of independently-built clouds on complete observed matrices — structure only, never a shared space. (A) normalised MDS spectra; (B) branch separation; (C) each cloud's dissimilarity distribution normalised by its own median. The Austronesian field is n=13 (corpus sparsity) and is shown for transparency, not comparison.](figure-structure-compare.pdf|w=0.98)
+The purpose of this section is only to show that **the same pipeline runs unchanged on other families and recovers
+above-chance branch structure in each** (adjusted purity 0.95 for Indo-European, 0.97 for Nakh-Daghestanian; the
+Austronesian field is n=13 after the completeness requirement, too small and too coarse in branch partition to
+read into, adjusted 0.54). We **make no comparison between the families and draw no conclusion from the differences
+in their signatures.** The samples are not comparable — Nakh-Daghestanian is dialect-dense and largely
+single-source, Indo-European mixes ancient, modern and creole doculects, Austronesian is sparse — so the numbers in
+this table are not commensurable and are reported per-field, for transparency, not as a contrast. Any attempt to
+relate a family's geometric signature to *how* it diversified would require matched sampling (one doculect per
+Glottocode, fixed taxonomic depth, shared concept lists, equated branch-size distributions) and lies entirely
+outside this paper. Figure 2 displays the three fields side by side under these caveats.
+
+![The same pipeline on three families, each on its own complete observed matrix, shown side by side (not compared, and never in a shared space). (A) normalised MDS spectra; (B) branch separation; (C) each field's dissimilarity distribution normalised by its own median. The Austronesian field is n=13 (corpus sparsity) and is shown for transparency only.](figure-structure-compare.pdf|w=0.98)
 
 ## 8. Controls and robustness
 
@@ -277,7 +282,7 @@ The input is concept-aligned lexical data, not phonology alone. The dissimilarit
 is not a metric, ignores gaps and consonant–vowel correspondences, and weights concepts by their consonant count
 (a concept-balanced variant is future work). The 2-D figures show under a third of the variance. Branch labels are
 a sample-dependent Glottolog cut, so purity is not directly comparable across differently-sampled families —
-hence the chance-adjusted scores and the exploratory status of §7. The twelve-feature instrument was not validated
+which is why §7 is a portability check only and draws no cross-family comparison. The twelve-feature instrument was not validated
 for cross-family measurement invariance (glottalization, uvularity and pharyngeal oppositions are not directly
 represented — relevant for Nakh-Daghestanian). Branch recovery is not distinctive versus edit distance; the
 near-duplicate collapse uses $d$ itself; the silhouette margin over the strongest baseline is untested for
@@ -319,10 +324,7 @@ are bundled under `data/results/`. Code MIT; text, figures, data CC BY 4.0.
 14. Nerbonne, J., & Heeringa, W. (2010). Measuring dialect differences. In *Language and Space* (pp. 550–567).
     De Gruyter.
 15. Thomason, S. G., & Kaufman, T. (1988). *Language Contact, Creolization, and Genetic Linguistics*. UC Press.
-16. Nichols, J. (1992). *Linguistic Diversity in Space and Time*. University of Chicago Press.
-17. François, A. (2014). Trees, waves and linkages: models of language diversification. In *The Routledge Handbook
-    of Historical Linguistics* (pp. 161–189). Routledge.
-18. Schuchardt, H. (1922). *Hugo Schuchardt-Brevier* (L. Spitzer, Ed.). Niemeyer.
+16. Schuchardt, H. (1922). *Hugo Schuchardt-Brevier* (L. Spitzer, Ed.). Niemeyer.
 
 ## Appendix A — Doculect manifests
 

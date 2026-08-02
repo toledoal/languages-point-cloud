@@ -132,7 +132,7 @@ def main():
         ax[2].hist(sig[s]["off_norm"], bins=40, histtype="step", density=True, color=col.get(s, None), label=LABELS.get(s, s))
     ax[2].set_title("(C) Dissimilarity distribution\n(each normalised by its own median)", fontsize=9)
     ax[2].set_xlabel("d / median(d)"); ax[2].set_ylabel("density"); ax[2].legend(fontsize=8, frameon=False)
-    fig.suptitle("Abstract comparison of independently-built language clouds — structure only, never a shared space",
+    fig.suptitle("Same pipeline on three families, each in its own field — shown side by side, not compared",
                  fontsize=10.5)
     fig.tight_layout(rect=[0, 0, 1, 0.95])
     out = os.path.join(OUTDIR, "figure-structure-compare.pdf")
