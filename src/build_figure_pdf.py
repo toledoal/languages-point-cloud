@@ -11,13 +11,18 @@ RES = os.path.join(HERE, "..", "data", "results")
 OUTDIR = os.path.join(HERE, "..", "docs", "figures")
 os.makedirs(OUTDIR, exist_ok=True)
 
-nodes = list(csv.DictReader(open(os.path.join(RES, "network_coords_ie.csv"), encoding="utf-8")))
-edges = list(csv.DictReader(open(os.path.join(RES, "network_edges_ie.csv"), encoding="utf-8")))
+SLUG = os.environ.get("SLUG", "ie")
+FAMILYLABEL = os.environ.get("FAMILYLABEL", {"ie": "Indo-European", "an": "Austronesian"}.get(SLUG, SLUG))
+nodes = list(csv.DictReader(open(os.path.join(RES, f"network_coords_{SLUG}.csv"), encoding="utf-8")))
+edges = list(csv.DictReader(open(os.path.join(RES, f"network_edges_{SLUG}.csv"), encoding="utf-8")))
 pos = {n["name"]: n for n in nodes}
 
-order = ["Germanic", "Balto-Slavic", "Indo-Iranian", "Italic", "Graeco-Phrygian", "Armenic", "Albanian", "Celtic"]
-OKABE = ["#0072B2", "#D55E00", "#009E73", "#E69F00", "#CC79A7", "#56B4E9", "#F0E442", "#8A8F98"]
-color = {b: OKABE[i] for i, b in enumerate(order)}
+from collections import Counter
+_bc = Counter(n["branch"] for n in nodes)
+order = [b for b, _ in _bc.most_common()]                       # branches present, by size (family-agnostic)
+OKABE = ["#0072B2", "#D55E00", "#009E73", "#E69F00", "#CC79A7", "#56B4E9", "#F0E442", "#8A8F98",
+         "#117733", "#882255", "#44AA99", "#999933", "#AA4499", "#332288", "#DDCC77", "#661100"]
+color = {b: OKABE[i % len(OKABE)] for i, b in enumerate(order)}
 
 fig, ax = plt.subplots(figsize=(9.2, 6.4))
 # edges first
@@ -46,10 +51,10 @@ ax.legend(handles=handles, loc="upper left", fontsize=7.2, frameon=False, ncol=1
 ax.set_xticks([]); ax.set_yticks([])
 for s in ax.spines.values():
     s.set_visible(False)
-ax.set_title("Indo-European placed by phonological-correspondence distance alone (MDS)",
+ax.set_title(f"{FAMILYLABEL} placed by consonantal-correspondence dissimilarity (MDS)",
              fontsize=10.5, pad=10)
 fig.tight_layout()
-out = os.path.join(OUTDIR, "figure-network-ie.pdf")
+out = os.path.join(OUTDIR, f"figure-network-{SLUG}.pdf")
 fig.savefig(out, bbox_inches="tight")
 fig.savefig(out.replace(".pdf", ".png"), dpi=200, bbox_inches="tight")
 print("wrote", out)

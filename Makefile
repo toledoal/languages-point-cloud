@@ -31,3 +31,11 @@ manifest:
 # Full v2 analysis: label-permutation significance, MDS diagnostics, baselines, coverage, cross-branch table.
 analysis:
 	LEX_PATH=$${LEX_PATH} $(VENV) src/analysis.py
+
+# Build a family's cloud on its OWN field (SLUG/FAMILY/MAXLANG env).
+compute-family:
+	LEX_PATH=$${LEX_PATH} FAMILY=$${FAMILY} SLUG=$${SLUG} MAXLANG=$${MAXLANG} $(VENV) src/compute_network.py
+
+# Abstract structural comparison of separate fields (never a shared space).
+compare:
+	$(VENV) src/structure_compare.py $${SLUGS}

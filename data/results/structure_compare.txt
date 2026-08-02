@@ -1,0 +1,5 @@
+=== abstract structural comparison (SEPARATE fields; no shared space, no coordinate alignment) ===
+        family               n        median d         %var 2D     eff.dim(PR)        dims→80%  within/between      silhouette          purity
+ Indo-European              28            3.27           28.7%            12.8              12            0.70          +0.266            0.92
+Indo-European (dense)              50            3.18           27.1%            14.2              14            0.63          +0.323            0.96
+  Austronesian              45            2.57           22.1%            16.8              14            0.75          +0.134            0.80

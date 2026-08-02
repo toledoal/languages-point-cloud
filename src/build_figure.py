@@ -4,10 +4,11 @@ import csv, json, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RES = os.path.join(HERE, "..", "data", "results")
-OUT = os.path.join(HERE, "..", "docs", "figure-network-ie.html")
+SLUG = os.environ.get("SLUG", "ie")
+OUT = os.path.join(HERE, "..", "docs", f"figure-network-{SLUG}.html")
 
-nodes = list(csv.DictReader(open(os.path.join(RES, "network_coords_ie.csv"), encoding="utf-8")))
-edges = list(csv.DictReader(open(os.path.join(RES, "network_edges_ie.csv"), encoding="utf-8")))
+nodes = list(csv.DictReader(open(os.path.join(RES, f"network_coords_{SLUG}.csv"), encoding="utf-8")))
+edges = list(csv.DictReader(open(os.path.join(RES, f"network_edges_{SLUG}.csv"), encoding="utf-8")))
 
 # vecinos por nodo (para el tooltip)
 nbr = {}

@@ -9,7 +9,7 @@ distance matrix with classical MDS and connect each system to its k nearest neig
 ONLY afterwards, to colour and score the picture (neighbour purity, silhouette) — never to build it.
 
 Requires a Lexibank-style CLDF lexicon (forms.csv, languages.csv) pointed at by $LEX_PATH. Outputs (bundled in the
-repo so the figure reproduces without the corpus): data/results/network_{coords,edges,dist}_ie.csv.
+repo so the figure reproduces without the corpus): data/results/network_{coords,edges,dist}_<slug>.csv (slug ie/an).
 
 Usage:  LEX_PATH=/path/to/lexibank FAMILY="Indo-European" ./.venv/bin/python src/compute_network.py
 """
@@ -24,6 +24,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 RES = os.path.join(HERE, "..", "data", "results")
 LEX = os.environ.get("LEX_PATH", os.path.join(HERE, "..", "..", "..", "data", "lexicon", "lexibank"))
 FAMILY = os.environ.get("FAMILY", "Indo-European")
+SLUG = os.environ.get("SLUG") or {"Indo-European": "ie", "Austronesian": "an"}.get(FAMILY, FAMILY.split("-")[0].lower())
 MAXLANG = int(os.environ.get("MAXLANG", "28"))
 MINSLOT = int(os.environ.get("MINSLOT", "40"))
 KNN = int(os.environ.get("KNN", "3"))
@@ -121,7 +122,7 @@ def main():
         if len(segs) >= 2 and row.get("Parameter_ID") and assign.get(row["Language_ID"]):
             per[row["Language_ID"]].append((row["Parameter_ID"], segs))
     langs = sorted(per, key=lambda l: -len(per[l]))[:MAXLANG]
-    tsv = os.path.join(RES, "_tn.tsv")
+    tsv = os.path.join(RES, f"_tn_{SLUG}.tsv")
     with open(tsv, "w", encoding="utf-8") as f:
         f.write("ID\tDOCULECT\tCONCEPT\tTOKENS\n"); i = 1
         for l in langs:
@@ -176,18 +177,18 @@ def main():
             edges.append((name[l], name[keep[j]], round(float(Dm[i, j]), 3)))
     coords = mds(Dm)
     os.makedirs(RES, exist_ok=True)
-    with open(os.path.join(RES, "network_coords_ie.csv"), "w", newline="", encoding="utf-8") as f:
+    with open(os.path.join(RES, f"network_coords_{SLUG}.csv"), "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f); w.writerow(["lang", "name", "branch", "x", "y"])
         for l in keep:
             i = idx[l]; w.writerow([l, name[l], assign[l], f"{coords[i,0]:.4f}", f"{coords[i,1]:.4f}"])
-    with open(os.path.join(RES, "network_edges_ie.csv"), "w", newline="", encoding="utf-8") as f:
+    with open(os.path.join(RES, f"network_edges_{SLUG}.csv"), "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f); w.writerow(["src", "dst", "dist"])
         for a, b, dd in edges:
             w.writerow([a, b, dd])
-    np.savetxt(os.path.join(RES, "network_dist_ie.csv"), Dm, fmt="%.4f", delimiter=",",
+    np.savetxt(os.path.join(RES, f"network_dist_{SLUG}.csv"), Dm, fmt="%.4f", delimiter=",",
                header=",".join(name[l] for l in keep), comments="")
     os.remove(tsv)
-    print("wrote data/results/network_{coords,edges,dist}_ie.csv")
+    print(f"wrote data/results/network_{{coords,edges,dist}}_{SLUG}.csv")
 
 
 if __name__ == "__main__":
