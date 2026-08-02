@@ -19,3 +19,7 @@ clean:
 paper:
 	$(VENV) src/build_figure_pdf.py
 	bash docs/build-paper.sh
+
+# Run the robustness controls (concept-permuted null, subsampling, sensitivity).
+controls:
+	LEX_PATH=$${LEX_PATH} $(VENV) src/controls.py

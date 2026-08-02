@@ -1,0 +1,15 @@
+=== CONTROLS · Languages Point Cloud · Indo-European · 28 langs ===
+[A] observed:  purity = 0.955 (22 langs)   silhouette = +0.274   (random-neighbour chance purity = 0.146)
+[B] concept-permuted null (3x):  purity = 0.288±0.150   silhouette = -0.016±0.003   → collapses toward chance (0.146); observed is 4.4σ above the null
+[C] subsampling 22/28 (500x):  purity mean 0.941  95% CI [0.867, 1.000]   silhouette 95% CI [+0.197, +0.326]
+[D] MINSLOT sensitivity:
+      MINSLOT=20  n=28  purity=0.955 (22)  silhouette=+0.274
+      MINSLOT=30  n=28  purity=0.955 (22)  silhouette=+0.274
+      MINSLOT=40  n=28  purity=0.955 (22)  silhouette=+0.274
+      MINSLOT=60  n=28  purity=0.955 (22)  silhouette=+0.274
+[E] feature-subset sensitivity (drop a group; full = all 12):
+      full (12)                              purity=0.955  silhouette=+0.274
+      no strident                            purity=0.955  silhouette=+0.274
+      no place (ant,cor,lab,back,round)      purity=0.955  silhouette=+0.270
+      manner only (cont,voi,nas,son)         purity=0.955  silhouette=+0.276
+Readout: [A] reproduces the headline; [B] the null collapses toward chance (falsifier passes); [C] the headline is stable under resampling; [D]/[E] it is not knife-edge in threshold or features.

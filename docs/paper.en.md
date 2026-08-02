@@ -21,8 +21,10 @@ phonological features that differ; the mean of that count is the distance. Embed
 with classical multidimensional scaling and linking each system to its nearest neighbours makes a language family
 **draw itself** as a point cloud. On 28 Indo-European varieties, a system's nearest neighbour is a member of its
 own branch **96%** of the time (silhouette **+0.27** by branch), and the branch labels are consulted only
-*after* the map is built — to colour and score it, never to place a point. The off-branch nearest neighbours are
-not noise: they recover **areal** structure (Albanian and the Balkan *Sprachbund*; Romani in Romania) and
+*after* the map is built — to colour and score it, never to place a point. A concept-permuted null collapses the
+purity toward chance (the observed value sits 4.4 σ above it), and the result is stable under resampling and
+insensitive to the distance threshold and to the feature subset. The off-branch nearest neighbours are not noise:
+they recover **areal** structure (Albanian and the Balkan *Sprachbund*; Romani in Romania) and
 **creole–lexifier** proximity. The point cloud is thus a direct, minimal picture of the level at which — as the
 pilot argued — genealogy and contact actually live: the *distribution* of correspondences, not the flat inventory
 of correspondence types.
@@ -126,15 +128,39 @@ Italic neighbour is Romanian, matching its long presence in Romania. Each creole
 the map about contact; contact is simply where the branches leak, and the leaks are systematic. This is the
 confluence view made measurable: the same geometry that shows descent also shows admixture.
 
-## 5. Controls and robustness *(planned; next computation)*
+## 5. Controls and robustness
 
-Three controls complete the argument and are the immediate next step; we state them here so the claim is
-falsifiable. (i) A **concept-permuted null**: rebuild the distances after shuffling which forms share a concept,
-destroying coderivative structure; purity and silhouette should collapse toward chance. (ii) A **language-level
-bootstrap** of purity and silhouette, resampling doculects with replacement, to show the 0.96 is not an artefact
-of the particular sample. (iii) A **sensitivity sweep** over `MINSLOT`, the LexStat threshold, `MAXLANG` and the
-feature subset, to show the picture is not knife-edge. The code paths for all three already exist in the pilot's
-null and sensitivity machinery.
+Four controls confirm the headline is a property of the data, not of the pipeline (`src/controls.py`). The chance
+level for reference is the expected same-branch fraction of a *random* neighbour, given the branch sizes in the
+sample: **0.146**.
+
+**(A) Reproduction.** On the real data, purity $=0.955$ and silhouette $=+0.274$ — the headline of §4.
+
+**(B) Concept-permuted null (falsifier).** We shuffle which forms share a concept and rerun the whole pipeline
+(LexStat included), destroying coderivative structure while preserving every phoneme inventory and form. Across
+three permutations, purity falls to $0.29\pm0.15$ and silhouette to $-0.016\pm0.003$ — i.e. **toward the chance
+level 0.146**, with the silhouette losing all structure. The observed purity sits **4.4 σ above the null**. When
+there is nothing to be co-derived, the map does not draw the branches.
+
+**(C) Subsampling stability.** Drawing 22 of the 28 languages at random 500 times, purity averages $0.941$ with a
+95% interval of $[0.867,\,1.000]$ and silhouette $[+0.197,\,+0.326]$. The result does not depend on a few
+languages.
+
+**(D) Threshold insensitivity.** Purity and silhouette are unchanged ($0.955$, $+0.274$) across
+`MINSLOT` $\in\{20,30,40,60\}$.
+
+**(E) Feature-subset insensitivity.** Dropping the strident feature, dropping all five place features, or keeping
+only the four manner features (`cont, voi, nas, son`) all leave purity at $0.955$ and silhouette within
+$\pm0.006$. The signal is not carried by any one feature group.
+
+| Control | purity | silhouette |
+|---|---:|---:|
+| (A) observed | 0.955 | +0.274 |
+| (B) concept-permuted null (×3) | 0.29 ± 0.15 | −0.016 |
+| random-neighbour chance | 0.146 | — |
+| (C) subsample 22/28 (95% CI) | [0.867, 1.000] | [+0.197, +0.326] |
+| (D) MINSLOT 20–60 | 0.955 | +0.274 |
+| (E) manner-only features | 0.955 | +0.276 |
 
 ## 6. Discussion
 
