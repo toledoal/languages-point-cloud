@@ -1,51 +1,51 @@
 lang,name,branch,x,y
-idssegmented-bulgarian,Bulgarian,Balto-Slavic,-1.4925,0.2531
-wold-Romanian,Romanian,Italic,0.4603,-0.0628
-idssegmented-ancientgreek,Ancient Greek,Graeco-Phrygian,-0.0092,0.4497
-idssegmented-judeotat,Judeo-Tat,Indo-Iranian,-0.0305,0.9654
-idssegmented-serbocroatian,Serbo-Croatian,Balto-Slavic,-1.5343,0.1913
-wold-SeychellesCreole,Seychelles Creole,Italic,0.5850,0.1114
-idssegmented-albaniantoskvariety,Albanian (Tosk variety),Albanian,0.1032,0.6730
-idssegmented-armenianeasternvariety,Armenian (Eastern variety),Armenic,0.6813,1.2827
-idssegmented-armenianwesternvariety,Armenian (Western variety),Armenic,0.5973,1.3649
-idssegmented-yiddish,Yiddish,Germanic,0.0225,-0.7684
-idssegmented-breton,Breton,Celtic,0.5344,-0.0907
-keypano-Spanish,Spanish,Italic,1.4319,0.0180
-wold-LowerSorbian,Lower Sorbian,Balto-Slavic,-1.5034,-0.3473
-idssegmented-romani,Romani,Indo-Iranian,-0.1290,0.6085
-idssegmented-moderngreek,Modern Greek,Graeco-Phrygian,0.0579,0.4768
-keypano-Portuguese,Portuguese,Italic,1.3382,0.1433
-idssegmented-jamaicancreolelimonesecreoledialect,Jamaican Creole (Limonese Creole dialect),Germanic,0.4381,-1.1320
-wold-SeliceRomani,Selice Romani,Indo-Iranian,-0.2072,0.5003
-idssegmented-persian,Persian,Indo-Iranian,0.1052,1.3260
-wold-Dutch,Dutch,Germanic,0.0766,-1.4082
-wold-English,English,Germanic,0.2692,-1.1429
-northeuralex-hin,Hindi,Indo-Iranian,0.0937,0.9459
-wold-Saramaccan,Saramaccan,Germanic,0.2424,-1.3031
-wold-OldHighGerman,Old High German,Germanic,0.0916,-1.1605
-northeuralex-lit,Lithuanian,Balto-Slavic,-0.7955,0.0270
-idssegmented-negerhollands,Negerhollands,Germanic,0.2477,-1.3317
-idssegmented-oldchurchslavonic,Old Church Slavonic,Balto-Slavic,-1.5831,0.1395
-northeuralex-hrv,Croatian,Balto-Slavic,-1.5788,0.0320
-northeuralex-ron,Romanian,Italic,0.6294,0.0128
-northeuralex-gle,Irish,Celtic,0.3235,-0.0190
-northeuralex-lav,Latvian,Balto-Slavic,-0.7852,0.1954
-northeuralex-ita,Italian,Italic,1.3226,-0.2027
-northeuralex-oss,Ossetian,Indo-Iranian,0.1122,0.8272
-northeuralex-por,Portuguese,Italic,1.3948,0.0723
-northeuralex-pes,Western Farsi,Indo-Iranian,0.2902,1.3091
-northeuralex-fra,French,Italic,0.8300,0.0842
-northeuralex-slk,Slovak,Balto-Slavic,-1.9153,-0.0743
-northeuralex-spa,Spanish,Italic,1.5927,-0.3269
-northeuralex-bul,Bulgarian,Balto-Slavic,-1.5442,0.1766
-northeuralex-pbu,Northern Pashto,Indo-Iranian,0.5964,1.3826
-northeuralex-sqi,Standard Albanian,Classical Indo-European,0.2285,0.5093
-northeuralex-nld,Dutch,Germanic,0.1300,-1.3451
-northeuralex-cym,Welsh,Celtic,0.4712,0.1374
-northeuralex-swe,Swedish,Germanic,0.0320,-1.2904
-northeuralex-isl,Icelandic,Germanic,0.0196,-1.3575
-northeuralex-ell,Modern Greek,Graeco-Phrygian,0.1379,0.4182
-northeuralex-ces,Czech,Balto-Slavic,-1.7883,0.0439
-northeuralex-cat,Catalan,Italic,1.1238,-0.0718
-northeuralex-pol,Polish,Balto-Slavic,-1.8010,0.0043
-northeuralex-nor,Norwegian (Bokmål),Germanic,0.0867,-1.2464
+idssegmented-bulgarian,Bulgarian,Balto-Slavic,-1.4582,0.1563
+wold-Romanian,Romanian,Italic,0.6112,-0.0315
+idssegmented-ancientgreek,Ancient Greek,Graeco-Phrygian,0.0544,0.3463
+idssegmented-judeotat,Judeo-Tat,Indo-Iranian,-0.2214,1.0886
+idssegmented-serbocroatian,Serbo-Croatian,Balto-Slavic,-1.5769,0.0250
+wold-SeychellesCreole,Seychelles Creole,Italic,0.6040,0.0904
+idssegmented-albaniantoskvariety,Albanian (Tosk variety),Albanian,0.2120,0.6081
+idssegmented-armenianeasternvariety,Armenian (Eastern variety),Armenic,0.5391,1.1252
+idssegmented-armenianwesternvariety,Armenian (Western variety),Armenic,0.3721,1.2835
+idssegmented-yiddish,Yiddish,Germanic,-0.0199,-0.9624
+idssegmented-breton,Breton,Celtic,0.6904,0.0389
+keypano-Spanish,Spanish,Italic,1.3836,0.1037
+wold-LowerSorbian,Lower Sorbian,Balto-Slavic,-1.4642,-0.5025
+idssegmented-romani,Romani,Indo-Iranian,-0.2064,0.6036
+idssegmented-moderngreek,Modern Greek,Graeco-Phrygian,0.1026,0.4671
+keypano-Portuguese,Portuguese,Italic,1.2805,0.2176
+idssegmented-jamaicancreolelimonesecreoledialect,Jamaican Creole (Limonese Creole dialect),Germanic,0.4952,-0.9639
+wold-SeliceRomani,Selice Romani,Indo-Iranian,-0.5313,0.5603
+idssegmented-persian,Persian,Indo-Iranian,0.0501,1.1863
+wold-Dutch,Dutch,Germanic,0.1526,-1.3917
+wold-English,English,Germanic,0.4830,-1.1328
+northeuralex-hin,Hindi,Indo-Iranian,0.0996,0.9037
+wold-Saramaccan,Saramaccan,Germanic,0.2631,-0.9670
+wold-OldHighGerman,Old High German,Germanic,0.1936,-1.3379
+northeuralex-lit,Lithuanian,Balto-Slavic,-0.6755,0.1518
+idssegmented-negerhollands,Negerhollands,Germanic,0.2931,-1.2612
+idssegmented-oldchurchslavonic,Old Church Slavonic,Balto-Slavic,-1.5433,-0.0563
+northeuralex-hrv,Croatian,Balto-Slavic,-1.6056,0.0219
+northeuralex-ron,Romanian,Italic,0.6849,0.0930
+northeuralex-gle,Irish,Celtic,0.3860,-0.0617
+northeuralex-lav,Latvian,Balto-Slavic,-0.6309,0.0892
+northeuralex-ita,Italian,Italic,1.3268,-0.1495
+northeuralex-oss,Ossetian,Indo-Iranian,-0.0410,0.7426
+northeuralex-por,Portuguese,Italic,1.3957,0.2580
+northeuralex-pes,Western Farsi,Indo-Iranian,-0.0678,1.3351
+northeuralex-fra,French,Italic,0.7996,0.2564
+northeuralex-slk,Slovak,Balto-Slavic,-1.8750,-0.2538
+northeuralex-spa,Spanish,Italic,1.5616,0.0159
+northeuralex-bul,Bulgarian,Balto-Slavic,-1.4957,0.1225
+northeuralex-pbu,Northern Pashto,Indo-Iranian,0.0317,1.4746
+northeuralex-sqi,Standard Albanian,Classical Indo-European,0.1969,0.5994
+northeuralex-nld,Dutch,Germanic,0.2205,-1.2208
+northeuralex-cym,Welsh,Celtic,0.5829,0.0763
+northeuralex-swe,Swedish,Germanic,0.1251,-1.3591
+northeuralex-isl,Icelandic,Germanic,0.1201,-1.3164
+northeuralex-ell,Modern Greek,Graeco-Phrygian,0.1410,0.5480
+northeuralex-ces,Czech,Balto-Slavic,-1.7548,-0.0896
+northeuralex-cat,Catalan,Italic,1.1854,-0.0678
+northeuralex-pol,Polish,Balto-Slavic,-1.6173,-0.1896
+northeuralex-nor,Norwegian (Bokmål),Germanic,0.1468,-1.2736

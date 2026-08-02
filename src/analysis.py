@@ -18,11 +18,11 @@ import os, csv, math, random, pickle
 from collections import defaultdict, Counter
 import numpy as np
 from branches import branch_map
-from compute_network import feat, is_cons, cost, LEX, FAMILY, MAXLANG, PRIM
+from compute_network import feat, is_cons, cost, LEX, FAMILY, MAXLANG, PRIM, _seed, cache_path
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RES = os.path.join(HERE, "..", "data", "results")
-CACHE = os.path.join(HERE, "..", "data", "db", f"_av2_{MAXLANG}.pkl")
+CACHE = cache_path("_av2")
 MINSLOT = 40
 DEDUP_D = 1.3           # collapse near-duplicate systems below this dissimilarity
 CREOLE_MARK = ("creole", "jamaic", "negerhol", "sranan", "papiam", "krio", "pidgin", "saramacc", "seychelles")
@@ -104,7 +104,7 @@ def build_rich(per, langs):
         for l in langs:
             for c, segs in per[l]:
                 f.write(f"{i}\t{l}\t{c}\t{' '.join(segs)}\n"); i += 1
-    lex = LexStat(tsv); lex.get_scorer(runs=100); lex.cluster(method="lexstat", threshold=0.55, ref="cogid")
+    _seed(); lex = LexStat(tsv); lex.get_scorer(runs=100); lex.cluster(method="lexstat", threshold=0.55, ref="cogid")
     classes = defaultdict(list)
     for k in lex:
         classes[(lex[k, "concept"], lex[k, "cogid"])].append((lex[k, "doculect"], lex[k, "tokens"]))
@@ -176,14 +176,16 @@ def dmatrix(SUMF, NCC, langs, minslot=MINSLOT):
 
 
 def valmatrix(M, keep):
-    n = len(keep); idx = {l: i for i, l in enumerate(keep)}
-    D = np.zeros((n, n))
+    """Dense matrix from a pair→value dict over `keep`. NO imputation: undefined pairs are an error (the caller
+    must pass a keep-set on which every pair is observed, e.g. a max clique)."""
+    n = len(keep); D = np.zeros((n, n))
     for i in range(n):
         for j in range(i+1, n):
-            v = M.get(tuple(sorted((keep[i], keep[j]))), np.nan)
+            v = M.get(tuple(sorted((keep[i], keep[j]))))
+            if v is None or (isinstance(v, float) and np.isnan(v)):
+                raise ValueError(f"undefined baseline pair ({keep[i]},{keep[j]}): pass a complete observed submatrix")
             D[i, j] = D[j, i] = v
-    g = np.nanmean(D[~np.eye(n, dtype=bool)]) if np.isnan(D).any() else 0
-    return np.where(np.isnan(D), g, D)
+    return D
 
 
 def silhouette(D, labels):
@@ -309,19 +311,28 @@ def main():
     print(f"    macro-by-branch mean={np.mean(macro):.3f}   "
           f"after near-dup dedup (d<{DEDUP_D}: dropped {len(dropped)})={p_dd:.3f} ({h_dd}/{k_dd})")
 
-    # 3b — metadata control: ONE doculect per Glottocode (keep the best-covered), then purity on the collapsed set
+    # 3b — metadata control: ONE doculect per Glottocode. Representative by COVERAGE (total observed consonant
+    # slots, a pre-D metadata quantity — NOT the outcome variable D), and we also enumerate ALL 2^k choices.
+    cov = {i: sum(NCC.get(tuple(sorted((keep[i], keep[j]))), 0) for j in nc if j != i) for i in nc}
     gc_group = defaultdict(list)
     for i in nc:
         gc_group[gcode.get(keep[i], keep[i])].append(i)
     dup_gc = {g: [keep[i] for i in ids] for g, ids in gc_group.items() if len(ids) > 1}
-    reps = []
-    for g, ids in gc_group.items():
-        reps.append(max(ids, key=lambda i: np.nansum(D[i])))     # representative = most total dissimilarity mass ≈ best covered
-    rep_lab = [assign[keep[i]] for i in reps]
-    Drep = D[np.ix_(reps, reps)]
-    p_gc, k_gc, h_gc = nn_purity(Drep, rep_lab)
+    groups = list(gc_group.values())
+    reps = [max(ids, key=lambda i: cov[i]) for ids in groups]     # coverage-based representative (metadata rule)
+    p_gc, k_gc, h_gc = nn_purity(D[np.ix_(reps, reps)], [assign[keep[i]] for i in reps])
+    # enumerate all combinations of representatives across duplicated glottocodes (2^k)
+    import itertools
+    dup_groups = [ids for ids in groups if len(ids) > 1]
+    fixed = [ids[0] for ids in groups if len(ids) == 1]
+    combo_p = []
+    for choice in itertools.product(*dup_groups):
+        sel = fixed + list(choice)
+        pp3, _, _ = nn_purity(D[np.ix_(sel, sel)], [assign[keep[i]] for i in sel])
+        combo_p.append(pp3)
     print(f"    ONE-per-Glottocode ({len(reps)} reps; collapsed {sum(len(v)-1 for v in dup_gc.values())} duplicates "
-          f"across {len(dup_gc)} glottocodes): purity={p_gc:.3f} ({h_gc}/{k_gc})")
+          f"across {len(dup_gc)} glottocodes): purity={p_gc:.3f} ({h_gc}/{k_gc}); "
+          f"all {len(combo_p)} representative choices give purity in [{min(combo_p):.3f}, {max(combo_p):.3f}]")
     if dup_gc:
         print("    duplicate glottocodes: " + "; ".join(f"{g}:{len(v)}" for g, v in list(dup_gc.items())[:12]))
 
@@ -345,14 +356,22 @@ def main():
         print(f"{mf}:{pmf:.3f}(n={kmf})", end="  ")
     print()
 
-    # 4 — coverage
+    # 4 — coverage (and export the full per-pair table for the reproducibility materials)
     covd = []
+    pair_rows = []
     for i in range(n):
         for j in range(i+1, n):
             p = tuple(sorted((keep[i], keep[j])))
             cc = NCC.get(p, 0); gp = NGAP.get(p, 0)
             if cc >= MINSLOT:
                 covd.append((D[i, j], cc, gp, NCONC.get(p, 0), NSET.get(p, 0)))
+                pair_rows.append((keep[i], keep[j], round(float(D[i, j]), 4), NSET.get(p, 0),
+                                  NCONC.get(p, 0), cc, gp, round(gp/(gp+cc), 4) if (gp+cc) else 0))
+    with open(os.path.join(RES, "pair_stats_ie.csv"), "w", newline="", encoding="utf-8") as f:
+        wr = csv.writer(f)
+        wr.writerow(["doculect_a", "doculect_b", "d", "n_coderivative_sets", "n_shared_concepts",
+                     "n_consonant_slots", "n_gaps", "gap_slot_ratio"])
+        wr.writerows(pair_rows)
     covd = np.array(covd)
     r = np.corrcoef(covd[:, 0], covd[:, 1])[0, 1]
     print(f"[4] coverage per pair: cons-cons slots median={np.median(covd[:,1]):.0f} "

@@ -16,11 +16,27 @@ figure reproduces without the corpus): data/results/network_{coords,edges,dist}_
 Usage:  LEX_PATH=/path/to/lexibank FAMILY="Indo-European" ./.venv/bin/python src/compute_network.py
 """
 import logging; logging.disable(logging.INFO)
-import os, csv, math
+import os, csv, math, random
 from collections import defaultdict
 import numpy as np
 import panphon
 from branches import branch_map
+
+SEED = int(os.environ.get("SEED", "20260802"))
+
+
+def _seed():
+    """Seed the RNGs LexStat's get_scorer draws from, so runs are reproducible."""
+    random.seed(SEED); np.random.seed(SEED)
+
+
+def cache_path(prefix):
+    """Cache filename keyed by the FULL config (family, maxlang, threshold, seed, corpus path) so a run with any
+    different configuration cannot silently reuse a stale cache."""
+    import hashlib
+    cfg = "|".join(str(x) for x in (FAMILY, MAXLANG, os.environ.get("THR", "0.55"), SEED, os.path.realpath(LEX)))
+    h = hashlib.md5(cfg.encode()).hexdigest()[:10]
+    return os.path.join(HERE, "..", "data", "db", f"{prefix}_{MAXLANG}_{h}.pkl")
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RES = os.path.join(HERE, "..", "data", "results")
@@ -157,7 +173,7 @@ def main():
         for l in langs:
             for c, segs in per[l]:
                 f.write(f"{i}\t{l}\t{c}\t{' '.join(segs)}\n"); i += 1
-    lex = LexStat(tsv); lex.get_scorer(runs=100); lex.cluster(method="lexstat", threshold=THR, ref="cogid")
+    _seed(); lex = LexStat(tsv); lex.get_scorer(runs=100); lex.cluster(method="lexstat", threshold=THR, ref="cogid")
     classes = defaultdict(list)
     for k in lex:
         classes[(lex[k, "concept"], lex[k, "cogid"])].append((lex[k, "doculect"], lex[k, "tokens"]))

@@ -16,11 +16,11 @@ import os, csv, random, pickle
 from collections import defaultdict, Counter
 import numpy as np
 from branches import branch_map
-from compute_network import feat, is_cons, align, LEX, FAMILY, MAXLANG, PRIM
+from compute_network import feat, is_cons, align, LEX, FAMILY, MAXLANG, PRIM, _seed, cache_path
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RES = os.path.join(HERE, "..", "data", "results")
-CACHE = os.path.join(HERE, "..", "data", "db", f"_controls_{MAXLANG}.pkl")
+CACHE = cache_path("_controls")
 MINSLOT = 40
 CREOLE_MARK = ("creole", "jamaic", "negerhol", "sranan", "papiam", "krio", "pidgin", "saramacc", "seychelles")
 NPERM = 3
@@ -61,7 +61,7 @@ def run_lexstat(per, langs, permute=False, seed=0):
         f.write("ID\tDOCULECT\tCONCEPT\tTOKENS\n")
         for i, (l, c, segs) in enumerate(rows, 1):
             f.write(f"{i}\t{l}\t{c}\t{' '.join(segs)}\n")
-    lex = LexStat(tsv); lex.get_scorer(runs=100); lex.cluster(method="lexstat", threshold=0.55, ref="cogid")
+    _seed(); lex = LexStat(tsv); lex.get_scorer(runs=100); lex.cluster(method="lexstat", threshold=0.55, ref="cogid")
     classes = defaultdict(list)
     for k in lex:
         classes[(lex[k, "concept"], lex[k, "cogid"])].append((lex[k, "doculect"], lex[k, "tokens"]))

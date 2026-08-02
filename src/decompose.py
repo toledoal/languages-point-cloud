@@ -6,10 +6,10 @@ Reads the analysis cache (data/db/_av2.pkl) produced by `make analysis`.
 Usage: ./.venv/bin/python src/decompose.py [NameA:NameB ...]"""
 import os, sys, csv, pickle
 import numpy as np
-from compute_network import LEX, PRIM, MAXLANG
+from compute_network import LEX, PRIM, MAXLANG, cache_path
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-CACHE = os.path.join(HERE, "..", "data", "db", f"_av2_{MAXLANG}.pkl")
+CACHE = cache_path("_av2")
 
 DEFAULT = ["Spanish:Portuguese", "Persian:Hindi", "Spanish:Hindi"]
 

@@ -1,25 +1,25 @@
+rich LexStat pass ...
 
 === ANALYSIS v2 · Indo-European · 50 doculects (4 creoles) ===
 [1] label-permutation test (10000x, non-creole n=46):
     purity     obs=0.977  null=0.155±0.067  p=0.0001
-    silhouette obs=+0.338 null=-0.190±0.035  p=0.0001
-[2] MDS diagnostics: top eigvals [38.17 28.87 26.01 17.32 13.04] ; %var in 2D = 27.5% ; negative inertia = 6.7% of |eigen| (euclidean-ish if small)
-[3] purity:  all-doculects=0.958 (46/48)   multi-branch non-creole=0.977 (43/44) Wilson95 [0.88,1.00]
-    macro-by-branch mean=0.982   after near-dup dedup (d<1.3: dropped 15)=0.966 (28/29)
-    ONE-per-Glottocode (39 reps; collapsed 7 duplicates across 7 glottocodes): purity=1.000 (37/37)
+    silhouette obs=+0.344 null=-0.194±0.036  p=0.0001
+[2] MDS diagnostics: top eigvals [39.67 29.64 27.22 17.39 13.77] ; %var in 2D = 28.2% ; negative inertia = 6.2% of |eigen| (euclidean-ish if small)
+[3] purity:  all-doculects=0.979 (47/48)   multi-branch non-creole=0.977 (43/44) Wilson95 [0.88,1.00]
+    macro-by-branch mean=0.952   after near-dup dedup (d<1.3: dropped 14)=0.967 (29/30)
+    ONE-per-Glottocode (39 reps; collapsed 7 duplicates across 7 glottocodes): purity=0.973 (36/37); all 128 representative choices give purity in [0.973, 0.973]
     duplicate glottocodes: bulg1262:2; roma1327:2; stan1288:2; mode1248:2; port1283:2; west2369:2; dutc1256:2
     leave-one-dataset-out (4 datasets): purity range [0.935, 0.976]
-    branch-cut sensitivity (TF_BRANCH_MAXFRAC): 0.25:0.955(n=44)  0.33:0.977(n=44)  0.5:0.977(n=44)  0.67:0.977(n=44)  
-[4] coverage per pair: cons-cons slots median=676 [144-7227]  gaps median=424  concepts median=236
-    corr(d, #slots) = +0.01   (near 0 ⇒ distance not driven by coverage)
+    branch-cut sensitivity (TF_BRANCH_MAXFRAC): 0.25:0.932(n=44)  0.33:0.977(n=44)  0.5:0.977(n=44)  0.67:0.977(n=44)  
+[4] coverage per pair: cons-cons slots median=661 [142-5681]  gaps median=400  concepts median=226
+    corr(d, #slots) = -0.07   (near 0 ⇒ distance not driven by coverage)
 [5] ALL cross-branch nearest neighbours (obs d vs nearest same-branch d = residual):
-    Albanian (Tosk v[Alban]→Standard Alban[Class] d=0.79 sameBr=nan singleton
-    Romani          [Indo-]→Romanian      [Itali] d=2.48 sameBr=2.62 
-    Irish           [Celti]→Jamaican Creol[Germa] d=2.76 sameBr=2.82 
-    Standard Albania[Class]→Albanian (Tosk[Alban] d=0.79 sameBr=nan singleton
-[6] baseline marginal profile           purity=0.477 (21/44)  silhouette=-0.104
+    Albanian (Tosk v[Alban]→Standard Alban[Class] d=0.80 sameBr=nan singleton
+    Irish           [Celti]→Jamaican Creol[Germa] d=2.76 sameBr=2.86 
+    Standard Albania[Class]→Albanian (Tosk[Alban] d=0.80 sameBr=nan singleton
+[6] baseline marginal profile           purity=0.477 (21/44)  silhouette=-0.126
 [6] baseline all-concept (no LexStat)   purity=1.000 (44/44)  silhouette=+0.324
 [6] baseline edit-dist skeleton         purity=0.977 (43/44)  silhouette=+0.205
-[6] OURS (pairwise feature dissimilarity)   purity=0.977 (43/44)  silhouette=+0.338
+[6] OURS (pairwise feature dissimilarity)   purity=0.977 (43/44)  silhouette=+0.344
 
 Readout: [1] gives a VALID p (label permutation on the fixed matrix). [6] shows what the pairwise feature dissimilarity adds over edit distance / marginal profile / no-LexStat selection. [3]-[5] make the purity and areal claims honest. Nothing here needs branch labels to BUILD the map.
