@@ -7,3 +7,5 @@ docs/*.tex
 docs/*.aux
 docs/*.log
 docs/*.out
+data/db/
+data/results/_*.tsv
