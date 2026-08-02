@@ -81,7 +81,7 @@ svg{display:block;width:100%;height:auto;touch-action:none}
 .note code{background:var(--line);padding:1px 5px;border-radius:4px;font-size:12.5px}
 </style>
 <div class="wrap">
-<p class="eyebrow">Phonological correspondences · Paper 2 · exp. 2</p>
+<p class="eyebrow">Phonological correspondences · a point cloud of languages</p>
 <h1>Indo-European draws itself as a point cloud</h1>
 <p class="lede">Each point is a language. Its position comes only from <b>how its consonants correspond to every
 other language's</b> — the mean number of phonological features that differ, pair by pair. No family tree, no
@@ -92,11 +92,11 @@ imposed; it emerges.</p>
 <div class="tip" id="tip"></div></div>
 <div class="legend" id="legend"></div>
 <p class="note">Distance = mean count of differing panphon features per aligned consonant slot, over statistically
-detected coderivative sets (LexStat); layout by classical MDS. Solid links join a language to its 3 nearest
-neighbours within the same branch; <span style="color:var(--edgex)">dashed</span> links are nearest neighbours in
-a <i>different</i> branch — almost always areal contact (Albanian→Romanian, Balkan; Romani→Romanian) or a
-creole beside its lexifier. Genealogy lives in the distribution; the label is only a coarse summary of this
-geometry. Data: <code>network_*_ie.csv</code>.</p>
+detected coderivative sets (LexStat); layout by classical MDS (the 2-D plane shows ~27% of the variance, so central
+overlaps are partly projection). Solid links join a language to its 3 nearest neighbours within the same branch;
+<span style="color:var(--edgex)">dashed</span> links are nearest neighbours in a <i>different</i> branch — these are
+rare and only marginally interpretable as contact (see the paper). Branch structure is legible in the dissimilarity;
+we do not claim to recover a tree, direction, or contact. Data: <code>network_*_ie.csv</code>.</p>
 </div>
 <script>
 const DATA=__DATA__;
@@ -140,10 +140,10 @@ function move(ev){const r=svg.getBoundingClientRect();
 function hide(){tip.style.opacity=0;document.querySelectorAll('.node').forEach(x=>{x.classList.remove('dim','hi');});}
 // stats
 document.getElementById('stats').innerHTML=[
-  ['0.96','nearest neighbour shares its branch (22/23)'],
-  ['+0.27','silhouette by branch (positive = separated)'],
-  [DATA.nodes.length,'language systems'],
-  ['0','times a branch label was used to place a point'],
+  ['0.98','nearest neighbour shares its branch (43/44)'],
+  ['+0.34','silhouette by branch (positive = separated)'],
+  ['p≈0.0001','vs a 10k label-permutation null'],
+  [DATA.nodes.length,'language systems, 0 labels used to place them'],
 ].map(s=>`<div class="stat"><div class="n">${s[0]}</div><div class="l">${s[1]}</div></div>`).join('');
 // legend
 document.getElementById('legend').innerHTML=DATA.order.map(b=>

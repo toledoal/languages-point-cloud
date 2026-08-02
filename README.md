@@ -18,18 +18,24 @@ Correspondences](https://github.com/toledoal/phonological-correspondences)*. The
 geometry of the *type* inventory is representational — genealogy lives one level up, in the **distribution** of
 correspondences. This repo makes that one level visible in its simplest form: a point cloud.
 
-## The headline (Indo-European, 28 documented varieties)
+## The headline (Indo-European, 50 documented varieties)
 
 | Measure | Value | Meaning |
 |---|---:|---|
-| Nearest-neighbour purity | **0.96** (22/23) | a system's closest system is almost always its own branch |
-| Silhouette by branch | **+0.27** | branches are separated in the distance geometry |
+| Nearest-neighbour purity | **0.98** (43/44) | a system's closest system is almost always its own branch |
+| Silhouette by branch | **+0.34** | branches are separated in the dissimilarity geometry |
+| Label-permutation significance | **p ≈ 0.0001** | vs a 10,000× null (chance purity 0.16) |
 | Branch labels used to build the map | **0** | placement is from correspondences only |
 
-Off-branch nearest neighbours are not noise — they are the interesting cases: Albanian → Romanian (Balkan
-*Sprachbund*), Romani → Romanian (contact in Romania), each creole beside its lexifier. Contiguity is graded, and
-a singleton branch (Armenian, alone in the sample) is *near* its relatives (Armenian → Ancient Greek), not far
-from everything: being alone in the sample is a fact of sampling, not a distance.
+Two honesty notes. **Branch recovery is not a novelty of the method** — a plain edit distance ties our purity (an
+unfiltered all-concept baseline beats it); what our feature dissimilarity adds is a cleaner *margin* (higher
+silhouette) plus a reconstruction-free, operator-decomposable representation. And **cross-branch proximities are
+rare and barely areal**: of 50 systems only one (Romani → Romanian) matches a documented contact situation, so we
+make no areal claim. Contiguity is graded — a singleton branch (Armenian, alone in the sample) sits *near* its
+relatives (Greek, Indo-Iranian), not far from everything.
+
+Built as a **separate field** (never a shared space), Austronesian (45 doculects) reproduces the method with a
+weaker, higher-dimensional signal (purity 0.80, silhouette +0.13) — a structural contrast, not a claim of relation.
 
 ## Reproduce
 
