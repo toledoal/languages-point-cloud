@@ -34,12 +34,16 @@ for e in edges:
     ax.plot([float(a["x"]), float(b["x"])], [float(a["y"]), float(b["y"])],
             color=("#b9b0a0" if same else "#b98a5e"), lw=(0.6 if same else 0.9),
             ls=("-" if same else (0, (2, 2))), zorder=1, alpha=0.8)
-# nodes + labels
+# nodes + labels (disambiguate duplicate names with a short dataset suffix)
+_namecount = Counter(n["name"].split(" (")[0] for n in nodes)
 for n in nodes:
     x, y = float(n["x"]), float(n["y"])
     ax.scatter([x], [y], s=70, c=color.get(n["branch"], "#888"),
                edgecolors="white", linewidths=1.1, zorder=3)
     lab = n["name"].split(" (")[0]
+    if _namecount[lab] > 1:
+        ds = n.get("lang", "").split("-")[0][:4]
+        lab = f"{lab}·{ds}" if ds else lab
     ax.annotate(lab, (x, y), xytext=(6, 3), textcoords="offset points",
                 fontsize=6.5, color="#3a352b", zorder=4)
 

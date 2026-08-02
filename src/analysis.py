@@ -154,18 +154,26 @@ def build_allconcept(per, langs):
 
 
 def dmatrix(SUMF, NCC, langs, minslot=MINSLOT):
+    """Complete observed submatrix — NO imputation. Greedily drop the doculect with most missing pairs."""
     keep = [l for l in langs if any(NCC.get(tuple(sorted((l, o))), 0) >= minslot for o in langs if o != l)]
-    n = len(keep); idx = {l: i for i, l in enumerate(keep)}
-    D = np.full((n, n), np.nan)
-    for i in range(n):
-        D[i, i] = 0.0
-    for i in range(n):
-        for j in range(i+1, n):
-            p = tuple(sorted((keep[i], keep[j])))
-            if NCC.get(p, 0) >= minslot:
-                D[i, j] = D[j, i] = SUMF[p].sum()/NCC[p]
-    g = np.nanmean(D[~np.eye(n, dtype=bool)])
-    return np.where(np.isnan(D), g, D), keep, idx
+
+    def build(ls):
+        m = len(ls); M = np.full((m, m), np.nan)
+        for i in range(m):
+            M[i, i] = 0.0
+        for i in range(m):
+            for j in range(i+1, m):
+                p = tuple(sorted((ls[i], ls[j])))
+                if NCC.get(p, 0) >= minslot:
+                    M[i, j] = M[j, i] = SUMF[p].sum()/NCC[p]
+        return M
+    D = build(keep)
+    while np.isnan(D).any():
+        worst = int(np.isnan(D).sum(axis=1).argmax())
+        keep = keep[:worst] + keep[worst+1:]
+        D = build(keep)
+    idx = {l: i for i, l in enumerate(keep)}
+    return D, keep, idx
 
 
 def valmatrix(M, keep):

@@ -82,24 +82,35 @@ def run_lexstat(per, langs, permute=False, seed=0):
                             if fa.get(ft, 0) != fb.get(ft, 0):
                                 SUMF[pair][k] += 1
                         NS[pair] += 1
-    os.remove(tsv)
+    try:
+        os.remove(tsv)
+    except FileNotFoundError:
+        pass
     return {k: v for k, v in SUMF.items()}, dict(NS)
 
 
 def matrix(SUMF, NS, langs, feats=None, minslot=MINSLOT):
+    """Complete observed submatrix — NO imputation (drop the doculect with most missing pairs until complete)."""
     sel = list(range(len(PRIM))) if feats is None else feats
     keep = [l for l in langs if any(NS.get(tuple(sorted((l, o))), 0) >= minslot for o in langs if o != l)]
-    n = len(keep); idx = {l: i for i, l in enumerate(keep)}
-    D = np.full((n, n), np.nan)
-    for i in range(n):
-        D[i, i] = 0.0
-    for i in range(n):
-        for j in range(i+1, n):
-            p = tuple(sorted((keep[i], keep[j])))
-            if NS.get(p, 0) >= minslot:
-                D[i, j] = D[j, i] = SUMF[p][sel].sum()/NS[p]
-    g = np.nanmean(D[~np.eye(n, dtype=bool)])
-    return np.where(np.isnan(D), g, D), keep, idx
+
+    def build(ls):
+        m = len(ls); M = np.full((m, m), np.nan)
+        for i in range(m):
+            M[i, i] = 0.0
+        for i in range(m):
+            for j in range(i+1, m):
+                p = tuple(sorted((ls[i], ls[j])))
+                if NS.get(p, 0) >= minslot:
+                    M[i, j] = M[j, i] = SUMF[p][sel].sum()/NS[p]
+        return M
+    D = build(keep)
+    while np.isnan(D).any():
+        worst = int(np.isnan(D).sum(axis=1).argmax())
+        keep = keep[:worst] + keep[worst+1:]
+        D = build(keep)
+    idx = {l: i for i, l in enumerate(keep)}
+    return D, keep, idx
 
 
 def silhouette(D, labels):
@@ -170,9 +181,10 @@ def main():
     for SF, N in nulls:
         Dn, kn, _ = matrix(SF, N, langs)
         p, _ = purity(Dn, kn, assign, name); ps.append(p); ss.append(silhouette(Dn, [assign[l] for l in kn]))
-    print(f"[B] concept-permuted null ({NPERM}x):  purity = {np.mean(ps):.3f}±{np.std(ps):.3f}   "
-          f"silhouette = {np.mean(ss):+.3f}±{np.std(ss):.3f}   → collapses toward chance ({chance:.3f}); "
-          f"observed is {(obs_p-np.mean(ps))/(np.std(ps)+1e-9):.1f}σ above the null")
+    print(f"[B] concept-permuted ablation ({NPERM} reruns, reported qualitatively — too few for a null tail):  "
+          f"purity = {np.mean(ps):.3f} (range {min(ps):.3f}-{max(ps):.3f})   "
+          f"silhouette = {np.mean(ss):+.3f}   → collapses toward chance ({chance:.3f}); "
+          f"significance is carried by the 10k label-permutation test in analysis.py, not by this ablation")
 
     # C — subsampling stability
     rng = random.Random(7); sp, ss2 = [], []

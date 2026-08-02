@@ -1,73 +1,57 @@
 # A Point Cloud of Languages
 
-### Genealogy and areality drawn from phonological correspondences alone — reconstruction-free
+### A reconstruction-free, feature-decomposable dissimilarity between language systems
 
 **Author:** Alejandro Toledo Martínez — Independent researcher · ORCID
 [0009-0000-1277-9697](https://orcid.org/0009-0000-1277-9697)
 
-A short, foundational method. Take a family of documented languages. For every **pair** of languages, measure how
-their consonants correspond across statistically detected coderivative sets — the mean number of phonological
-features that differ, per aligned consonant slot. That single number is a **distance between two systems**,
-computed **without any reconstruction and without a family tree**. Lay every language out by that distance (MDS)
-and connect each to its nearest neighbours, and the family **draws itself**: tight sub-clouds that turn out to be
-the branches, plus off-branch links that turn out to be **areal contact** (Balkan) or **creoles beside their
-lexifier**. The branch labels are added *last*, only to colour and score the picture — never to build it.
+A methodological study. For every **pair** of documented languages in a family we compute a **dissimilarity**: the
+mean number of primary phonological features that differ per aligned consonant slot, over statistically detected
+coderivative sets (LexStat) in concept-aligned wordlists. No reconstruction, no family tree, and no branch labels
+enter the computation; labels are consulted only afterwards, to score the resulting geometry. The input is *not*
+"phonology alone" — it is phonological dissimilarity within concept-matched, inferred lexical correspondences.
 
 This is a companion to the pilot *[Additive Structure of Phonological
-Correspondences](https://github.com/toledoal/phonological-correspondences)*. The pilot showed the additive
-geometry of the *type* inventory is representational — genealogy lives one level up, in the **distribution** of
-correspondences. This repo makes that one level visible in its simplest form: a point cloud.
+Correspondences](https://github.com/toledoal/phonological-correspondences)*.
 
-## The headline (Indo-European, 50 documented varieties)
+## What the paper shows (Indo-European, 50 doculects)
 
 | Measure | Value | Meaning |
 |---|---:|---|
 | Nearest-neighbour purity | **0.98** (43/44) | a system's closest system is almost always its own branch |
 | Silhouette by branch | **+0.34** | branches are separated in the dissimilarity geometry |
-| Label-permutation significance | **p ≈ 0.0001** | vs a 10,000× null (chance purity 0.16) |
+| Label-permutation significance | **p ≈ 0.0001** | vs a 10,000× null on the fixed matrix |
 | Branch labels used to build the map | **0** | placement is from correspondences only |
 
-Two honesty notes. **Branch recovery is not a novelty of the method** — a plain edit distance ties our purity (an
-unfiltered all-concept baseline beats it); what our feature dissimilarity adds is a cleaner *margin* (higher
-silhouette) plus a reconstruction-free, operator-decomposable representation. And **cross-branch proximities are
-rare and barely areal**: of 50 systems only one (Romani → Romanian) matches a documented contact situation, so we
-make no areal claim. Contiguity is graded — a singleton branch (Armenian, alone in the sample) sits *near* its
-relatives (Greek, Indo-Iranian), not far from everything.
+**Honesty notes, up front.** Branch recovery is *not* the contribution — a plain edit distance ties our purity and
+an unfiltered all-concept baseline matches or beats it. The claimed value is **feature-level attribution**
+(`src/decompose.py`: the dissimilarity factors into which features change, connecting to the pilot's operator
+repertoire) plus a slightly cleaner margin (silhouette). Cross-branch proximities are rare and we make **no areal
+claim**. The matrices used in analysis are **complete observed submatrices — zero imputed values** (an earlier
+internal version mean-imputed missing pairs; that is removed, and the Austronesian corpus turns out to be too
+sparse in Lexibank to support a large complete field — disclosed in the paper, not hidden).
 
-Built as a **separate field** (never a shared space), Austronesian (45 doculects) reproduces the method with a
-weaker, higher-dimensional signal (purity 0.80, silhouette +0.13) — a structural contrast, not a claim of relation.
+Cross-family comparisons (Nakh-Daghestanian, Austronesian) are built as **separate fields** — never a shared
+distance space, which would falsely assert a direct relation between families — and remain exploratory pending
+matched sampling.
 
 ## Reproduce
 
 ```bash
-python3.12 -m venv .venv && ./.venv/bin/pip install -r requirements.txt
+python3.12 -m venv .venv && ./.venv/bin/pip install -r requirements.txt   # pinned versions
 
-# 1) redraw the figure from the bundled results (no corpus needed):
-make figure          # -> docs/figure-network-ie.html  (open in a browser)
-
-# 2) recompute the distances from a Lexibank CLDF lexicon (heavier):
-LEX_PATH=/path/to/lexibank make compute
+make figure                       # redraw the IE point cloud from bundled results (no corpus needed)
+LEX_PATH=/path/to/lexibank make compute      # recompute the IE field (n=50, the paper's setting)
+LEX_PATH=... make compute-nd                 # Nakh-Daghestanian field
+LEX_PATH=... make compute-an                 # Austronesian field
+LEX_PATH=... make analysis                   # significance, MDS diagnostics, baselines, coverage (n=50)
+LEX_PATH=... make controls                   # robustness controls (n=50)
+make compare                                 # abstract structural comparison (separate fields)
+make manifest                                # doculect manifests (Appendix A)
 ```
 
-The derived results (`data/results/network_{coords,edges,dist}_ie.csv`) are bundled so the figure reproduces
-immediately; `make compute` regenerates them from the corpus.
-
-## What is (and is not) claimed
-
-- **Is:** a reconstruction-free, family-tree-free distance between language *systems*, and the empirical finding
-  that genealogical + areal structure is already legible in it.
-- **Is not:** a claim that history does not exist, or that this distance *is* the tree. It is a measurement of the
-  distribution in which such structure lives; the tree is one coarse summary of this geometry. We say
-  **coderivative**, not *cognate*: co-derived by recurrent correspondence, without positing a single ancestor.
-
-## Method (one paragraph)
-
-Coderivative sets are detected statistically (LexStat). Within each set, every language pair is aligned by a
-feature-distance Needleman–Wunsch; at each slot where both segments are consonants, we count the primary panphon
-features that differ (identity = 0). The distance `d(ℓ,ℓ')` is the mean of that count over all shared slots — a
-pairwise quantity that keeps information a per-language marginal profile would discard. Classical MDS embeds the
-distance matrix; each node is linked to its `k=3` nearest neighbours. See `docs/paper.en.md` for the full account
-and `src/compute_network.py` for the code.
+Derived results are bundled under `data/results/` (matrices, coordinates, manifests, analysis logs) so figures
+reproduce without the corpus. Each experiment's exact `MAXLANG` is fixed in the `Makefile`.
 
 ## Licence
 

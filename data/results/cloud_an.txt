@@ -1,0 +1,4 @@
+complete observed submatrix: kept 13/45 doculects (dropped 32: Lote, Malo, Takia, Sengga, Ririo, Buma, Marquesan, Hawaiian…); 0 imputed values
+=== system point cloud · Austronesian · 13 languages ===
+nearest-neighbour purity (multi-branch, no creoles) = 10/12 = 0.83
+silhouette by branch = +0.221

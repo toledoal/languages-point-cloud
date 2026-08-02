@@ -1,136 +1,40 @@
 src,dst,dist
-Hawaiian,Hawaiian,0.206
-Hawaiian,Ontong Java,0.807
-Hawaiian,Sikaiana,1.219
-Maori,Rapanui (Easter Island),0.774
-Maori,Sikaiana,1.157
-Maori,Tikopia,1.307
-Tongan,Tikopia,0.874
-Tongan,Rapanui (Easter Island),1.211
-Tongan,Sikaiana,1.456
-Malagasy,Mbambatana,2.5
-Malagasy,Lote,2.572
-Malagasy,Kwaio,2.572
-Hawaiian,Hawaiian,0.206
-Hawaiian,Ontong Java,0.719
-Hawaiian,Sikaiana,1.128
-Tuamotuan,Sikaiana,1.272
-Tuamotuan,Tikopia,1.393
-Tuamotuan,Rapanui (Easter Island),1.468
-Rotuman,Sikaiana,1.175
-Rotuman,Sa'a (2),1.929
-Rotuman,Rennell,2.238
-Takia,Tomoip (Milim village),2.122
-Takia,Marquesan,2.34
-Takia,Tongan,2.397
-Rapa Nui,Rapanui (Easter Island),0.296
-Rapa Nui,Tikopia,0.603
-Rapa Nui,Marquesan,0.96
-Marquesan,Marquesan,0.609
-Marquesan,Rapanui (Easter Island),0.738
-Marquesan,Rennell,0.774
-Taokas Ts82,Hawaiian,2.572
-Taokas Ts82,Takia,2.572
-Taokas Ts82,Lau North,2.572
-Tomoip (Milim village),Takia,2.122
-Tomoip (Milim village),Papora Ts82,2.315
-Tomoip (Milim village),Lote,2.392
-Hoanya Ts82,Papora Ts82,2.116
-Hoanya Ts82,Ririo,2.524
-Hoanya Ts82,Hawaiian,2.572
-Lote,Papora Ts82,1.941
-Lote,Babuza Ts82,2.154
-Lote,Tomoip (Milim village),2.392
-Kavalan F69,Mbirao,1.6
-Kavalan F69,Papora Ts82,2.308
-Kavalan F69,Rapanui (Easter Island),2.391
-Babuza Ts82,Lote,2.154
-Babuza Ts82,Papora Ts82,2.369
-Babuza Ts82,Hawaiian,2.572
-Pazih F69,Hawaiian,2.572
-Pazih F69,Tongan,2.572
-Pazih F69,Hawaiian,2.572
-Papora Ts82,Lote,1.941
-Papora Ts82,Hoanya Ts82,2.116
-Papora Ts82,Itbayat,2.258
-Itbayat,Papora Ts82,2.258
-Itbayat,Chuukese,2.441
-Itbayat,Kavalan F69,2.57
-Kwaio,To'ambaita,0.821
-Kwaio,To'ambaita,1.072
-Kwaio,Lau North,1.305
-Chuukese,Hawaiian,1.659
-Chuukese,Tongan,1.69
-Chuukese,Rennell,2.128
-Samasodu,Kia,1.038
-Samasodu,Mbirao,2.086
-Samasodu,Leleghia,2.338
-Ontong Java,Hawaiian,0.719
-Ontong Java,Hawaiian,0.807
-Ontong Java,Sikaiana,1.481
-Nggela,Malango,1.263
-Nggela,Dhadhaje,1.5
-Nggela,Mbirao,1.536
-Mbirao,Malango,0.63
-Mbirao,Nggela,1.536
-Mbirao,Kavalan F69,1.6
-Lau North,To'ambaita,0.274
-Lau North,To'ambaita,0.402
-Lau North,Sa'a (2),1.233
-Nduke,Mbirao,1.894
-Nduke,Nggela,1.94
-Nduke,Sengga,2.0
-Vaghua,Ririo,0.584
-Vaghua,Sengga,0.984
-Vaghua,Mbambatana,1.048
-Mbambatana,Sengga,0.086
-Mbambatana,Ririo,0.538
-Mbambatana,Vaghua,1.048
-Kia,Samasodu,1.038
-Kia,Nduke,2.242
-Kia,Sengga,2.255
-Sikaiana,Hawaiian,1.128
-Sikaiana,Marquesan,1.134
-Sikaiana,Maori,1.157
-Rapanui (Easter Island),Rapa Nui,0.296
-Rapanui (Easter Island),Marquesan,0.738
-Rapanui (Easter Island),Maori,0.774
-Buma,To'ambaita,2.267
-Buma,Hawaiian,2.572
-Buma,Tongan,2.572
-To'ambaita,To'ambaita,0.192
-To'ambaita,Lau North,0.402
-To'ambaita,Kwaio,1.072
-Tikopia,Rapa Nui,0.603
-Tikopia,Tongan,0.874
-Tikopia,Rapanui (Easter Island),0.907
-Leleghia,Dhadhaje,1.508
-Leleghia,Kia,2.323
-Leleghia,Samasodu,2.338
-Malo,Hawaiian,2.572
-Malo,Malagasy,2.572
-Malo,Hawaiian,2.572
-Ririo,Sengga,0.482
-Ririo,Mbambatana,0.538
-Ririo,Vaghua,0.584
-To'ambaita,To'ambaita,0.192
-To'ambaita,Lau North,0.274
-To'ambaita,Kwaio,0.821
-Marquesan,Marquesan,0.609
-Marquesan,Rapa Nui,0.96
-Marquesan,Rennell,1.354
-Sengga,Mbambatana,0.086
-Sengga,Ririo,0.482
-Sengga,Vaghua,0.984
-Malango,Mbirao,0.63
-Malango,Nggela,1.263
-Malango,To'ambaita,1.494
-Sa'a (2),Lau North,1.233
-Sa'a (2),To'ambaita,1.452
-Sa'a (2),Kwaio,1.556
-Rennell,Marquesan,0.774
-Rennell,Marquesan,1.354
-Rennell,Rapa Nui,1.573
-Dhadhaje,Nggela,1.5
-Dhadhaje,Leleghia,1.508
-Dhadhaje,Tongan,1.625
+Hawaiian,Sikaiana,1.665
+Hawaiian,Marquesan,1.744
+Hawaiian,Rapanui (Easter Island),1.893
+Maori,Rapanui (Easter Island),1.0
+Maori,Tikopia,1.112
+Maori,Sikaiana,1.549
+Tongan,Tikopia,0.772
+Tongan,Sikaiana,1.0
+Tongan,Rapanui (Easter Island),1.487
+Rotuman,Tikopia,1.325
+Rotuman,Sikaiana,1.484
+Rotuman,Tongan,2.098
+Rapa Nui,Rapanui (Easter Island),0.339
+Rapa Nui,Sikaiana,0.851
+Rapa Nui,Tikopia,1.28
+Taokas Ts82,Rotuman,2.434
+Taokas Ts82,Rapa Nui,2.75
+Taokas Ts82,Tikopia,2.75
+Hoanya Ts82,Tikopia,2.689
+Hoanya Ts82,Rapa Nui,2.782
+Hoanya Ts82,Hawaiian,2.814
+Chuukese,Tikopia,1.822
+Chuukese,Tongan,1.952
+Chuukese,Hawaiian,2.179
+Sikaiana,Rapa Nui,0.851
+Sikaiana,Tongan,1.0
+Sikaiana,Tikopia,1.057
+Rapanui (Easter Island),Rapa Nui,0.339
+Rapanui (Easter Island),Tikopia,0.835
+Rapanui (Easter Island),Maori,1.0
+Tikopia,Tongan,0.772
+Tikopia,Rapanui (Easter Island),0.835
+Tikopia,Sikaiana,1.057
+Marquesan,Rennell,1.088
+Marquesan,Sikaiana,1.123
+Marquesan,Tikopia,1.309
+Rennell,Marquesan,1.088
+Rennell,Sikaiana,1.411
+Rennell,Tikopia,1.531

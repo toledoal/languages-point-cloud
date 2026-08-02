@@ -1,6 +1,6 @@
 # A Point Cloud of Languages
 
-### A reconstruction-free dissimilarity from inferred consonantal correspondences, and the branch structure legible in it — Indo-European, with Austronesian and Caucasian contrasts
+### A reconstruction-free, feature-decomposable dissimilarity between language systems: an Indo-European study, with exploratory Nakh-Daghestanian and Austronesian fields
 
 **Alejandro Toledo Martínez** — Independent researcher (ORCID: 0009-0000-1277-9697)
 
@@ -14,25 +14,23 @@
 
 ## Abstract
 
-We define a **dissimilarity** between two documented language systems that uses no reconstruction, no family
-tree, and no branch labels. From concept-aligned wordlists we detect coderivative sets statistically (LexStat),
-align each language pair, and average — over aligned consonant slots — the number of primary phonological features
-that differ. Embedding this dissimilarity (classical MDS) and joining nearest neighbours yields a point cloud in
-which, on 50 Indo-European doculects, a system's nearest neighbour shares its branch **97.7%** of the time
-(silhouette **+0.34**). A label-permutation test on the fixed matrix puts both figures far above chance
-(**p ≈ 0.0001**; chance purity 0.16), and the result is robust to macro-averaging, to removing 15 near-duplicate
-systems, and to the distance threshold, and is uncorrelated with coverage. We are deliberately careful about what
-this shows. Branch recovery is **not** a novelty of the method: a plain edit distance on consonant skeletons
-matches our purity, and an unfiltered all-concept baseline matches or beats it — evidence that the branch signal
-is generic lexical-phonological similarity rather than an artefact of the coderivation filter. The contribution is
-instead **representational**: a reconstruction-free, feature-decomposable dissimilarity — the system-level face of
-the operator repertoire studied in the pilot — whose geometry makes branch structure legible without positing
-ancestors. Built as **separate fields**, Austronesian (45 doculects) and Nakh-Daghestanian (45, NE Caucasian)
-reproduce the method with sharply different signatures — Nakh-Daghestanian sharp and low-dimensional like
-Indo-European (purity 0.98), Austronesian flat and high-dimensional (purity 0.80, silhouette +0.13); comparing the
-three clouds' *abstract structure* — never a shared space — suggests these signatures may fingerprint how a family
-diversified. Cross-branch proximities are rare and only marginally interpretable as areal contact; we do not claim
-to identify contact.
+We define a **dissimilarity** between two documented language systems that uses no reconstruction, no family tree,
+and no branch labels. From concept-aligned wordlists we detect coderivative sets statistically (LexStat), align
+each language pair, and average — over aligned consonant slots — the number of primary phonological features that
+differ. All analysis matrices are **complete observed matrices with zero imputed values**. On 50 Indo-European
+doculects, a system's nearest neighbour shares its Glottolog-derived branch **97.7%** of the time (silhouette
+**+0.34**); a label-permutation test on the fixed matrix puts both far above chance (**p ≈ 0.0001**; chance purity
+0.16), and the result is robust to macro-averaging, to removing 15 near-duplicate systems, and to the minimum
+shared-slot threshold, and shows no linear correlation with the number of retained consonant slots. We are
+deliberately careful about what this shows. Branch recovery is **not** a novelty: a plain edit distance matches
+our purity and an unfiltered all-concept baseline matches or beats it — so the branch signal is generic
+lexical-phonological similarity, not an artefact of the coderivation filter. The claimed contribution is
+**feature-level attribution**: the dissimilarity decomposes exactly into per-feature components (demonstrated on
+real pairs), connecting the system-level geometry to the operator repertoire of the pilot study. Two further
+families — Nakh-Daghestanian and Austronesian — are built as **separate fields**, never a shared distance space;
+their comparison is exploratory and, for Austronesian, sharply limited by corpus sparsity (a complete matrix
+survives for only 13 of 45 doculects). We make no areal claim and no cross-family "diversification fingerprint"
+claim; both are stated only as directions requiring matched sampling.
 
 ---
 
@@ -47,15 +45,23 @@ deliberately modest question: **is branch structure legible in it, built without
 The stance is the programme's: **discover first, contrast later.** We construct the map from correspondences in
 concept-aligned lexical data and consult branch labels, contact history, and baselines only afterwards. We say
 **coderivative**, not *cognate*: operationally, an *algorithmically linked form set* (recurrent correspondence),
-with no claim of single-ancestor descent. A language, on this view, is a confluence, not the linear issue of one
-parent; branch structure is one legible aspect of the geometry, not the whole of it.
+with no claim of single-ancestor descent.
 
 Two honesty commitments frame the paper. First, the input is **not** "phonology alone": it is phonological
 dissimilarity computed *within concept-matched, statistically inferred lexical correspondences*. "No
 reconstruction", "no tree", and "no branch labels" are the defensible claims. Second, recovering known branches is
-a **sanity check**, not the contribution — §5 shows simpler baselines do as well or better. What is new is the
-reconstruction-free, feature-decomposable *representation* and its geometry, and (§7) the comparison of that
-geometry's abstract shape across families held in separate fields.
+a **sanity check**, not the contribution — §5 shows simpler baselines do as well or better on that task. What the
+representation claims instead is **feature-level attribution** (§5.1): unlike an edit distance, $d$ factors
+exactly into which phonological features carry the difference.
+
+**Relation to existing distance traditions.** The method inherits from, and should be read against, several
+lines: ASJP-style normalized Levenshtein distances between wordlists (LDN/LDND), ALINE and SCA/PMI-based
+alignment scoring, and phonetic-distance dialectometry. What it takes from them is the idea that aggregate
+form-distance carries classification signal; what it changes is the *unit of account*: the dissimilarity is a mean
+of **feature-difference indicators at aligned consonant slots within inferred coderivative sets**, so every unit
+of distance is attributable to a specific feature opposition at a specific correspondence — the property §5.1
+demonstrates and the string-edit tradition does not offer. We do not claim superior classification (§5 shows
+parity); the contribution is the attribution layer.
 
 ## 2. A dissimilarity between systems
 
@@ -67,55 +73,71 @@ Coderivative sets are detected with LexStat (no etymologies, protoforms, or fami
 set, each language pair is aligned by a feature-cost Needleman–Wunsch, and we average $\mathrm{fd}$ over slots
 where both aligned segments are consonants:
 $$d(\ell,\ell')=\operatorname{mean}\{\mathrm{fd}(a,b):(a,b)\ \text{a shared consonant slot of}\ \ell,\ell'\},$$
-requiring at least `MINSLOT` slots. Its observed range here is $\approx[0.5,3.5]$ (theoretical $[0,12]$).
+defined only when at least `MINSLOT` slots are observed. Observed range here $\approx[0.5,3.5]$ (theoretical
+$[0,12]$).
+
+**Missing pairs are never imputed.** If a pair has fewer than `MINSLOT` shared slots, $d$ is undefined for it; the
+analysis then uses the largest **complete observed submatrix**, obtained by greedily dropping the doculect with
+the most undefined pairs until none remain. (An earlier internal version filled undefined entries with the global
+mean; that manufactures artificial equidistance and was removed — see §7, where its effect on Austronesian is
+documented rather than hidden.) Every matrix reported in this paper has **zero imputed entries**, and each field
+reports how many doculects the completeness requirement removed.
 
 **We call $d$ a dissimilarity, not a metric.** Because each pair is computed on its own set of shared slots, the
 triangle inequality and identity-of-indiscernibles are not guaranteed. It is symmetric and non-negative; that is
-all we assume. This matters for §3.
+all we assume. Known blind spots, stated plainly: slots where a consonant corresponds to a gap or to a vowel do
+not enter the average, so consonant loss, epenthesis, and consonant–vowel change are not penalized — two systems
+can look close on the consonants that survive alignment even if much structure was lost. A companion indel/gap
+statistic is future work; per-pair gap counts are reported in §4.
 
 ## 3. From dissimilarity to picture
 
-We embed $D=[d(\ell,\ell')]$ with classical (Torgerson) MDS and build a $k=3$ nearest-neighbour network. Two
-distinct objects must not be confused: **purity is a $k=1$ statistic** (is the single closest system same-branch?);
-**the drawn network uses $k=3$**. The plane is only a projection: on the Indo-European sample the first two MDS
-axes carry **27.5%** of the variance (eigenvalues 38.2, 28.9, 26.0, 17.3, 13.0, …), and the Gram matrix has
-**6.7%** negative inertia — so $D$ is only *approximately* Euclidean and the 2-D figure is a rough, lossy shadow.
-All statistics below use the **full** matrix, not the plane.
+We embed $D=[d(\ell,\ell')]$ with classical (Torgerson) MDS and build a $k=3$ nearest-neighbour network for
+display; **purity is a $k=1$ statistic** computed on the full matrix. The plane is only a projection: on the
+Indo-European analysis matrix the first two MDS axes carry **27.5%** of the positive variance, with **6.7%**
+negative inertia — $D$ is only approximately Euclidean, and the 2-D figure is a lossy shadow. All statistics use
+the **full** matrix. (Figures in this paper come from the bundled network matrices, which are regenerated by an
+independent LexStat pass; because LexStat inference is stochastic across passes, figure-level summaries can differ
+from the analysis matrix in the second decimal — e.g. 28.9% vs 27.5% variance-in-2D — and each table states which
+matrix it uses.)
 
 ## 4. Results (Indo-European, 50 doculects, 4 creoles)
 
-Branch assignment (for scoring only) follows Glottolog.
+Branch labels (scoring only) are derived from Glottolog by a sample-dependent tree cut (nodes covering at most
+half the sample); this makes "branch" a function of the sample, which is one reason the cross-family §7 is kept
+exploratory. All numbers in this section come from the analysis matrix (`make analysis`).
 
-**Significance.** A label-permutation test on the fixed matrix (10,000 permutations of branch labels over the 46
-non-creole systems) gives purity $0.977$ against a null of $0.155\pm0.067$ (**p ≈ 0.0001**) and silhouette
-$+0.338$ against $-0.190\pm0.035$ (**p ≈ 0.0001**). The geometry aligns with branches far beyond chance.
+**Significance.** A label-permutation test on the fixed matrix (10,000 permutations over the 46 non-creole
+systems) gives purity $0.977$ against a null of $0.155\pm0.067$ (**p ≈ 0.0001**) and silhouette $+0.338$ against
+$-0.190\pm0.035$ (**p ≈ 0.0001**). Caveat: label exchangeability is an approximation — doculects within a branch
+often share dataset and transcription conventions; blocked-by-source permutation is future work.
 
-**Purity, honestly.**
+**Purity, reported at several denominators.**
 
 | Denominator | purity |
 |---|---:|
 | All doculects (multi-member branches) | 0.958 (46/48) |
 | Multi-branch, creoles excluded | 0.977 (43/44), Wilson 95% [0.88, 1.00] |
 | Macro-average by branch | 0.935 |
-| After collapsing near-duplicate pairs ($d<1.3$; **15 dropped**) | 0.966 (28/29) |
+| After collapsing near-duplicate pairs ($d<1.3$; 15 dropped) | 0.966 (28/29) |
 
-That purity stays at 0.966 after removing fifteen near-twin systems (dialect pairs, doculect variants) shows the
-result is not manufactured by a handful of near-identical pairs. The Wilson interval is wide and the observations
-are not independent (mutual neighbours; small clusters) — the honest statement is "far above chance", not "a
-precise 0.98".
+The near-duplicate ablation uses $d$ itself as the collapse criterion, which is admittedly circular in a limited
+sense; a metadata-based collapse (same Glottocode / documented dialect relation) is the better design and is left
+as future work — the manifest (Appendix A) contains the fields needed to do it. One labelling artefact is noted
+and neutralized: Glottolog splits "Albanian (Tosk)" and "Standard Albanian" into different top labels although
+they are one language; as two singletons they are excluded from multi-branch purity, so the reported purity is
+*conservative* — merging them would add a correct pair.
 
-**Coverage is not the driver.** Per pair, the median count of consonant slots is 676 (range 144–7227) over a
-median 236 shared concepts; `corr(d, #slots) = +0.01`.
+**Coverage.** Median 676 consonant slots per pair (range 144–7227), median 424 gaps, median 236 shared concepts;
+within this sample, $d$ shows **no linear correlation** with the number of retained slots
+(`corr(d, #slots) = +0.01`). This does not rule out subtler coverage effects (variance, gap proportion, neighbour
+identity); per-pair coverage is published with the results so they can be probed.
 
-Systems that are near-twins remain each other's nearest neighbour (e.g. Spanish–Portuguese, Croatian–Serbo-
-Croatian, Armenian E.–W.), and singleton branches sit next to their plausible relatives rather than far from
-everything (Armenian nearest Greek/Indo-Iranian) — being alone in the sample is a fact of sampling, not isolation.
-
-![Indo-European doculects placed by the consonantal-correspondence dissimilarity (classical MDS; the plane shows 27.5% of the variance, so central overlaps are partly projection). Nodes coloured by branch — colours added after layout. Solid links join same-branch nearest neighbours; dashed links join the few cross-branch nearest neighbours.](figure-network-ie.pdf|w=0.98)
+![Indo-European doculects placed by the consonantal-correspondence dissimilarity (classical MDS of the bundled network matrix; the plane shows under a third of the variance, so central overlaps are partly projection). Nodes coloured by branch — colours added after layout. Solid links join same-branch nearest neighbours; dashed links join the few cross-branch nearest neighbours.](figure-network-ie.pdf|w=0.98)
 
 ## 5. Baselines — what the representation does and does not add
 
-On the multi-branch non-creole set (n = 44):
+On the multi-branch non-creole set (n = 44), same corpus and concepts:
 
 | Method | purity | silhouette |
 |---|---:|---:|
@@ -124,92 +146,122 @@ On the multi-branch non-creole set (n = 44):
 | **All-concept** dissimilarity, no LexStat filter | 1.000 | +0.324 |
 | **Ours** (pairwise feature dissimilarity) | 0.977 | +0.338 |
 
-Three honest readings. (i) **Branch recovery is generic**: a plain edit distance matches our purity, and an
-unfiltered all-concept dissimilarity matches or beats it. Recovering branches is easy lexical-phonological
-similarity; we claim no purity novelty. (ii) But **our dissimilarity separates the branches more cleanly than edit
-distance** (silhouette +0.34 vs +0.21) — the feature representation buys margin, not just parity. (iii) **The
-result is not a double-dipping artefact**: removing the similarity-based coderivation filter (the all-concept
-baseline) *strengthens* the structure, so the signal is not manufactured by LexStat's selection; the marginal
-baseline (0.477) confirms the pairwise comparison keeps information a per-language profile discards.
+Honest readings. (i) **Branch recovery is generic**: edit distance ties our purity; the unfiltered all-concept
+variant matches or beats it. (ii) **Not a double-dipping artefact**: removing the similarity-based coderivation
+filter *strengthens* the structure, so the signal is not manufactured by LexStat's selection. (iii) The +0.014
+silhouette edge over the all-concept baseline is **small and untested for stability** (a paired concept-bootstrap
+is future work), and the baselines are not perfectly matched (the all-concept variant uses one form per concept);
+we do not rest any claim on that margin. (iv) The marginal baseline (0.477) confirms that the pairwise comparison
+keeps information a per-language profile discards. Why keep the LexStat-filtered variant as the main object at
+all? Because its slots are *correspondences within coderivative sets* — the units the pilot's operator analysis is
+defined on — which is what makes the next subsection possible.
 
-What our representation adds over edit distance is **margin plus decomposability and provenance**: $d$ is
-reconstruction-free and factors into *which features change* — the same feature-operators of the pilot — so the
-point cloud is the system-level face of that operator repertoire, not an opaque string distance.
+### 5.1 Feature-level decomposition — demonstrated, not promised
+
+By construction $d(\ell,\ell')=\sum_f d_f(\ell,\ell')$, where $d_f$ is the fraction of aligned consonant slots on
+which feature $f$ differs. Real values from the analysis matrix (`src/decompose.py`):
+
+| Pair | cont | voi | nas | ant | cor | lab | back | round | strid | hi | lo | son | total | slots |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Spanish–Portuguese | 0.20 | 0.15 | 0.07 | 0.18 | 0.16 | 0.09 | 0.10 | 0.00 | 0.16 | 0.19 | 0.07 | 0.14 | **1.51** | 4276 |
+| Persian–Hindi | 0.27 | 0.24 | 0.20 | 0.23 | 0.21 | 0.14 | 0.17 | 0.01 | 0.16 | 0.21 | 0.10 | 0.31 | **2.25** | 532 |
+| Spanish–Hindi | 0.36 | 0.30 | 0.23 | 0.29 | 0.25 | 0.18 | 0.18 | 0.00 | 0.18 | 0.40 | 0.19 | 0.30 | **2.86** | 374 |
+
+The decomposition is exact and interpretable: the close Romance pair differs mostly in continuancy and height
+(lenition-type oppositions); the cross-branch pair adds weight on height (`hi` 0.40) and continuancy. One caveat
+is declared: the alignment itself is optimized with a feature cost, so per-feature attribution is conditional on
+the chosen alignment; a fixed-alignment sensitivity check is future work.
 
 ## 6. Cross-branch proximities — rare, and barely areal
 
-Of the 50 systems, only four have a nearest neighbour in another branch, and two of those are an artefact:
+Of the 50 systems, four have a nearest neighbour in another branch — two of which are the Albanian labelling
+artefact of §4:
 
 | System | branch | nearest neighbour | branch | $d$ | note |
 |---|---|---|---|---:|---|
 | Romani | Indo-Iranian | Romanian | Italic | 2.48 | **Balkan / Romania** contact |
-| Irish | Celtic | Jamaican Creole | Germanic | 2.76 | no obvious story |
-| Albanian (Tosk) | Albanian | Standard Albanian | (Glottolog split) | 0.79 | same language, label artefact |
-| Standard Albanian | (split) | Albanian (Tosk) | Albanian | 0.79 | same language, label artefact |
+| Irish | Celtic | Jamaican Creole | Germanic | 2.76 | likely sampling / lexical overlap / accidental proximity |
+| Albanian (Tosk) ↔ Standard Albanian | (label split) | each other | — | 0.79 | same language; artefact, discounted |
 
-Only **one** (Romani → Romanian) matches a documented contact situation; one is a Glottolog labelling split of a
-single language, and one (Irish → Jamaican Creole) has no plausible contact explanation and most likely reflects
-the projection and sample. We therefore make **no areal claim**: the geometry does not, on this evidence,
-independently identify contact or separate it from descent. A proper test requires a contact matrix defined
-*before* inspecting the map, then asking whether residual proximity tracks it — deferred to future work.
+Only Romani → Romanian matches a documented contact situation. The Irish case is computed on the full matrix (not
+the projection), so it is a genuine proximity under this dissimilarity — most plausibly reflecting sampling,
+lexical overlap, or corpus effects rather than contact. We make **no areal claim**: a proper test requires a
+contact matrix defined *before* inspecting the map — deferred.
 
-## 7. A cross-family contrast, in separate fields
+## 7. Cross-family fields — exploratory, with the data limits disclosed
 
-We built two further clouds with the identical pipeline: **Austronesian** (45 doculects) and **Nakh-Daghestanian**
-(45 doculects, Northeast Caucasian). Crucially, the families are **never placed in a shared distance space** — doing
-so would assert a direct relation we do not claim. We compare only *scale-free structural signatures* of each
-independently-built matrix: the MDS spectrum (effective dimensionality via the participation ratio; variance in
-2-D), branch separation (within/between mean dissimilarity; silhouette; purity), and the self-normalised
-dissimilarity distribution. No coordinate alignment, no Procrustes.
+We built two further clouds with the identical pipeline, each on its **own field** (never a shared distance space,
+which would assert a direct relation between families we do not claim), and compare only scale-free structural
+signatures of each complete observed matrix.
 
-| Field (separate) | n | eff. dim. (PR) | var. in 2-D | within/between | silhouette | purity |
-|---|---:|---:|---:|---:|---:|---:|
-| Indo-European | 50 | 14.2 | 27.1% | 0.63 | +0.32 | 0.96 |
-| Nakh-Daghestanian | 45 | 9.3 | 38.4% | 0.66 | +0.32 | 0.98 |
-| Austronesian | 45 | 16.8 | 22.1% | 0.75 | +0.13 | 0.80 |
+**A correction made and disclosed.** An earlier version of this section filled unobserved pairs with the global
+mean. For Austronesian this was fatal: 52.6% of its 990 pairs were fill values, which *manufactures* a flat,
+nearly-equidistant, high-dimensional geometry — exactly the "signature" we had reported. That analysis was wrong
+and is withdrawn. Under the zero-imputation policy, the Austronesian corpus in Lexibank supports a complete matrix
+for only **13 of 45** doculects: the corpus is too sparse in shared concepts for a large Austronesian field, and
+that sparsity — not family history — dominated the earlier picture.
 
-Two families — Indo-European and Nakh-Daghestanian — show **sharp, low-dimensional** branch geometry (high
-silhouette, purity ≥ 0.96), Nakh-Daghestanian the most concentrated of all (effective dimension ≈ 9). Austronesian
-is the outlier: **flat and high-dimensional**, its dissimilarities clustered near their own median so that languages
-are nearly equidistant (Figure 2). This is a statement about the *shape* of three independent geometries, not about
-any relation between the families. We record, but do not test here, the hypothesis that such a signature may
-fingerprint a family's mode of diversification — the flat/diffuse Austronesian cloud is consistent with a rapid
-**spread zone** and the concentrated Caucasian one with an accreted **residual zone** in the sense of Nichols
-(1992) — a link left for future, pre-registered work.
+| Field (complete observed matrix) | n | missing pairs dropped-to-complete | eff. dim. (PR) | within/between | silhouette | purity | chance | **adj. purity** |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Indo-European | 50 | 0 of 1225 | 13.3 | 0.62 | +0.33 | 0.96 | 0.16 | **0.95** |
+| Nakh-Daghestanian | 45 | 0 of 990 | 9.4 | 0.68 | +0.31 | 0.98 | 0.29 | **0.97** |
+| Austronesian | 13 | (32 doculects removed) | 4.9 | 0.61 | +0.22 | 0.83 | 0.64 | **0.54** |
 
-![Abstract comparison of the three independently-built clouds — structure only, never a shared space. (A) normalised MDS spectra; (B) branch separation; (C) each cloud's dissimilarity distribution normalised by its own median.](figure-structure-compare.pdf|w=0.98)
+"Chance" is each field's own 2,000× label-permutation null and *adj. purity* $=(P_{obs}-P_{null})/(1-P_{null})$ —
+the comparable quantity, since branch granularity differs across samples. Read honestly: Indo-European and
+Nakh-Daghestanian both show strong chance-adjusted branch structure (0.95, 0.97); the Austronesian field is too
+small and its branch partition too coarse for a meaningful comparison (adjusted 0.54 on n=13). The samples are
+also not matched — Nakh-Daghestanian is dialect-dense and largely single-source, Indo-European mixes ancient,
+modern and creole doculects — so **we do not attribute the differences to diversification history**. The earlier
+"spread-zone vs residual-zone fingerprint" reading is withdrawn; it survives only as a hypothesis whose test
+requires matched sampling (one doculect per Glottocode, fixed taxonomic depth, shared concept lists, equated
+branch-size distributions, hundreds of stratified resamples) and simulation of diversification models. Figure 2
+shows the three fields' signatures under these caveats.
+
+![Abstract comparison of independently-built clouds on complete observed matrices — structure only, never a shared space. (A) normalised MDS spectra; (B) branch separation; (C) each cloud's dissimilarity distribution normalised by its own median. The Austronesian field is n=13 (corpus sparsity) and is shown for transparency, not comparison.](figure-structure-compare.pdf|w=0.98)
 
 ## 8. Controls and robustness
 
-The label-permutation test (§4) is the primary significance check. In addition: purity and silhouette are
-**unchanged** across `MINSLOT` $\in\{20,30,40,60\}$ and across feature subsets (dropping stridency, dropping all
-place features, or keeping only manner); subsampling systems keeps purity high; and a concept-permuted ablation —
-shuffling which forms share a concept and rerunning the full pipeline — collapses the structure toward chance,
-confirming it needs real lexical pairings (reported qualitatively, not as a σ).
+The label-permutation test (§4) is the primary significance check. The following controls were run on the n=50
+configuration with the zero-imputation policy (`make controls`; outputs in `data/results/controls_ie_n50.txt`):
+
+- **Reproduction:** purity 0.977, silhouette +0.324 on an independent LexStat pass (matches §4 within the
+  cross-pass stochasticity noted in §3).
+- **Concept-permuted ablation:** shuffling which forms share a concept and rerunning the full pipeline collapses
+  purity to 0.28 (range 0.20–0.38 over three reruns) and silhouette to ≈0 — toward the chance level 0.16. Three
+  reruns are too few for a null tail, so this is reported **qualitatively**; significance is carried by the
+  10,000× label-permutation test of §4, not by this ablation.
+- **Minimum shared-slot threshold:** purity and silhouette are **unchanged** across `MINSLOT`
+  $\in\{20,30,40,60\}$. (The LexStat detection threshold `THR` is *not* varied here — a sweep over it, gap
+  penalties, and alignment costs is future work.)
+- **Feature subsets:** dropping stridency leaves the result unchanged (0.977/+0.323); dropping all five place
+  features gives 0.955/+0.319; manner-only gives 0.932/+0.329 — mild, honest variation, no knife-edge.
+- **Subsampling:** drawing 22 of 50 systems 500× keeps purity at mean 0.934, 95% CI [0.79, 1.00].
 
 ## 9. Limitations and scope
 
-The input is concept-aligned lexical data, not phonology alone; the dissimilarity is corpus- and aligner-dependent
-and is not a metric; the 2-D figure shows about a quarter of the variance and $D$ is only approximately Euclidean
-(6.7% negative inertia). Branch recovery is not distinctive in purity versus edit distance (though our silhouette
-is higher). The areal reading is at most one case. Only consonants are used; the sample is mixed-provenance (see
-the manifest, Appendix A) with near-twin pairs and creoles; source/transcription effects are not fully controlled.
-Direction and time are out of scope (the directed-layer paper). The cross-family comparison (§7) is deliberately
-structural and covers three families; extending it to more and to a pre-registered spread/residual-zone test (its
-present spread-vs-residual reading is a hypothesis, not a result) is future work.
+The input is concept-aligned lexical data, not phonology alone. The dissimilarity is corpus- and aligner-dependent,
+is not a metric, ignores gaps and consonant–vowel correspondences, and weights concepts by their consonant count
+(a concept-balanced variant is future work). The 2-D figures show under a third of the variance. Branch labels are
+a sample-dependent Glottolog cut, so purity is not directly comparable across differently-sampled families —
+hence the chance-adjusted scores and the exploratory status of §7. The twelve-feature instrument was not validated
+for cross-family measurement invariance (glottalization, uvularity and pharyngeal oppositions are not directly
+represented — relevant for Nakh-Daghestanian). Branch recovery is not distinctive versus edit distance; the
+near-duplicate collapse uses $d$ itself; the silhouette margin over the strongest baseline is untested for
+stability. Direction and time are out of scope (the directed-layer paper).
 
 ## 10. Reproducibility
 
-`make figure` redraws from bundled results (no corpus); `LEX_PATH=… make compute` regenerates the dissimilarity;
-`make analysis` reproduces §4–§6; `make compare SLUGS="ie an"` reproduces §7; `make controls` runs §8; `make
-manifest` writes Appendix A. Parameters (`MINSLOT`, `THR`, `MAXLANG`, `KNN`, feature subset) are
-environment-overridable in `src/compute_network.py`; permutation seeds are fixed. Versions: panphon, LingPy
-(LexStat), Lexibank, Glottolog 4.8 — pinned in `requirements.txt`. Code MIT; text, figures, data CC BY 4.0.
+Pinned dependencies (`requirements.txt`, exact versions; Python 3.12.13). Each experiment's `MAXLANG` is fixed in
+the `Makefile`: `LEX_PATH=… make compute` reproduces the n=50 Indo-European field; `make compute-nd` /
+`make compute-an` the other fields; `make analysis` §4–§6; `make compare` §7 (all three slugs by default);
+`make controls` §8; `make manifest` Appendix A; `make figure` redraws from bundled results without the corpus.
+Permutation seeds are fixed in the scripts; complete observed matrices, coordinates, manifests and analysis logs
+are bundled under `data/results/`. Code MIT; text, figures, data CC BY 4.0.
 
 ## 11. References
 
-1. Toledo Martínez, A. (2026). *Additive Structure of Phonological Correspondences: A protoform-agnostic method
-   for discovering mathematical patterns in documented linguistic systems* (pilot study).
+1. Toledo Martínez, A. (2026). *Additive Structure of Phonological Correspondences* (pilot study).
    https://github.com/toledoal/phonological-correspondences
 2. Torgerson, W. S. (1952). Multidimensional scaling: I. Theory and method. *Psychometrika* 17(4), 401–419.
 3. Kruskal, J. B., & Wish, M. (1978). *Multidimensional Scaling*. Sage.
@@ -221,18 +273,28 @@ environment-overridable in `src/compute_network.py`; permutation seeds are fixed
 7. Mortensen, D. R., Littell, P., Bharadwaj, A., Goyal, K., Dyer, C., & Levin, L. (2016). PanPhon: a resource for
    mapping IPA segments to articulatory feature vectors. *Proc. COLING 2016*, 3475–3484.
 8. List, J.-M. (2012). LexStat: automatic detection of cognates in multilingual wordlists. *Proc. EACL 2012
-   Workshop on Language Technology for Cultural Heritage*, 117–125.
+   Workshop LaTeCH*, 117–125.
 9. List, J.-M., Forkel, R., Greenhill, S. J., Rzymski, C., Englisch, J., & Gray, R. D. (2022). Lexibank, a public
    repository of standardized wordlists. *Scientific Data* 9, 316.
 10. Hammarström, H., Forkel, R., Haspelmath, M., & Bank, S. (2023). *Glottolog 4.8*. MPI-EVA. https://glottolog.org
-11. Thomason, S. G., & Kaufman, T. (1988). *Language Contact, Creolization, and Genetic Linguistics*. UC Press.
-12. Nichols, J. (1992). *Linguistic Diversity in Space and Time*. University of Chicago Press.
-13. François, A. (2014). Trees, waves and linkages: models of language diversification. In *The Routledge Handbook
+11. Wichmann, S., Holman, E. W., & Brown, C. H. (2016). The ASJP database and normalized Levenshtein distances
+    (LDN/LDND) for language classification. In *The Oxford Handbook of Historical Phonology* context; database at
+    https://asjp.clld.org
+12. Kondrak, G. (2000). A new algorithm for the alignment of phonetic sequences (ALINE). *Proc. NAACL 2000*.
+13. Jäger, G. (2018). Global-scale phylogenetic linguistic inference from lexical resources (PMI distances).
+    *Scientific Data* 5, 180189.
+14. Nerbonne, J., & Heeringa, W. (2010). Measuring dialect differences. In *Language and Space* (pp. 550–567).
+    De Gruyter.
+15. Thomason, S. G., & Kaufman, T. (1988). *Language Contact, Creolization, and Genetic Linguistics*. UC Press.
+16. Nichols, J. (1992). *Linguistic Diversity in Space and Time*. University of Chicago Press.
+17. François, A. (2014). Trees, waves and linkages: models of language diversification. In *The Routledge Handbook
     of Historical Linguistics* (pp. 161–189). Routledge.
-14. Schuchardt, H. (1922). *Hugo Schuchardt-Brevier* (L. Spitzer, Ed.). Niemeyer.
+18. Schuchardt, H. (1922). *Hugo Schuchardt-Brevier* (L. Spitzer, Ed.). Niemeyer.
 
-## Appendix A — Doculect manifest
+## Appendix A — Doculect manifests
 
-The doculects, with Lexibank dataset, doculect ID, Glottocode, branch used for scoring, and concept count, are in
-`data/results/doculect_manifest_ie.csv` (and `_an.csv`; regenerate with `make manifest`). Provenance is exposed so
-source/transcription confounds can be audited (e.g. several near-twin systems share a source dataset).
+The doculects of all three fields, with Lexibank dataset, doculect ID, Glottocode, branch used for scoring, and
+concept count, are in `data/results/doculect_manifest_{ie,an,nakh}.csv` (regenerate with `make manifest`).
+Provenance is exposed so source/transcription confounds can be audited — e.g. several near-twin systems share a
+source dataset, and most Nakh-Daghestanian doculects come from a single segmented source, which the reader should
+weigh when comparing fields.

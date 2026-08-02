@@ -1,136 +1,136 @@
 src,dst,dist
-Avar (Ansalta dialect),Avar (East Gergebil dialect),0.579
-Avar (Ansalta dialect),Avar (Araderikh dialect),0.588
-Avar (Ansalta dialect),Avar,1.265
-Lezgian,Lezgi (Mikrakh dialect),0.524
-Lezgian,Rutul,1.832
-Lezgian,Kryz,1.844
-Dargwa,Dargwa (Mekegi dialect),0.588
-Dargwa,Dargwa (Gapshima Shukti dialect),0.763
-Dargwa,Dargwa (Gapshima dialect),0.823
-Avar (East Gergebil dialect),Avar (Araderikh dialect),0.577
-Avar (East Gergebil dialect),Avar (Ansalta dialect),0.579
-Avar (East Gergebil dialect),Avar,1.297
-Hinuq,Tsez (Mokok dialect),1.141
-Hinuq,Bezhta,1.491
-Hinuq,Hunzib,1.511
-Khwarshi (Kwantlada dialect),Avar (East Gergebil dialect),1.748
-Khwarshi (Kwantlada dialect),Hunzib,1.758
-Khwarshi (Kwantlada dialect),Avar (Ansalta dialect),1.822
-Bezhta,Bezhta,0.349
-Bezhta,Hunzib,1.068
-Bezhta,Hinuq,1.752
-Budukh,Kryz,1.583
-Budukh,Lezgi (Mikrakh dialect),1.787
-Budukh,Khinalug,1.911
-Chechen,Chechen (Akkin dialect),0.504
-Chechen,Ingush,1.185
-Chechen,Tsova-Tush,2.177
-Tabasaran (Northern dialect Khanag subdialect),Lezgi (Mikrakh dialect),2.076
-Tabasaran (Northern dialect Khanag subdialect),Kryz,2.158
+Avar (Ansalta dialect),Avar (Araderikh dialect),0.579
+Avar (Ansalta dialect),Avar (East Gergebil dialect),0.596
+Avar (Ansalta dialect),Avar,1.256
+Lezgian,Lezgi (Mikrakh dialect),0.61
+Lezgian,Rutul,1.807
+Lezgian,Kryz,1.89
+Dargwa,Dargwa (Mekegi dialect),0.622
+Dargwa,Dargwa (Gapshima dialect),0.85
+Dargwa,Dargwa (Gubden dialect),0.857
+Avar (East Gergebil dialect),Avar (Araderikh dialect),0.574
+Avar (East Gergebil dialect),Avar (Ansalta dialect),0.596
+Avar (East Gergebil dialect),Avar,1.294
+Hinuq,Tsez (Mokok dialect),1.204
+Hinuq,Hunzib,1.682
+Hinuq,Bezhta,1.713
+Khwarshi (Kwantlada dialect),Bezhta,1.749
+Khwarshi (Kwantlada dialect),Avar (Araderikh dialect),1.766
+Khwarshi (Kwantlada dialect),Avar (Ansalta dialect),1.783
+Bezhta,Bezhta,0.42
+Bezhta,Hunzib,1.241
+Bezhta,Hinuq,1.889
+Budukh,Kryz,1.507
+Budukh,Lezgi (Mikrakh dialect),1.861
+Budukh,Khinalug,1.897
+Chechen,Chechen (Akkin dialect),0.445
+Chechen,Ingush,0.946
+Chechen,Tsova-Tush,1.885
+Tabasaran (Northern dialect Khanag subdialect),Lezgi (Mikrakh dialect),2.26
+Tabasaran (Northern dialect Khanag subdialect),Kryz,2.33
 Tabasaran (Northern dialect Khanag subdialect),Rutul,2.337
-Chamalal,Bagvalal,1.535
-Chamalal,Tindi,1.706
-Chamalal,Karata (Tokitin dialect),1.776
-Dargwa (Megeb dialect),Dargwa (Mekegi dialect),1.257
-Dargwa (Megeb dialect),Dargwa (Gapshima Shukti dialect),1.337
-Dargwa (Megeb dialect),Dargwa (Gubden dialect),1.348
-Khinalug,Lezgi (Mikrakh dialect),1.573
-Khinalug,Kryz,1.892
-Khinalug,Budukh,1.911
-Akhvakh (Northern dialect),Akhvakh (Southern dialect),1.723
-Akhvakh (Northern dialect),Botlikh,1.751
-Akhvakh (Northern dialect),Godoberi,1.753
-Tsova-Tush,Chechen (Akkin dialect),2.006
-Tsova-Tush,Chechen,2.177
-Tsova-Tush,Ingush,2.298
-Tindi,Karata,1.475
-Tindi,Botlikh,1.621
+Chamalal,Bagvalal,1.612
+Chamalal,Godoberi,1.755
+Chamalal,Tindi,1.769
+Dargwa (Megeb dialect),Dargwa (Mekegi dialect),1.23
+Dargwa (Megeb dialect),Dargwa (Gubden dialect),1.239
+Dargwa (Megeb dialect),Dargwa (Kadar dialect),1.32
+Khinalug,Kryz,1.845
+Khinalug,Budukh,1.897
+Khinalug,Lezgi (Mikrakh dialect),1.987
+Akhvakh (Northern dialect),Akhvakh (Southern dialect),1.784
+Akhvakh (Northern dialect),Godoberi,1.815
+Akhvakh (Northern dialect),Andi,1.926
+Tsova-Tush,Chechen,1.885
+Tsova-Tush,Chechen (Akkin dialect),2.022
+Tsova-Tush,Ingush,2.335
+Tindi,Karata,1.447
 Tindi,Bagvalal,1.676
-Dargwa (Gapshima dialect),Dargwa (Gapshima Shukti dialect),0.558
-Dargwa (Gapshima dialect),Dargwa (Mekegi dialect),0.789
-Dargwa (Gapshima dialect),Dargwa,0.823
-Lak (Shali dialect),Lak,0.411
-Lak (Shali dialect),Lezgi (Mikrakh dialect),2.012
-Lak (Shali dialect),Dargwa (Muiri dialect),2.189
-Andi,Godoberi,1.334
-Andi,Botlikh,1.467
-Andi,Karata (Tokitin dialect),1.502
-Bagvalal,Chamalal,1.535
-Bagvalal,Botlikh,1.536
-Bagvalal,Godoberi,1.592
-Dargwa (Gapshima Shukti dialect),Dargwa (Gapshima dialect),0.558
-Dargwa (Gapshima Shukti dialect),Dargwa (Mekegi dialect),0.732
-Dargwa (Gapshima Shukti dialect),Dargwa,0.763
-Akhvakh (Southern dialect),Botlikh,1.496
-Akhvakh (Southern dialect),Godoberi,1.522
-Akhvakh (Southern dialect),Botlikh (Miarso dialect),1.62
-Dargwa (Muiri dialect),Dargwa (Mugi dialect),1.092
-Dargwa (Muiri dialect),Dargwa (Gapshima Shukti dialect),1.096
-Dargwa (Muiri dialect),Dargwa (Mekegi dialect),1.177
-Rutul,Lezgi (Mikrakh dialect),1.487
-Rutul,Kryz,1.765
-Rutul,Tsakhur,1.832
-Avar,Avar (Araderikh dialect),1.155
-Avar,Avar (Ansalta dialect),1.265
-Avar,Avar (East Gergebil dialect),1.297
-Hunzib,Bezhta,0.882
-Hunzib,Bezhta,1.068
-Hunzib,Hinuq,1.511
-Karata (Tokitin dialect),Botlikh,1.326
-Karata (Tokitin dialect),Karata,1.39
-Karata (Tokitin dialect),Godoberi,1.415
-Tsez (Mokok dialect),Hinuq,1.141
-Tsez (Mokok dialect),Bezhta,1.603
-Tsez (Mokok dialect),Hunzib,1.612
-Botlikh (Miarso dialect),Botlikh,0.451
-Botlikh (Miarso dialect),Godoberi,1.131
-Botlikh (Miarso dialect),Karata (Tokitin dialect),1.444
-Avar (Araderikh dialect),Avar (East Gergebil dialect),0.577
-Avar (Araderikh dialect),Avar (Ansalta dialect),0.588
-Avar (Araderikh dialect),Avar,1.155
-Ingush,Chechen (Akkin dialect),1.012
-Ingush,Chechen,1.185
-Ingush,Tsova-Tush,2.298
-Godoberi,Botlikh,1.019
-Godoberi,Botlikh (Miarso dialect),1.131
-Godoberi,Andi,1.334
-Lak,Lak (Shali dialect),0.411
-Lak,Lezgi (Mikrakh dialect),2.005
-Lak,Lezgian,2.258
-Dargwa (Khajdak dialect),Dargwa (Muiri dialect),1.205
-Dargwa (Khajdak dialect),Dargwa (Gapshima Shukti dialect),1.617
-Dargwa (Khajdak dialect),Dargwa (Mugi dialect),1.631
-Karata,Botlikh,1.306
-Karata,Karata (Tokitin dialect),1.39
-Karata,Godoberi,1.422
-Bezhta,Bezhta,0.349
-Bezhta,Hunzib,0.882
-Bezhta,Hinuq,1.491
-Kryz,Lezgi (Mikrakh dialect),1.499
-Kryz,Budukh,1.583
-Kryz,Rutul,1.765
-Dargwa (Kadar dialect),Dargwa (Gubden dialect),0.813
-Dargwa (Kadar dialect),Dargwa (Mekegi dialect),0.847
-Dargwa (Kadar dialect),Dargwa (Gapshima Shukti dialect),1.044
-Dargwa (Gubden dialect),Dargwa (Mekegi dialect),0.605
-Dargwa (Gubden dialect),Dargwa (Kadar dialect),0.813
-Dargwa (Gubden dialect),Dargwa,0.858
-Lezgi (Mikrakh dialect),Lezgian,0.524
-Lezgi (Mikrakh dialect),Rutul,1.487
-Lezgi (Mikrakh dialect),Kryz,1.499
-Tsakhur,Rutul,1.832
-Tsakhur,Lezgi (Mikrakh dialect),1.992
-Tsakhur,Kryz,2.059
-Dargwa (Mekegi dialect),Dargwa,0.588
-Dargwa (Mekegi dialect),Dargwa (Gubden dialect),0.605
-Dargwa (Mekegi dialect),Dargwa (Gapshima Shukti dialect),0.732
-Dargwa (Mugi dialect),Dargwa (Gapshima Shukti dialect),0.784
-Dargwa (Mugi dialect),Dargwa (Mekegi dialect),0.794
-Dargwa (Mugi dialect),Dargwa (Gapshima dialect),0.85
-Botlikh,Botlikh (Miarso dialect),0.451
-Botlikh,Godoberi,1.019
-Botlikh,Karata,1.306
-Chechen (Akkin dialect),Chechen,0.504
-Chechen (Akkin dialect),Ingush,1.012
-Chechen (Akkin dialect),Tsova-Tush,2.006
+Tindi,Karata (Tokitin dialect),1.735
+Dargwa (Gapshima dialect),Dargwa (Gapshima Shukti dialect),0.68
+Dargwa (Gapshima dialect),Dargwa (Mugi dialect),0.818
+Dargwa (Gapshima dialect),Dargwa (Mekegi dialect),0.843
+Lak (Shali dialect),Lak,0.407
+Lak (Shali dialect),Lezgi (Mikrakh dialect),2.164
+Lak (Shali dialect),Dargwa (Gapshima Shukti dialect),2.295
+Andi,Godoberi,1.243
+Andi,Karata (Tokitin dialect),1.414
+Andi,Botlikh,1.453
+Bagvalal,Chamalal,1.612
+Bagvalal,Tindi,1.676
+Bagvalal,Godoberi,1.686
+Dargwa (Gapshima Shukti dialect),Dargwa (Gapshima dialect),0.68
+Dargwa (Gapshima Shukti dialect),Dargwa (Mekegi dialect),0.83
+Dargwa (Gapshima Shukti dialect),Dargwa (Mugi dialect),0.842
+Akhvakh (Southern dialect),Godoberi,1.507
+Akhvakh (Southern dialect),Botlikh,1.684
+Akhvakh (Southern dialect),Karata (Tokitin dialect),1.706
+Dargwa (Muiri dialect),Dargwa (Mugi dialect),1.16
+Dargwa (Muiri dialect),Dargwa (Mekegi dialect),1.205
+Dargwa (Muiri dialect),Dargwa (Khajdak dialect),1.24
+Rutul,Lezgi (Mikrakh dialect),1.613
+Rutul,Kryz,1.704
+Rutul,Tsakhur,1.758
+Avar,Avar (Araderikh dialect),1.208
+Avar,Avar (Ansalta dialect),1.256
+Avar,Avar (East Gergebil dialect),1.294
+Hunzib,Bezhta,1.012
+Hunzib,Bezhta,1.241
+Hunzib,Hinuq,1.682
+Karata (Tokitin dialect),Godoberi,1.359
+Karata (Tokitin dialect),Botlikh,1.376
+Karata (Tokitin dialect),Andi,1.414
+Tsez (Mokok dialect),Hinuq,1.204
+Tsez (Mokok dialect),Bezhta,1.766
+Tsez (Mokok dialect),Hunzib,1.782
+Botlikh (Miarso dialect),Botlikh,0.512
+Botlikh (Miarso dialect),Godoberi,1.175
+Botlikh (Miarso dialect),Karata (Tokitin dialect),1.513
+Avar (Araderikh dialect),Avar (East Gergebil dialect),0.574
+Avar (Araderikh dialect),Avar (Ansalta dialect),0.579
+Avar (Araderikh dialect),Avar,1.208
+Ingush,Chechen,0.946
+Ingush,Chechen (Akkin dialect),0.982
+Ingush,Tsova-Tush,2.335
+Godoberi,Botlikh,1.083
+Godoberi,Botlikh (Miarso dialect),1.175
+Godoberi,Andi,1.243
+Lak,Lak (Shali dialect),0.407
+Lak,Lezgi (Mikrakh dialect),2.369
+Lak,Lezgian,2.376
+Dargwa (Khajdak dialect),Dargwa (Muiri dialect),1.24
+Dargwa (Khajdak dialect),Dargwa (Mugi dialect),1.582
+Dargwa (Khajdak dialect),Dargwa (Mekegi dialect),1.642
+Karata,Karata (Tokitin dialect),1.442
+Karata,Tindi,1.447
+Karata,Botlikh,1.551
+Bezhta,Bezhta,0.42
+Bezhta,Hunzib,1.012
+Bezhta,Hinuq,1.713
+Kryz,Budukh,1.507
+Kryz,Rutul,1.704
+Kryz,Lezgi (Mikrakh dialect),1.743
+Dargwa (Kadar dialect),Dargwa (Gubden dialect),0.837
+Dargwa (Kadar dialect),Dargwa (Mekegi dialect),0.909
+Dargwa (Kadar dialect),Dargwa (Gapshima Shukti dialect),1.145
+Dargwa (Gubden dialect),Dargwa (Mekegi dialect),0.618
+Dargwa (Gubden dialect),Dargwa (Kadar dialect),0.837
+Dargwa (Gubden dialect),Dargwa (Mugi dialect),0.846
+Lezgi (Mikrakh dialect),Lezgian,0.61
+Lezgi (Mikrakh dialect),Rutul,1.613
+Lezgi (Mikrakh dialect),Kryz,1.743
+Tsakhur,Rutul,1.758
+Tsakhur,Kryz,1.994
+Tsakhur,Lezgian,2.155
+Dargwa (Mekegi dialect),Dargwa (Gubden dialect),0.618
+Dargwa (Mekegi dialect),Dargwa,0.622
+Dargwa (Mekegi dialect),Dargwa (Mugi dialect),0.767
+Dargwa (Mugi dialect),Dargwa (Mekegi dialect),0.767
+Dargwa (Mugi dialect),Dargwa (Gapshima dialect),0.818
+Dargwa (Mugi dialect),Dargwa (Gapshima Shukti dialect),0.842
+Botlikh,Botlikh (Miarso dialect),0.512
+Botlikh,Godoberi,1.083
+Botlikh,Karata (Tokitin dialect),1.376
+Chechen (Akkin dialect),Chechen,0.445
+Chechen (Akkin dialect),Ingush,0.982
+Chechen (Akkin dialect),Tsova-Tush,2.022

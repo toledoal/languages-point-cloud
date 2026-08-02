@@ -1,4 +1,5 @@
-panphon
-numpy
-lingpy
-matplotlib
+# Python 3.12.13
+panphon==0.22.2
+numpy==2.5.1
+lingpy==2.6.14
+matplotlib==3.11.1

@@ -1,151 +1,151 @@
 src,dst,dist
-Bulgarian,Bulgarian,0.789
-Bulgarian,Croatian,1.667
-Bulgarian,Old Church Slavonic,1.96
-Romanian,Romanian,0.595
-Romanian,Spanish,1.746
-Romanian,Italian,1.904
-Ancient Greek,Modern Greek,1.836
-Ancient Greek,Modern Greek,1.958
-Ancient Greek,Latvian,2.844
-Judeo-Tat,Western Farsi,1.975
-Judeo-Tat,Northern Pashto,2.43
-Judeo-Tat,Persian,2.431
-Serbo-Croatian,Croatian,0.789
-Serbo-Croatian,Czech,1.317
-Serbo-Croatian,Bulgarian,1.377
-Seychelles Creole,French,1.078
-Seychelles Creole,Catalan,2.346
-Seychelles Creole,Italian,2.351
-Albanian (Tosk variety),Standard Albanian,0.95
-Albanian (Tosk variety),Catalan,2.749
-Albanian (Tosk variety),Spanish,2.834
-Armenian (Eastern variety),Armenian (Western variety),0.887
-Armenian (Eastern variety),Norwegian (Bokmål),3.01
-Armenian (Eastern variety),Western Farsi,3.085
-Armenian (Western variety),Armenian (Eastern variety),0.887
-Armenian (Western variety),Spanish,3.193
-Armenian (Western variety),Northern Pashto,3.199
-Yiddish,Dutch,1.508
-Yiddish,Swedish,1.631
-Yiddish,Norwegian (Bokmål),1.657
-Breton,Welsh,1.449
-Breton,Italian,2.207
-Breton,Catalan,2.354
-Spanish,Spanish,0.462
-Spanish,Italian,1.23
-Spanish,Portuguese,1.294
-Lower Sorbian,Polish,1.603
-Lower Sorbian,Slovak,1.818
-Lower Sorbian,Czech,1.902
-Romani,Romanian,2.427
-Romani,Selice Romani,2.508
-Romani,Romanian,2.768
-Modern Greek,Modern Greek,0.631
-Modern Greek,Ancient Greek,1.958
-Modern Greek,Jamaican Creole (Limonese Creole dialect),2.968
-Portuguese,Portuguese,0.679
-Portuguese,Spanish,1.112
-Portuguese,Italian,1.255
-Jamaican Creole (Limonese Creole dialect),English,0.504
-Jamaican Creole (Limonese Creole dialect),Norwegian (Bokmål),1.251
-Jamaican Creole (Limonese Creole dialect),Dutch,1.28
-Selice Romani,Romani,2.508
-Selice Romani,Western Farsi,2.772
-Selice Romani,English,2.908
-Persian,Western Farsi,0.444
-Persian,Northern Pashto,1.881
-Persian,Hindi,2.119
-Dutch,Dutch,0.284
-Dutch,Norwegian (Bokmål),0.987
-Dutch,Swedish,1.069
-English,Jamaican Creole (Limonese Creole dialect),0.504
-English,Norwegian (Bokmål),1.176
-English,Dutch,1.258
-Hindi,Persian,2.119
-Hindi,Western Farsi,2.427
-Hindi,Judeo-Tat,2.773
-Saramaccan,English,2.12
-Saramaccan,Dutch,2.154
-Saramaccan,Negerhollands,2.185
-Old High German,Norwegian (Bokmål),1.097
-Old High German,Dutch,1.187
-Old High German,Swedish,1.356
-Lithuanian,Latvian,2.127
-Lithuanian,Old Church Slavonic,2.544
-Lithuanian,Serbo-Croatian,2.749
-Negerhollands,Dutch,0.835
-Negerhollands,Norwegian (Bokmål),1.151
-Negerhollands,Dutch,1.259
-Old Church Slavonic,Croatian,1.077
-Old Church Slavonic,Czech,1.144
-Old Church Slavonic,Bulgarian,1.277
-Croatian,Serbo-Croatian,0.789
-Croatian,Old Church Slavonic,1.077
-Croatian,Bulgarian,1.532
-Romanian,Romanian,0.595
-Romanian,Italian,1.891
-Romanian,Spanish,1.974
-Irish,Jamaican Creole (Limonese Creole dialect),2.737
-Irish,English,2.901
-Irish,Breton,2.949
-Latvian,Lithuanian,2.127
-Latvian,Old Church Slavonic,2.455
-Latvian,Czech,2.468
-Italian,Spanish,1.068
-Italian,Spanish,1.23
-Italian,Portuguese,1.255
-Ossetian,Persian,2.677
-Ossetian,Western Farsi,2.834
-Ossetian,Old High German,3.024
-Portuguese,Portuguese,0.679
-Portuguese,Spanish,1.127
-Portuguese,Spanish,1.294
-Western Farsi,Persian,0.444
-Western Farsi,Judeo-Tat,1.975
-Western Farsi,Northern Pashto,2.071
-French,Seychelles Creole,1.078
-French,Italian,2.414
-French,Portuguese,2.574
-Slovak,Czech,0.978
-Slovak,Old Church Slavonic,1.357
-Slovak,Polish,1.507
-Spanish,Spanish,0.462
-Spanish,Italian,1.068
-Spanish,Portuguese,1.112
-Bulgarian,Bulgarian,0.789
-Bulgarian,Old Church Slavonic,1.277
-Bulgarian,Serbo-Croatian,1.377
-Northern Pashto,Persian,1.881
-Northern Pashto,Western Farsi,2.071
-Northern Pashto,Judeo-Tat,2.43
-Standard Albanian,Albanian (Tosk variety),0.95
-Standard Albanian,Romanian,2.573
-Standard Albanian,Italian,2.619
-Dutch,Dutch,0.284
-Dutch,Negerhollands,0.835
-Dutch,Norwegian (Bokmål),1.136
-Welsh,Breton,1.449
-Welsh,Jamaican Creole (Limonese Creole dialect),2.252
-Welsh,English,2.502
-Swedish,Norwegian (Bokmål),0.462
-Swedish,Dutch,1.069
-Swedish,English,1.296
-Icelandic,Norwegian (Bokmål),1.24
-Icelandic,Old High German,1.462
-Icelandic,English,1.465
-Modern Greek,Modern Greek,0.631
-Modern Greek,Ancient Greek,1.836
-Modern Greek,English,2.769
-Czech,Slovak,0.978
-Czech,Old Church Slavonic,1.144
-Czech,Serbo-Croatian,1.317
-Catalan,Spanish,1.188
-Catalan,Spanish,1.34
-Catalan,Italian,1.374
-Polish,Slovak,1.507
-Polish,Lower Sorbian,1.603
-Polish,Czech,1.677
-Norwegian (Bokmål),Swedish,0.462
-Norwegian (Bokmål),Dutch,0.987
-Norwegian (Bokmål),Old High German,1.097
+Bulgarian,Bulgarian,0.75
+Bulgarian,Croatian,1.452
+Bulgarian,Polish,1.65
+Romanian,Romanian,0.339
+Romanian,Catalan,1.687
+Romanian,Italian,1.781
+Ancient Greek,Modern Greek,1.664
+Ancient Greek,Modern Greek,2.029
+Ancient Greek,Welsh,3.002
+Judeo-Tat,Western Farsi,1.786
+Judeo-Tat,Persian,2.462
+Judeo-Tat,Hindi,2.876
+Serbo-Croatian,Croatian,0.692
+Serbo-Croatian,Bulgarian,1.089
+Serbo-Croatian,Czech,1.287
+Seychelles Creole,French,1.096
+Seychelles Creole,Italian,2.369
+Seychelles Creole,Catalan,2.452
+Albanian (Tosk variety),Standard Albanian,0.791
+Albanian (Tosk variety),Romanian,2.538
+Albanian (Tosk variety),Western Farsi,2.712
+Armenian (Eastern variety),Armenian (Western variety),0.868
+Armenian (Eastern variety),Western Farsi,2.952
+Armenian (Eastern variety),Northern Pashto,3.015
+Armenian (Western variety),Armenian (Eastern variety),0.868
+Armenian (Western variety),Western Farsi,2.802
+Armenian (Western variety),Northern Pashto,2.972
+Yiddish,Swedish,1.524
+Yiddish,Dutch,1.609
+Yiddish,Norwegian (Bokmål),1.751
+Breton,Welsh,1.463
+Breton,Italian,2.248
+Breton,Catalan,2.263
+Spanish,Spanish,0.394
+Spanish,Portuguese,1.033
+Spanish,Catalan,1.223
+Lower Sorbian,Polish,1.437
+Lower Sorbian,Czech,1.807
+Lower Sorbian,Slovak,1.851
+Romani,Romanian,2.352
+Romani,Selice Romani,2.401
+Romani,Romanian,2.683
+Modern Greek,Modern Greek,0.571
+Modern Greek,Ancient Greek,2.029
+Modern Greek,English,3.017
+Portuguese,Portuguese,0.515
+Portuguese,Italian,1.127
+Portuguese,Spanish,1.149
+Jamaican Creole (Limonese Creole dialect),English,0.376
+Jamaican Creole (Limonese Creole dialect),Negerhollands,1.247
+Jamaican Creole (Limonese Creole dialect),Norwegian (Bokmål),1.328
+Selice Romani,Romani,2.401
+Selice Romani,Western Farsi,2.771
+Selice Romani,English,2.805
+Persian,Western Farsi,0.381
+Persian,Northern Pashto,1.502
+Persian,Hindi,2.44
+Dutch,Dutch,0.264
+Dutch,Negerhollands,1.106
+Dutch,Norwegian (Bokmål),1.142
+English,Jamaican Creole (Limonese Creole dialect),0.376
+English,Swedish,1.142
+English,Norwegian (Bokmål),1.151
+Hindi,Persian,2.44
+Hindi,Western Farsi,2.498
+Hindi,Romani,2.811
+Saramaccan,Negerhollands,1.581
+Saramaccan,Dutch,1.935
+Saramaccan,Jamaican Creole (Limonese Creole dialect),1.935
+Old High German,Dutch,1.241
+Old High German,Norwegian (Bokmål),1.255
+Old High German,Swedish,1.33
+Lithuanian,Latvian,2.094
+Lithuanian,Old Church Slavonic,2.508
+Lithuanian,Croatian,2.734
+Negerhollands,Dutch,1.015
+Negerhollands,Dutch,1.106
+Negerhollands,Jamaican Creole (Limonese Creole dialect),1.247
+Old Church Slavonic,Croatian,1.1
+Old Church Slavonic,Czech,1.252
+Old Church Slavonic,Slovak,1.342
+Croatian,Serbo-Croatian,0.692
+Croatian,Old Church Slavonic,1.1
+Croatian,Bulgarian,1.443
+Romanian,Romanian,0.339
+Romanian,Catalan,1.721
+Romanian,Italian,1.787
+Irish,English,2.778
+Irish,Welsh,2.839
+Irish,Jamaican Creole (Limonese Creole dialect),2.883
+Latvian,Lithuanian,2.094
+Latvian,Czech,2.505
+Latvian,Old Church Slavonic,2.506
+Italian,Spanish,1.126
+Italian,Portuguese,1.127
+Italian,Catalan,1.231
+Ossetian,Western Farsi,2.589
+Ossetian,Old High German,2.673
+Ossetian,Persian,2.675
+Portuguese,Portuguese,0.515
+Portuguese,Spanish,1.033
+Portuguese,Spanish,1.057
+Western Farsi,Persian,0.381
+Western Farsi,Northern Pashto,1.753
+Western Farsi,Judeo-Tat,1.786
+French,Seychelles Creole,1.096
+French,Italian,2.347
+French,Catalan,2.428
+Slovak,Czech,0.943
+Slovak,Old Church Slavonic,1.342
+Slovak,Serbo-Croatian,1.47
+Spanish,Spanish,0.394
+Spanish,Portuguese,1.057
+Spanish,Catalan,1.066
+Bulgarian,Bulgarian,0.75
+Bulgarian,Serbo-Croatian,1.089
+Bulgarian,Old Church Slavonic,1.349
+Northern Pashto,Persian,1.502
+Northern Pashto,Western Farsi,1.753
+Northern Pashto,Judeo-Tat,2.909
+Standard Albanian,Albanian (Tosk variety),0.791
+Standard Albanian,Romanian,2.351
+Standard Albanian,Italian,2.555
+Dutch,Dutch,0.264
+Dutch,Negerhollands,1.015
+Dutch,Old High German,1.241
+Welsh,Breton,1.463
+Welsh,English,2.182
+Welsh,Jamaican Creole (Limonese Creole dialect),2.416
+Swedish,Norwegian (Bokmål),0.578
+Swedish,English,1.142
+Swedish,Dutch,1.187
+Icelandic,Norwegian (Bokmål),1.198
+Icelandic,Swedish,1.299
+Icelandic,English,1.529
+Modern Greek,Modern Greek,0.571
+Modern Greek,Ancient Greek,1.664
+Modern Greek,Negerhollands,2.887
+Czech,Slovak,0.943
+Czech,Old Church Slavonic,1.252
+Czech,Serbo-Croatian,1.287
+Catalan,Spanish,1.066
+Catalan,Spanish,1.223
+Catalan,Italian,1.231
+Polish,Lower Sorbian,1.437
+Polish,Slovak,1.527
+Polish,Bulgarian,1.65
+Norwegian (Bokmål),Swedish,0.578
+Norwegian (Bokmål),Dutch,1.142
+Norwegian (Bokmål),English,1.151

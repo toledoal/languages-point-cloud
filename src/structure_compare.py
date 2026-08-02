@@ -39,12 +39,13 @@ def gram_eig(D):
     return w
 
 
-def signatures(D, branch):
+def signatures(D, branch, seed=0, B=2000):
     n = D.shape[0]
     off = D[~np.eye(n, dtype=bool)]
-    w = gram_eig(D); pos = w[w > 0]
+    w = gram_eig(D); pos = w[w > 0]; neg = -w[w < 0]
+    negin = neg.sum()/(pos.sum()+neg.sum())            # negative inertia fraction (non-Euclideanness)
     var2 = (w[0]+w[1])/pos.sum()
-    pr = (pos.sum()**2)/(pos**2).sum()                 # participation ratio = effective dimensionality
+    pr = (pos.sum()**2)/(pos**2).sum()                 # participation ratio over POSITIVE eigenvalues (declared)
     cum = np.cumsum(pos)/pos.sum(); dim80 = int(np.searchsorted(cum, 0.80))+1
     # separation
     win, bet = [], []
@@ -53,11 +54,18 @@ def signatures(D, branch):
             (win if branch[i] == branch[j] else bet).append(D[i, j])
     win, bet = np.array(win), np.array(bet)
     ratio = win.mean()/bet.mean()
-    # silhouette + purity
+    # silhouette + purity, and each family's OWN label-permutation null → chance-adjusted purity
     sil = silhouette(D, branch); pur = purity(D, branch)
+    import random
+    rng = random.Random(seed); lab = list(branch); nulls = []
+    for _ in range(B):
+        rng.shuffle(lab); nulls.append(purity(D, lab))
+    pnull = float(np.nanmean(nulls))
+    padj = (pur-pnull)/(1-pnull) if not np.isnan(pur) and pnull < 1 else float("nan")
     return {"n": n, "median_d": float(np.median(off)), "var2": float(var2), "pr": float(pr),
-            "dim80": dim80, "within": float(win.mean()), "between": float(bet.mean()),
-            "ratio": float(ratio), "silhouette": sil, "purity": pur, "eig": w, "off_norm": off/np.median(off)}
+            "negin": float(negin), "dim80": dim80, "within": float(win.mean()), "between": float(bet.mean()),
+            "ratio": float(ratio), "silhouette": sil, "purity": pur, "purity_null": pnull, "purity_adj": padj,
+            "eig": w, "off_norm": off/np.median(off)}
 
 
 def silhouette(D, labels):
@@ -92,15 +100,17 @@ def main():
     sig = {}
     for s in slugs:
         D, br = load(s); sig[s] = signatures(D, br)
-    print("=== abstract structural comparison (SEPARATE fields; no shared space, no coordinate alignment) ===")
-    hdr = ["family", "n", "median d", "%var 2D", "eff.dim(PR)", "dims→80%", "within/between", "silhouette", "purity"]
+    print("=== abstract structural comparison (SEPARATE fields; complete observed matrices, 0 imputed values;")
+    print("    no shared space, no coordinate alignment; PR computed over positive eigenvalues) ===")
+    hdr = ["family", "n", "median d", "%var 2D", "neg.inertia", "eff.dim(PR)", "within/between",
+           "silhouette", "purity", "chance", "adj.purity"]
     print("  ".join(f"{h:>14}" for h in hdr))
     for s in slugs:
         g = sig[s]
         print("  ".join(str(x) for x in [
             f"{LABELS.get(s, s):>14}", f"{g['n']:>14}", f"{g['median_d']:>14.2f}", f"{100*g['var2']:>13.1f}%",
-            f"{g['pr']:>14.1f}", f"{g['dim80']:>14}", f"{g['ratio']:>14.2f}", f"{g['silhouette']:>+14.3f}",
-            f"{g['purity']:>14.2f}"]))
+            f"{100*g['negin']:>13.1f}%", f"{g['pr']:>14.1f}", f"{g['ratio']:>14.2f}", f"{g['silhouette']:>+14.3f}",
+            f"{g['purity']:>14.2f}", f"{g['purity_null']:>14.2f}", f"{g['purity_adj']:>14.2f}"]))
 
     # figure: (A) normalized scree overlay  (B) within/between + silhouette bars  (C) normalized dissimilarity dist
     fig, ax = plt.subplots(1, 3, figsize=(13, 4.2))

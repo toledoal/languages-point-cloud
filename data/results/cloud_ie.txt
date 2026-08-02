@@ -1,0 +1,4 @@
+complete observed submatrix: kept 50/50 doculects (dropped 0: ); 0 imputed values
+=== system point cloud · Indo-European · 50 languages ===
+nearest-neighbour purity (multi-branch, no creoles) = 42/44 = 0.95
+silhouette by branch = +0.332

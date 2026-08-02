@@ -1,0 +1,46 @@
+name,doculect_id,glottocode,branch,n_concepts,dataset
+Hawaiian,idssegmented-hawaiian,hawa1245,Central Pacific linkage,2574,idssegmented
+Maori,idssegmented-maori,maor1246,Central Pacific linkage,2167,idssegmented
+Tongan,idssegmented-tongan,tong1325,Central Pacific linkage,1740,idssegmented
+Malagasy,wold-Malagasy,plat1254,Basap-Greater Barito,1676,wold
+Hawaiian,wold-Hawaiian,hawa1245,Central Pacific linkage,1469,wold
+Tuamotuan,idssegmented-tuamotuan,tuam1242,Central Pacific linkage,1368,idssegmented
+Rotuman,idssegmented-rotuman,rotu1241,Central Pacific linkage,1350,idssegmented
+Takia,wold-Takia,taki1248,Western Oceanic linkage,1321,wold
+Rapa Nui,idssegmented-rapanui,rapa1244,Central Pacific linkage,1314,idssegmented
+Marquesan,idssegmented-marquesan,sout2866,Central Pacific linkage,1231,idssegmented
+Taokas Ts82,abvdphilippines-638,babu1240,Western Plains Austronesian,758,abvdphilippines
+Tomoip (Milim village),barlowkilliantomoip-tomo1244-1,tomo1244,Western Oceanic linkage,751,barlowkilliantomoip
+Hoanya Ts82,abvdphilippines-636,papo1239,Western Plains Austronesian,509,abvdphilippines
+Lote,barlowlote-lote1237-1,lote1237,Western Oceanic linkage,506,barlowlote
+Kavalan F69,abvdphilippines-260,kava1241,East Formosan,453,abvdphilippines
+Babuza Ts82,abvdphilippines-635,babu1240,Western Plains Austronesian,438,abvdphilippines
+Pazih F69,abvdphilippines-266,kulo1237,Northwest Formosan,430,abvdphilippines
+Papora Ts82,abvdphilippines-637,papo1239,Western Plains Austronesian,392,abvdphilippines
+Itbayat,abvdphilippines-249,ivat1242,Batanic,387,abvdphilippines
+Kwaio,tryonsolomon-kwaio,kwai1243,Southeast Solomonic,383,tryonsolomon
+Chuukese,abvdoceanic-Chuukese_349,chuu1238,Micronesian,375,abvdoceanic
+Samasodu,tryonsolomon-samasodu,lagh1246,Western Oceanic linkage,363,tryonsolomon
+Ontong Java,tryonsolomon-ontongjava,onto1237,Central Pacific linkage,360,tryonsolomon
+Nggela,tryonsolomon-nggela,gela1263,Southeast Solomonic,357,tryonsolomon
+Mbirao,tryonsolomon-mbirao,bira1254,Southeast Solomonic,356,tryonsolomon
+Lau North,tryonsolomon-launorth,lauu1247,Southeast Solomonic,354,tryonsolomon
+Nduke,tryonsolomon-nduke,duke1237,Western Oceanic linkage,353,tryonsolomon
+Vaghua,tryonsolomon-vaghua,vagh1249,Western Oceanic linkage,351,tryonsolomon
+Mbambatana,tryonsolomon-mbambatana,baba1268,Western Oceanic linkage,350,tryonsolomon
+Kia,tryonsolomon-kia,zaba1237,Western Oceanic linkage,348,tryonsolomon
+Sikaiana,tryonsolomon-sikaiana,sika1261,Central Pacific linkage,348,tryonsolomon
+Rapanui (Easter Island),abvdoceanic-RapanuiEasterIsland_264,rapa1244,Central Pacific linkage,348,abvdoceanic
+Buma,tryonsolomon-buma,tean1237,Temotu,347,tryonsolomon
+To'ambaita,abvdoceanic-Toambaita_223,toab1237,Southeast Solomonic,346,abvdoceanic
+Tikopia,tryonsolomon-tikopia,tiko1237,Central Pacific linkage,345,tryonsolomon
+Leleghia,tryonsolomon-leleghia,chek1238,Western Oceanic linkage,345,tryonsolomon
+Malo,tryonsolomon-malo,natu1246,Temotu,345,tryonsolomon
+Ririo,tryonsolomon-ririo,riri1237,Western Oceanic linkage,344,tryonsolomon
+To'ambaita,tryonsolomon-toambaita,toab1237,Southeast Solomonic,344,tryonsolomon
+Marquesan,abvdoceanic-Marquesan_38,nort2845,Central Pacific linkage,343,abvdoceanic
+Sengga,tryonsolomon-sengga,sisi1250,Western Oceanic linkage,343,tryonsolomon
+Malango,tryonsolomon-malango,mala1484,Southeast Solomonic,343,tryonsolomon
+Sa'a (2),tryonsolomon-saa2,saaa1240,Southeast Solomonic,343,tryonsolomon
+Rennell,tryonsolomon-rennell,renn1242,Central Pacific linkage,343,tryonsolomon
+Dhadhaje,tryonsolomon-dhadhaje,bugh1239,Southeast Solomonic,341,tryonsolomon

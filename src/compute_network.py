@@ -147,18 +147,36 @@ def main():
                             SUM[pair] += d; NS[pair] += 1
 
     keep = [l for l in langs if any(NS.get(tuple(sorted((l, o))), 0) >= MINSLOT for o in langs if o != l)]
+
+    def build_D(ls):
+        m = len(ls); M = np.full((m, m), np.nan)
+        for i in range(m):
+            M[i, i] = 0.0
+        for i in range(m):
+            for j in range(i+1, m):
+                p = tuple(sorted((ls[i], ls[j])))
+                if NS.get(p, 0) >= MINSLOT:
+                    M[i, j] = M[j, i] = SUM[p]/NS[p]
+        return M
+
+    # NO global-mean imputation (it manufactures equidistance / flatness). Main analysis uses a COMPLETE
+    # observed submatrix: greedily drop the doculect with the most missing pairs until no NaN remains.
+    Dm = build_D(keep)
+    n_all = len(keep)
+    miss_before = int(np.isnan(Dm[np.triu_indices(n_all, 1)]).sum())
+    total_before = n_all*(n_all-1)//2
+    dropped = []
+    while np.isnan(Dm).any():
+        missing_per = np.isnan(Dm).sum(axis=1)
+        worst = int(missing_per.argmax())
+        dropped.append(keep[worst])
+        keep = keep[:worst] + keep[worst+1:]
+        Dm = build_D(keep)
     n = len(keep); idx = {l: i for i, l in enumerate(keep)}
-    Dm = np.full((n, n), np.nan)
-    for i in range(n):
-        Dm[i, i] = 0.0
-    for i in range(n):
-        for j in range(i+1, n):
-            p = tuple(sorted((keep[i], keep[j])))
-            if NS.get(p, 0) >= MINSLOT:
-                Dm[i, j] = Dm[j, i] = SUM[p]/NS[p]
-    glob = np.nanmean(Dm[~np.eye(n, dtype=bool)])
-    Dm = np.where(np.isnan(Dm), glob, Dm)
     labels = [assign[l] for l in keep]
+    print(f"missingness: {miss_before}/{total_before} pairs unobserved (<{MINSLOT} slots) among {n_all} doculects")
+    print(f"complete observed submatrix: kept {n}/{n_all} doculects (dropped {len(dropped)}: "
+          f"{', '.join(name.get(d, d)[:16] for d in dropped[:8])}{'…' if len(dropped) > 8 else ''}); 0 imputed values")
 
     brc = defaultdict(int)
     for l in keep:

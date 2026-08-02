@@ -1,46 +1,14 @@
 lang,name,branch,x,y
-idssegmented-hawaiian,Hawaiian,Central Pacific linkage,0.5641,-0.0824
-idssegmented-maori,Maori,Central Pacific linkage,1.7465,-0.9286
-idssegmented-tongan,Tongan,Central Pacific linkage,0.5056,0.0859
-wold-Malagasy,Malagasy,Basap-Greater Barito,-0.6397,0.0206
-wold-Hawaiian,Hawaiian,Central Pacific linkage,0.6624,0.0567
-idssegmented-tuamotuan,Tuamotuan,Central Pacific linkage,1.4692,-0.4763
-idssegmented-rotuman,Rotuman,Central Pacific linkage,-0.0752,-0.2616
-wold-Takia,Takia,Western Oceanic linkage,-0.5316,0.3745
-idssegmented-rapanui,Rapa Nui,Central Pacific linkage,1.1485,0.0221
-idssegmented-marquesan,Marquesan,Central Pacific linkage,1.0740,0.1913
-abvdphilippines-638,Taokas Ts82,Western Plains Austronesian,-0.7406,0.4289
-barlowkilliantomoip-tomo1244-1,Tomoip (Milim village),Western Oceanic linkage,-0.9246,0.3481
-abvdphilippines-636,Hoanya Ts82,Western Plains Austronesian,-0.7521,0.7851
-barlowlote-lote1237-1,Lote,Western Oceanic linkage,-0.2423,0.2599
-abvdphilippines-260,Kavalan F69,East Formosan,-0.2098,0.4866
-abvdphilippines-635,Babuza Ts82,Western Plains Austronesian,-0.6145,0.4501
-abvdphilippines-266,Pazih F69,Northwest Formosan,-0.6534,0.0236
-abvdphilippines-637,Papora Ts82,Western Plains Austronesian,-0.7603,0.6049
-abvdphilippines-249,Itbayat,Batanic,-0.1010,0.1133
-tryonsolomon-kwaio,Kwaio,Southeast Solomonic,-0.6086,-1.1660
-abvdoceanic-Chuukese_349,Chuukese,Micronesian,-0.2923,0.1322
-tryonsolomon-samasodu,Samasodu,Western Oceanic linkage,0.0679,0.5114
-tryonsolomon-ontongjava,Ontong Java,Central Pacific linkage,0.8222,-0.0497
-tryonsolomon-nggela,Nggela,Southeast Solomonic,-0.0783,-0.1105
-tryonsolomon-mbirao,Mbirao,Southeast Solomonic,-0.3846,-0.5654
-tryonsolomon-launorth,Lau North,Southeast Solomonic,-0.3157,-1.3151
-tryonsolomon-nduke,Nduke,Western Oceanic linkage,-0.3258,0.3417
-tryonsolomon-vaghua,Vaghua,Western Oceanic linkage,-1.0597,0.2585
-tryonsolomon-mbambatana,Mbambatana,Western Oceanic linkage,-0.8347,0.3667
-tryonsolomon-kia,Kia,Western Oceanic linkage,-0.5196,0.8209
-tryonsolomon-sikaiana,Sikaiana,Central Pacific linkage,1.2444,-0.2436
-abvdoceanic-RapanuiEasterIsland_264,Rapanui (Easter Island),Central Pacific linkage,1.6351,0.0205
-tryonsolomon-buma,Buma,Temotu,-0.2262,0.1121
-abvdoceanic-Toambaita_223,To'ambaita,Southeast Solomonic,-0.7884,-1.9062
-tryonsolomon-tikopia,Tikopia,Central Pacific linkage,1.2143,0.1590
-tryonsolomon-leleghia,Leleghia,Western Oceanic linkage,0.3523,1.2285
-tryonsolomon-malo,Malo,Temotu,-0.4269,0.3237
-tryonsolomon-ririo,Ririo,Western Oceanic linkage,-0.7461,0.0280
-tryonsolomon-toambaita,To'ambaita,Southeast Solomonic,-0.6863,-1.6591
-abvdoceanic-Marquesan_38,Marquesan,Central Pacific linkage,1.3018,0.3598
-tryonsolomon-sengga,Sengga,Western Oceanic linkage,-0.8080,0.4146
-tryonsolomon-malango,Malango,Southeast Solomonic,-0.2927,-0.8110
-tryonsolomon-saa2,Sa'a (2),Southeast Solomonic,-0.5043,-1.0310
-tryonsolomon-rennell,Rennell,Central Pacific linkage,1.2823,0.3641
-tryonsolomon-dhadhaje,Dhadhaje,Southeast Solomonic,0.0526,0.9132
+idssegmented-hawaiian,Hawaiian,Central Pacific linkage,-0.0982,1.1254
+idssegmented-maori,Maori,Central Pacific linkage,-1.4035,-0.8561
+idssegmented-tongan,Tongan,Central Pacific linkage,-0.2757,0.5264
+idssegmented-rotuman,Rotuman,Central Pacific linkage,0.9453,-0.3237
+idssegmented-rapanui,Rapa Nui,Central Pacific linkage,-0.4046,-0.5954
+abvdphilippines-638,Taokas Ts82,Western Plains Austronesian,1.8536,-1.3064
+abvdphilippines-636,Hoanya Ts82,Western Plains Austronesian,2.1141,0.1978
+abvdoceanic-Chuukese_349,Chuukese,Micronesian,0.6019,1.6354
+tryonsolomon-sikaiana,Sikaiana,Central Pacific linkage,-0.4339,-0.2665
+abvdoceanic-RapanuiEasterIsland_264,Rapanui (Easter Island),Central Pacific linkage,-1.0428,-0.0636
+tryonsolomon-tikopia,Tikopia,Central Pacific linkage,-0.1614,-0.1105
+abvdoceanic-Marquesan_38,Marquesan,Central Pacific linkage,-1.1432,0.0691
+tryonsolomon-rennell,Rennell,Central Pacific linkage,-0.5515,-0.0318

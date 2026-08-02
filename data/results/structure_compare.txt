@@ -1,5 +1,6 @@
-=== abstract structural comparison (SEPARATE fields; no shared space, no coordinate alignment) ===
-        family               n        median d         %var 2D     eff.dim(PR)        dims→80%  within/between      silhouette          purity
- Indo-European              50            3.18           27.1%            14.2              14            0.63          +0.323            0.96
-  Austronesian              45            2.57           22.1%            16.8              14            0.75          +0.134            0.80
-Nakh-Daghestanian              45            2.62           38.4%             9.3              11            0.66          +0.318            0.98
+=== abstract structural comparison (SEPARATE fields; complete observed matrices, 0 imputed values;
+    no shared space, no coordinate alignment; PR computed over positive eigenvalues) ===
+        family               n        median d         %var 2D     neg.inertia     eff.dim(PR)  within/between      silhouette          purity          chance      adj.purity
+ Indo-European              50            3.16           28.9%            7.3%            13.3            0.62          +0.332            0.96            0.16            0.95
+Nakh-Daghestanian              45            2.65           38.0%            2.7%             9.4            0.68          +0.313            0.98            0.29            0.97
+  Austronesian              13            2.28           51.0%           13.4%             4.9            0.61          +0.221            0.83            0.64            0.54
