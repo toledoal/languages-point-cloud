@@ -1,0 +1,3 @@
+panphon
+numpy
+lingpy

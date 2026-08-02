@@ -1,0 +1,117 @@
+<title>Indo-European as a point cloud</title>
+<style>
+:root{
+  --bg:#faf8f3; --panel:#fffdf8; --ink:#1c1a17; --muted:#6b6157; --line:#e6dfd2;
+  --accent:#9a5b34; --ring:#fffdf8; --edge:#cbbfa9; --edgex:#b98a5e; --shadow:0 1px 3px rgba(60,45,25,.10);
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#141310; --panel:#1d1b17; --ink:#efe9df; --muted:#9c9385; --line:#2c2921;
+  --accent:#e0a06a; --ring:#1d1b17; --edge:#3a352b; --edgex:#7a5c3c; --shadow:0 1px 3px rgba(0,0,0,.4);
+}}
+:root[data-theme=light]{--bg:#faf8f3;--panel:#fffdf8;--ink:#1c1a17;--muted:#6b6157;--line:#e6dfd2;--accent:#9a5b34;--ring:#fffdf8;--edge:#cbbfa9;--edgex:#b98a5e;--shadow:0 1px 3px rgba(60,45,25,.10);}
+:root[data-theme=dark]{--bg:#141310;--panel:#1d1b17;--ink:#efe9df;--muted:#9c9385;--line:#2c2921;--accent:#e0a06a;--ring:#1d1b17;--edge:#3a352b;--edgex:#7a5c3c;--shadow:0 1px 3px rgba(0,0,0,.4);}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1060px;margin:0 auto;padding:40px 24px 64px}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 10px}
+h1{font-family:Georgia,"Times New Roman",serif;font-weight:600;font-size:clamp(28px,4.4vw,44px);
+  line-height:1.08;margin:0 0 14px;text-wrap:balance;letter-spacing:-.01em}
+.lede{font-size:18px;color:var(--muted);max-width:64ch;margin:0 0 28px}
+.lede b{color:var(--ink);font-weight:600}
+.stats{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 26px}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 16px;box-shadow:var(--shadow)}
+.stat .n{font-family:Georgia,serif;font-size:24px;font-weight:600;font-variant-numeric:tabular-nums}
+.stat .l{font-size:12.5px;color:var(--muted)}
+.figure{background:var(--panel);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);
+  padding:8px;position:relative;overflow:hidden}
+svg{display:block;width:100%;height:auto;touch-action:none}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;margin:16px 2px 0;font-size:13px}
+.legend span{display:inline-flex;align-items:center;gap:7px;cursor:default;color:var(--muted)}
+.legend i{width:11px;height:11px;border-radius:50%;display:inline-block;box-shadow:0 0 0 1.5px var(--ring)}
+.legend b{color:var(--ink);font-weight:600}
+.node circle{stroke:var(--ring);stroke-width:1.5;cursor:pointer;transition:r .12s}
+.node text{font-size:9px;fill:var(--muted);pointer-events:none;transition:fill .12s}
+.node.hi circle{stroke:var(--ink);stroke-width:2}
+.node.hi text{fill:var(--ink);font-weight:600}
+.node.dim{opacity:.22}
+.tip{position:absolute;pointer-events:none;background:var(--panel);border:1px solid var(--line);
+  border-radius:10px;padding:9px 12px;font-size:12.5px;box-shadow:var(--shadow);max-width:230px;opacity:0;
+  transition:opacity .1s;z-index:5}
+.tip h4{margin:0 0 2px;font-size:13px}
+.tip .br{color:var(--muted);font-size:11.5px;margin-bottom:6px}
+.tip .nb{display:flex;justify-content:space-between;gap:12px;font-variant-numeric:tabular-nums}
+.tip .nb .ok{color:var(--accent)}
+.note{font-size:13.5px;color:var(--muted);margin:22px 0 0;max-width:70ch}
+.note code{background:var(--line);padding:1px 5px;border-radius:4px;font-size:12.5px}
+</style>
+<div class="wrap">
+<p class="eyebrow">Phonological correspondences · Paper 2 · exp. 2</p>
+<h1>Indo-European draws itself as a point cloud</h1>
+<p class="lede">Each point is a language. Its position comes only from <b>how its consonants correspond to every
+other language's</b> — the mean number of phonological features that differ, pair by pair. No family tree, no
+reconstruction, and <b>the branch colours were added last, only to check the picture</b>. The contiguity is not
+imposed; it emerges.</p>
+<div class="stats" id="stats"></div>
+<div class="figure"><svg id="plot" viewBox="0 0 900 620" aria-label="Point cloud of Indo-European languages"></svg>
+<div class="tip" id="tip"></div></div>
+<div class="legend" id="legend"></div>
+<p class="note">Distance = mean count of differing panphon features per aligned consonant slot, over statistically
+detected coderivative sets (LexStat); layout by classical MDS. Solid links join a language to its 3 nearest
+neighbours within the same branch; <span style="color:var(--edgex)">dashed</span> links are nearest neighbours in
+a <i>different</i> branch — almost always areal contact (Albanian→Romanian, Balkan; Romani→Romanian) or a
+creole beside its lexifier. Genealogy lives in the distribution; the label is only a coarse summary of this
+geometry. Data: <code>network_*_ie.csv</code>.</p>
+</div>
+<script>
+const DATA={"nodes": [{"name": "Bulgarian", "branch": "Balto-Slavic", "x": -1.4067, "y": 0.1785, "nbr": [["Croatian", 1.63], ["Serbo-Croatian", 2.059], ["Old Church Slavonic", 2.087]]}, {"name": "Romanian", "branch": "Italic", "x": 0.0466, "y": -0.0836, "nbr": [["English", 2.484], ["Spanish", 2.512], ["Portuguese", 2.553]]}, {"name": "Ancient Greek", "branch": "Graeco-Phrygian", "x": 0.2224, "y": 0.2353, "nbr": [["Modern Greek", 1.974], ["Negerhollands", 2.938], ["English", 3.008]]}, {"name": "Judeo-Tat", "branch": "Indo-Iranian", "x": 0.2125, "y": 0.9067, "nbr": [["Persian", 2.56], ["Hindi", 2.893], ["Croatian", 3.235]]}, {"name": "Serbo-Croatian", "branch": "Balto-Slavic", "x": -1.6521, "y": 0.1879, "nbr": [["Croatian", 0.78], ["Old Church Slavonic", 1.566], ["Bulgarian", 2.059]]}, {"name": "Seychelles Creole", "branch": "Italic", "x": 0.278, "y": -0.1036, "nbr": [["English", 2.639], ["Jamaican Creole (Limonese Creole dialect)", 2.852], ["Portuguese", 2.889]]}, {"name": "Albanian (Tosk variety)", "branch": "Albanian", "x": 0.1966, "y": 0.4471, "nbr": [["Romanian", 2.855], ["Jamaican Creole (Limonese Creole dialect)", 3.09], ["Selice Romani", 3.152]]}, {"name": "Armenian (Eastern variety)", "branch": "Armenic", "x": 1.0577, "y": 1.5681, "nbr": [["Armenian (Western variety)", 0.888], ["Persian", 3.35], ["Selice Romani", 3.357]]}, {"name": "Armenian (Western variety)", "branch": "Armenic", "x": 1.0116, "y": 1.6085, "nbr": [["Armenian (Eastern variety)", 0.888], ["Selice Romani", 3.332], ["Persian", 3.336]]}, {"name": "Yiddish", "branch": "Germanic", "x": 0.4967, "y": -0.7594, "nbr": [["Old High German", 1.911], ["Negerhollands", 2.093], ["Dutch", 2.281]]}, {"name": "Breton", "branch": "Celtic", "x": 0.5949, "y": -0.1871, "nbr": [["English", 2.516], ["Jamaican Creole (Limonese Creole dialect)", 2.637], ["Spanish", 2.77]]}, {"name": "Spanish", "branch": "Italic", "x": 0.8546, "y": 0.0099, "nbr": [["Portuguese", 1.556], ["Romanian", 2.512], ["English", 2.623]]}, {"name": "Lower Sorbian", "branch": "Balto-Slavic", "x": -1.5956, "y": -0.3612, "nbr": [["Croatian", 1.927], ["Old Church Slavonic", 2.579], ["Serbo-Croatian", 2.586]]}, {"name": "Romani", "branch": "Indo-Iranian", "x": -0.1218, "y": 0.7088, "nbr": [["Selice Romani", 2.561], ["Romanian", 2.866], ["Serbo-Croatian", 2.949]]}, {"name": "Modern Greek", "branch": "Graeco-Phrygian", "x": 0.1413, "y": 0.3254, "nbr": [["Ancient Greek", 1.974], ["Negerhollands", 3.034], ["English", 3.092]]}, {"name": "Portuguese", "branch": "Italic", "x": 0.7221, "y": 0.0294, "nbr": [["Spanish", 1.556], ["Romanian", 2.553], ["English", 2.782]]}, {"name": "Jamaican Creole (Limonese Creole dialect)", "branch": "Germanic", "x": 0.5077, "y": -1.1547, "nbr": [["English", 0.586], ["Negerhollands", 1.621], ["Dutch", 2.099]]}, {"name": "Selice Romani", "branch": "Indo-Iranian", "x": 0.1157, "y": 0.6017, "nbr": [["Romani", 2.561], ["Hindi", 2.814], ["Yiddish", 2.977]]}, {"name": "Persian", "branch": "Indo-Iranian", "x": 0.3194, "y": 1.0767, "nbr": [["Hindi", 2.467], ["Judeo-Tat", 2.56], ["Selice Romani", 3.093]]}, {"name": "Dutch", "branch": "Germanic", "x": 0.3892, "y": -1.4118, "nbr": [["Negerhollands", 1.293], ["Old High German", 1.652], ["English", 1.829]]}, {"name": "English", "branch": "Germanic", "x": 0.3771, "y": -1.2769, "nbr": [["Jamaican Creole (Limonese Creole dialect)", 0.586], ["Negerhollands", 1.478], ["Dutch", 1.829]]}, {"name": "Hindi", "branch": "Indo-Iranian", "x": 0.3918, "y": 0.7475, "nbr": [["Persian", 2.467], ["Selice Romani", 2.814], ["Judeo-Tat", 2.893]]}, {"name": "Saramaccan", "branch": "Germanic", "x": 0.277, "y": -1.0509, "nbr": [["Negerhollands", 2.112], ["English", 2.225], ["Jamaican Creole (Limonese Creole dialect)", 2.442]]}, {"name": "Old High German", "branch": "Germanic", "x": 0.7014, "y": -1.1995, "nbr": [["Negerhollands", 1.493], ["Dutch", 1.652], ["Yiddish", 1.911]]}, {"name": "Lithuanian", "branch": "Balto-Slavic", "x": -0.8905, "y": 0.0552, "nbr": [["Old Church Slavonic", 2.636], ["Serbo-Croatian", 2.804], ["Croatian", 2.823]]}, {"name": "Negerhollands", "branch": "Germanic", "x": 0.3847, "y": -1.3558, "nbr": [["Dutch", 1.293], ["English", 1.478], ["Old High German", 1.493]]}, {"name": "Old Church Slavonic", "branch": "Balto-Slavic", "x": -1.7067, "y": 0.0388, "nbr": [["Croatian", 1.304], ["Serbo-Croatian", 1.566], ["Bulgarian", 2.087]]}, {"name": "Croatian", "branch": "Balto-Slavic", "x": -1.9255, "y": 0.219, "nbr": [["Serbo-Croatian", 0.78], ["Old Church Slavonic", 1.304], ["Bulgarian", 1.63]]}], "edges": [{"s": "Albanian (Tosk variety)", "d": "Romanian", "w": 2.855}, {"s": "Albanian (Tosk variety)", "d": "Jamaican Creole (Limonese Creole dialect)", "w": 3.09}, {"s": "Albanian (Tosk variety)", "d": "Selice Romani", "w": 3.152}, {"s": "Armenian (Eastern variety)", "d": "Armenian (Western variety)", "w": 0.888}, {"s": "Armenian (Eastern variety)", "d": "Persian", "w": 3.35}, {"s": "Armenian (Eastern variety)", "d": "Selice Romani", "w": 3.357}, {"s": "Armenian (Western variety)", "d": "Armenian (Eastern variety)", "w": 0.888}, {"s": "Armenian (Western variety)", "d": "Selice Romani", "w": 3.332}, {"s": "Armenian (Western variety)", "d": "Persian", "w": 3.336}, {"s": "Bulgarian", "d": "Croatian", "w": 1.63}, {"s": "Bulgarian", "d": "Serbo-Croatian", "w": 2.059}, {"s": "Bulgarian", "d": "Old Church Slavonic", "w": 2.087}, {"s": "Serbo-Croatian", "d": "Croatian", "w": 0.78}, {"s": "Serbo-Croatian", "d": "Old Church Slavonic", "w": 1.566}, {"s": "Serbo-Croatian", "d": "Bulgarian", "w": 2.059}, {"s": "Lower Sorbian", "d": "Croatian", "w": 1.927}, {"s": "Lower Sorbian", "d": "Old Church Slavonic", "w": 2.579}, {"s": "Lower Sorbian", "d": "Serbo-Croatian", "w": 2.586}, {"s": "Lithuanian", "d": "Old Church Slavonic", "w": 2.636}, {"s": "Lithuanian", "d": "Serbo-Croatian", "w": 2.804}, {"s": "Lithuanian", "d": "Croatian", "w": 2.823}, {"s": "Old Church Slavonic", "d": "Croatian", "w": 1.304}, {"s": "Old Church Slavonic", "d": "Serbo-Croatian", "w": 1.566}, {"s": "Old Church Slavonic", "d": "Bulgarian", "w": 2.087}, {"s": "Croatian", "d": "Serbo-Croatian", "w": 0.78}, {"s": "Croatian", "d": "Old Church Slavonic", "w": 1.304}, {"s": "Croatian", "d": "Bulgarian", "w": 1.63}, {"s": "Breton", "d": "English", "w": 2.516}, {"s": "Breton", "d": "Jamaican Creole (Limonese Creole dialect)", "w": 2.637}, {"s": "Breton", "d": "Spanish", "w": 2.77}, {"s": "Yiddish", "d": "Old High German", "w": 1.911}, {"s": "Yiddish", "d": "Negerhollands", "w": 2.093}, {"s": "Yiddish", "d": "Dutch", "w": 2.281}, {"s": "Jamaican Creole (Limonese Creole dialect)", "d": "English", "w": 0.586}, {"s": "Jamaican Creole (Limonese Creole dialect)", "d": "Negerhollands", "w": 1.621}, {"s": "Jamaican Creole (Limonese Creole dialect)", "d": "Dutch", "w": 2.099}, {"s": "Dutch", "d": "Negerhollands", "w": 1.293}, {"s": "Dutch", "d": "Old High German", "w": 1.652}, {"s": "Dutch", "d": "English", "w": 1.829}, {"s": "English", "d": "Jamaican Creole (Limonese Creole dialect)", "w": 0.586}, {"s": "English", "d": "Negerhollands", "w": 1.478}, {"s": "English", "d": "Dutch", "w": 1.829}, {"s": "Saramaccan", "d": "Negerhollands", "w": 2.112}, {"s": "Saramaccan", "d": "English", "w": 2.225}, {"s": "Saramaccan", "d": "Jamaican Creole (Limonese Creole dialect)", "w": 2.442}, {"s": "Old High German", "d": "Negerhollands", "w": 1.493}, {"s": "Old High German", "d": "Dutch", "w": 1.652}, {"s": "Old High German", "d": "Yiddish", "w": 1.911}, {"s": "Negerhollands", "d": "Dutch", "w": 1.293}, {"s": "Negerhollands", "d": "English", "w": 1.478}, {"s": "Negerhollands", "d": "Old High German", "w": 1.493}, {"s": "Ancient Greek", "d": "Modern Greek", "w": 1.974}, {"s": "Ancient Greek", "d": "Negerhollands", "w": 2.938}, {"s": "Ancient Greek", "d": "English", "w": 3.008}, {"s": "Modern Greek", "d": "Ancient Greek", "w": 1.974}, {"s": "Modern Greek", "d": "Negerhollands", "w": 3.034}, {"s": "Modern Greek", "d": "English", "w": 3.092}, {"s": "Judeo-Tat", "d": "Persian", "w": 2.56}, {"s": "Judeo-Tat", "d": "Hindi", "w": 2.893}, {"s": "Judeo-Tat", "d": "Croatian", "w": 3.235}, {"s": "Romani", "d": "Selice Romani", "w": 2.561}, {"s": "Romani", "d": "Romanian", "w": 2.866}, {"s": "Romani", "d": "Serbo-Croatian", "w": 2.949}, {"s": "Selice Romani", "d": "Romani", "w": 2.561}, {"s": "Selice Romani", "d": "Hindi", "w": 2.814}, {"s": "Selice Romani", "d": "Yiddish", "w": 2.977}, {"s": "Persian", "d": "Hindi", "w": 2.467}, {"s": "Persian", "d": "Judeo-Tat", "w": 2.56}, {"s": "Persian", "d": "Selice Romani", "w": 3.093}, {"s": "Hindi", "d": "Persian", "w": 2.467}, {"s": "Hindi", "d": "Selice Romani", "w": 2.814}, {"s": "Hindi", "d": "Judeo-Tat", "w": 2.893}, {"s": "Romanian", "d": "English", "w": 2.484}, {"s": "Romanian", "d": "Spanish", "w": 2.512}, {"s": "Romanian", "d": "Portuguese", "w": 2.553}, {"s": "Seychelles Creole", "d": "English", "w": 2.639}, {"s": "Seychelles Creole", "d": "Jamaican Creole (Limonese Creole dialect)", "w": 2.852}, {"s": "Seychelles Creole", "d": "Portuguese", "w": 2.889}, {"s": "Spanish", "d": "Portuguese", "w": 1.556}, {"s": "Spanish", "d": "Romanian", "w": 2.512}, {"s": "Spanish", "d": "English", "w": 2.623}, {"s": "Portuguese", "d": "Spanish", "w": 1.556}, {"s": "Portuguese", "d": "Romanian", "w": 2.553}, {"s": "Portuguese", "d": "English", "w": 2.782}], "color": {"Germanic": "#0072B2", "Balto-Slavic": "#D55E00", "Indo-Iranian": "#009E73", "Italic": "#E69F00", "Graeco-Phrygian": "#CC79A7", "Armenic": "#56B4E9", "Albanian": "#F0E442", "Celtic": "#8A8F98"}, "order": ["Germanic", "Balto-Slavic", "Indo-Iranian", "Italic", "Graeco-Phrygian", "Armenic", "Albanian", "Celtic"], "counts": {"Balto-Slavic": 6, "Italic": 4, "Graeco-Phrygian": 2, "Indo-Iranian": 5, "Albanian": 1, "Armenic": 2, "Germanic": 7, "Celtic": 1}};
+const svg=document.getElementById('plot'),tip=document.getElementById('tip');
+const W=900,H=620,P=48;
+const xs=DATA.nodes.map(n=>n.x),ys=DATA.nodes.map(n=>n.y);
+const xmin=Math.min(...xs),xmax=Math.max(...xs),ymin=Math.min(...ys),ymax=Math.max(...ys);
+const sx=v=>P+(v-xmin)/(xmax-xmin)*(W-2*P);
+const sy=v=>P+(ymax-v)/(ymax-ymin)*(H-2*P);
+const pos={};DATA.nodes.forEach(n=>pos[n.name]=n);
+const NS="http://www.w3.org/2000/svg";
+function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e;}
+// edges
+const eg=el('g',{});svg.appendChild(eg);
+DATA.edges.forEach(e=>{const a=pos[e.s],b=pos[e.d];if(!a||!b)return;
+  const same=a.branch===b.branch;
+  eg.appendChild(el('line',{x1:sx(a.x),y1:sy(a.y),x2:sx(b.x),y2:sy(b.y),
+    stroke:same?'var(--edge)':'var(--edgex)','stroke-width':same?1:1.2,
+    'stroke-dasharray':same?'':'3,3','stroke-opacity':same?.9:.85,'data-s':e.s,'data-d':e.d}));});
+// nodes
+const ng=el('g',{});svg.appendChild(ng);
+DATA.nodes.forEach(n=>{const g=el('g',{class:'node','data-name':n.name});
+  g.appendChild(el('circle',{cx:sx(n.x),cy:sy(n.y),r:6,fill:DATA.color[n.branch]}));
+  const t=el('text',{x:sx(n.x)+9,y:sy(n.y)+3});t.textContent=n.name.replace(/ \(.*\)/,'').slice(0,16);
+  g.appendChild(t);ng.appendChild(g);
+  g.addEventListener('mouseenter',ev=>show(n,g));
+  g.addEventListener('mousemove',ev=>move(ev));
+  g.addEventListener('mouseleave',hide);});
+function show(n,g){
+  document.querySelectorAll('.node').forEach(x=>x.classList.add('dim'));
+  const near=new Set([n.name,...n.nbr.map(z=>z[0])]);
+  document.querySelectorAll('.node').forEach(x=>{if(near.has(x.dataset.name)){x.classList.remove('dim');}});
+  g.classList.add('hi');g.classList.remove('dim');
+  let rows=n.nbr.map(z=>{const ok=pos[z[0]].branch===n.branch;
+    return `<div class="nb"><span class="${ok?'ok':''}">${ok?'●':'○'} ${z[0].replace(/ \(.*\)/,'')}</span><span>${z[1].toFixed(2)}</span></div>`;}).join('');
+  tip.innerHTML=`<h4>${n.name.replace(/ \(.*\)/,'')}</h4><div class="br">${n.branch}</div>${rows}`;
+  tip.style.opacity=1;}
+function move(ev){const r=svg.getBoundingClientRect();
+  tip.style.left=Math.min(ev.clientX-r.left+14,r.width-240)+'px';
+  tip.style.top=(ev.clientY-r.top+14)+'px';}
+function hide(){tip.style.opacity=0;document.querySelectorAll('.node').forEach(x=>{x.classList.remove('dim','hi');});}
+// stats
+document.getElementById('stats').innerHTML=[
+  ['0.96','nearest neighbour shares its branch (22/23)'],
+  ['+0.27','silhouette by branch (positive = separated)'],
+  [DATA.nodes.length,'language systems'],
+  ['0','times a branch label was used to place a point'],
+].map(s=>`<div class="stat"><div class="n">${s[0]}</div><div class="l">${s[1]}</div></div>`).join('');
+// legend
+document.getElementById('legend').innerHTML=DATA.order.map(b=>
+  `<span><i style="background:${DATA.color[b]}"></i><b>${b}</b> ${DATA.counts[b]||0}</span>`).join('');
+</script>

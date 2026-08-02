@@ -1,0 +1,85 @@
+src,dst,dist
+Albanian (Tosk variety),Romanian,2.855
+Albanian (Tosk variety),Jamaican Creole (Limonese Creole dialect),3.09
+Albanian (Tosk variety),Selice Romani,3.152
+Armenian (Eastern variety),Armenian (Western variety),0.888
+Armenian (Eastern variety),Persian,3.35
+Armenian (Eastern variety),Selice Romani,3.357
+Armenian (Western variety),Armenian (Eastern variety),0.888
+Armenian (Western variety),Selice Romani,3.332
+Armenian (Western variety),Persian,3.336
+Bulgarian,Croatian,1.63
+Bulgarian,Serbo-Croatian,2.059
+Bulgarian,Old Church Slavonic,2.087
+Serbo-Croatian,Croatian,0.78
+Serbo-Croatian,Old Church Slavonic,1.566
+Serbo-Croatian,Bulgarian,2.059
+Lower Sorbian,Croatian,1.927
+Lower Sorbian,Old Church Slavonic,2.579
+Lower Sorbian,Serbo-Croatian,2.586
+Lithuanian,Old Church Slavonic,2.636
+Lithuanian,Serbo-Croatian,2.804
+Lithuanian,Croatian,2.823
+Old Church Slavonic,Croatian,1.304
+Old Church Slavonic,Serbo-Croatian,1.566
+Old Church Slavonic,Bulgarian,2.087
+Croatian,Serbo-Croatian,0.78
+Croatian,Old Church Slavonic,1.304
+Croatian,Bulgarian,1.63
+Breton,English,2.516
+Breton,Jamaican Creole (Limonese Creole dialect),2.637
+Breton,Spanish,2.77
+Yiddish,Old High German,1.911
+Yiddish,Negerhollands,2.093
+Yiddish,Dutch,2.281
+Jamaican Creole (Limonese Creole dialect),English,0.586
+Jamaican Creole (Limonese Creole dialect),Negerhollands,1.621
+Jamaican Creole (Limonese Creole dialect),Dutch,2.099
+Dutch,Negerhollands,1.293
+Dutch,Old High German,1.652
+Dutch,English,1.829
+English,Jamaican Creole (Limonese Creole dialect),0.586
+English,Negerhollands,1.478
+English,Dutch,1.829
+Saramaccan,Negerhollands,2.112
+Saramaccan,English,2.225
+Saramaccan,Jamaican Creole (Limonese Creole dialect),2.442
+Old High German,Negerhollands,1.493
+Old High German,Dutch,1.652
+Old High German,Yiddish,1.911
+Negerhollands,Dutch,1.293
+Negerhollands,English,1.478
+Negerhollands,Old High German,1.493
+Ancient Greek,Modern Greek,1.974
+Ancient Greek,Negerhollands,2.938
+Ancient Greek,English,3.008
+Modern Greek,Ancient Greek,1.974
+Modern Greek,Negerhollands,3.034
+Modern Greek,English,3.092
+Judeo-Tat,Persian,2.56
+Judeo-Tat,Hindi,2.893
+Judeo-Tat,Croatian,3.235
+Romani,Selice Romani,2.561
+Romani,Romanian,2.866
+Romani,Serbo-Croatian,2.949
+Selice Romani,Romani,2.561
+Selice Romani,Hindi,2.814
+Selice Romani,Yiddish,2.977
+Persian,Hindi,2.467
+Persian,Judeo-Tat,2.56
+Persian,Selice Romani,3.093
+Hindi,Persian,2.467
+Hindi,Selice Romani,2.814
+Hindi,Judeo-Tat,2.893
+Romanian,English,2.484
+Romanian,Spanish,2.512
+Romanian,Portuguese,2.553
+Seychelles Creole,English,2.639
+Seychelles Creole,Jamaican Creole (Limonese Creole dialect),2.852
+Seychelles Creole,Portuguese,2.889
+Spanish,Portuguese,1.556
+Spanish,Romanian,2.512
+Spanish,English,2.623
+Portuguese,Spanish,1.556
+Portuguese,Romanian,2.553
+Portuguese,English,2.782

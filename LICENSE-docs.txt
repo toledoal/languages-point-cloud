@@ -1,0 +1,20 @@
+Documents and figures in this repository — specifically docs/paper.en.md,
+docs/paper.en.pdf, docs/manual/BOOK.en.md, docs/manual/BOOK.en.pdf, and the
+generated figure files (docs/*.tex, docs/manual/*.tex) — are licensed under the
+
+    Creative Commons Attribution 4.0 International License (CC BY 4.0)
+
+Copyright (c) 2026 Alejandro Toledo Martínez (ORCID 0009-0000-1277-9697)
+
+You are free to share and adapt this material for any purpose, even
+commercially, provided you give appropriate credit, provide a link to the
+license, and indicate if changes were made.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+Summary: https://creativecommons.org/licenses/by/4.0/
+
+The bundled Glottolog classification caches (data/glottolog_*.csv) are derived
+from Glottolog (https://glottolog.org), © the Glottolog authors, and are
+redistributed here under CC BY 4.0. The corpora used as inputs (Lexibank,
+IE-CoR) are NOT included in this repository and carry their own licenses; see
+data/lexicon/README.md.

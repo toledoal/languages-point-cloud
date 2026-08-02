@@ -1,0 +1,29 @@
+lang,name,branch,x,y
+idssegmented-bulgarian,Bulgarian,Balto-Slavic,-1.4067,0.1785
+wold-Romanian,Romanian,Italic,0.0466,-0.0836
+idssegmented-ancientgreek,Ancient Greek,Graeco-Phrygian,0.2224,0.2353
+idssegmented-judeotat,Judeo-Tat,Indo-Iranian,0.2125,0.9067
+idssegmented-serbocroatian,Serbo-Croatian,Balto-Slavic,-1.6521,0.1879
+wold-SeychellesCreole,Seychelles Creole,Italic,0.2780,-0.1036
+idssegmented-albaniantoskvariety,Albanian (Tosk variety),Albanian,0.1966,0.4471
+idssegmented-armenianeasternvariety,Armenian (Eastern variety),Armenic,1.0577,1.5681
+idssegmented-armenianwesternvariety,Armenian (Western variety),Armenic,1.0116,1.6085
+idssegmented-yiddish,Yiddish,Germanic,0.4967,-0.7594
+idssegmented-breton,Breton,Celtic,0.5949,-0.1871
+keypano-Spanish,Spanish,Italic,0.8546,0.0099
+wold-LowerSorbian,Lower Sorbian,Balto-Slavic,-1.5956,-0.3612
+idssegmented-romani,Romani,Indo-Iranian,-0.1218,0.7088
+idssegmented-moderngreek,Modern Greek,Graeco-Phrygian,0.1413,0.3254
+keypano-Portuguese,Portuguese,Italic,0.7221,0.0294
+idssegmented-jamaicancreolelimonesecreoledialect,Jamaican Creole (Limonese Creole dialect),Germanic,0.5077,-1.1547
+wold-SeliceRomani,Selice Romani,Indo-Iranian,0.1157,0.6017
+idssegmented-persian,Persian,Indo-Iranian,0.3194,1.0767
+wold-Dutch,Dutch,Germanic,0.3892,-1.4118
+wold-English,English,Germanic,0.3771,-1.2769
+northeuralex-hin,Hindi,Indo-Iranian,0.3918,0.7475
+wold-Saramaccan,Saramaccan,Germanic,0.2770,-1.0509
+wold-OldHighGerman,Old High German,Germanic,0.7014,-1.1995
+northeuralex-lit,Lithuanian,Balto-Slavic,-0.8905,0.0552
+idssegmented-negerhollands,Negerhollands,Germanic,0.3847,-1.3558
+idssegmented-oldchurchslavonic,Old Church Slavonic,Balto-Slavic,-1.7067,0.0388
+northeuralex-hrv,Croatian,Balto-Slavic,-1.9255,0.2190

@@ -1,0 +1,5 @@
+data/results/_tn.tsv
+__pycache__/
+*.pyc
+.venv/
+.DS_Store

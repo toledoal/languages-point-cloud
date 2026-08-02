@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software or its findings, please cite it as below."
+title: "The System Point Cloud: genealogy and areality drawn from phonological correspondences alone"
+abstract: >-
+  A reconstruction-free, family-tree-free distance between documented language systems, defined as the mean number
+  of phonological features that differ per aligned consonant slot across statistically detected coderivative sets.
+  Embedding the distance matrix (MDS) and linking nearest neighbours makes a language family draw itself as a point
+  cloud, in which genealogical branches and areal contact are legible without ever using branch labels to build the
+  map. Companion to the pilot "Additive Structure of Phonological Correspondences".
+type: software
+authors:
+  - family-names: "Toledo Martínez"
+    given-names: "Alejandro"
+    orcid: "https://orcid.org/0009-0000-1277-9697"
+version: "0.1.0"
+license: MIT
+repository-code: "https://github.com/toledoal/languages-point-cloud"
+keywords:
+  - historical linguistics
+  - phonological correspondences
+  - language distance
+  - areal linguistics
+  - multidimensional scaling
+  - reproducible research
