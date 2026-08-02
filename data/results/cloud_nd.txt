@@ -1,0 +1,2 @@
+nearest-neighbour purity (multi-branch, no creoles) = 44/45 = 0.98
+silhouette by branch = +0.318

@@ -1,0 +1,46 @@
+name,doculect_id,glottocode,branch,n_concepts,dataset
+Avar (Ansalta dialect),idssegmented-avaransaltadialect,avar1256,Avar-Andic-Tsezic,1849,idssegmented
+Lezgian,idssegmented-lezgian,lezg1247,Lezgic,1848,idssegmented
+Dargwa,idssegmented-dargwa,darg1241,Dargwic,1766,idssegmented
+Avar (East Gergebil dialect),idssegmented-avareastgergebildialect,avar1256,Avar-Andic-Tsezic,1748,idssegmented
+Hinuq,idssegmented-hinuq,hinu1240,Avar-Andic-Tsezic,1742,idssegmented
+Khwarshi (Kwantlada dialect),idssegmented-khwarshikwantladadialect,khva1239,Avar-Andic-Tsezic,1741,idssegmented
+Bezhta,idssegmented-bezhta,bezh1248,Avar-Andic-Tsezic,1729,idssegmented
+Budukh,idssegmented-budukh,budu1248,Lezgic,1710,idssegmented
+Chechen,idssegmented-chechen,chec1245,Nakh,1700,idssegmented
+Tabasaran (Northern dialect Khanag subdialect),idssegmented-tabasarannortherndialectkhanagsubdialect,taba1259,Lezgic,1692,idssegmented
+Chamalal,idssegmented-chamalal,cham1309,Avar-Andic-Tsezic,1691,idssegmented
+Dargwa (Megeb dialect),idssegmented-dargwamegebdialect,darg1241,Dargwic,1630,idssegmented
+Khinalug,idssegmented-khinalug,khin1240,Daghestanian,1630,idssegmented
+Akhvakh (Northern dialect),idssegmented-akhvakhnortherndialect,akhv1239,Avar-Andic-Tsezic,1624,idssegmented
+Tsova-Tush,idssegmented-tsovatush,bats1242,Nakh,1622,idssegmented
+Tindi,idssegmented-tindi,tind1238,Avar-Andic-Tsezic,1579,idssegmented
+Dargwa (Gapshima dialect),idssegmented-dargwagapshimadialect,darg1241,Dargwic,1548,idssegmented
+Lak (Shali dialect),idssegmented-lakshalidialect,lakk1252,Daghestanian,1546,idssegmented
+Andi,idssegmented-andi,andi1255,Avar-Andic-Tsezic,1543,idssegmented
+Bagvalal,idssegmented-bagvalal,bagv1239,Avar-Andic-Tsezic,1542,idssegmented
+Dargwa (Gapshima Shukti dialect),idssegmented-dargwagapshimashuktidialect,darg1241,Dargwic,1541,idssegmented
+Akhvakh (Southern dialect),idssegmented-akhvakhsoutherndialect,akhv1239,Avar-Andic-Tsezic,1539,idssegmented
+Dargwa (Muiri dialect),idssegmented-dargwamuiridialect,darg1241,Dargwic,1537,idssegmented
+Rutul,idssegmented-rutul,rutu1240,Lezgic,1534,idssegmented
+Avar,idssegmented-avar,avar1256,Avar-Andic-Tsezic,1532,idssegmented
+Hunzib,idssegmented-hunzib,hunz1247,Avar-Andic-Tsezic,1526,idssegmented
+Karata (Tokitin dialect),idssegmented-karatatokitindialect,toki1238,Avar-Andic-Tsezic,1525,idssegmented
+Tsez (Mokok dialect),idssegmented-tsezmokokdialect,dido1241,Avar-Andic-Tsezic,1522,idssegmented
+Botlikh (Miarso dialect),idssegmented-botlikhmiarsodialect,botl1242,Avar-Andic-Tsezic,1521,idssegmented
+Avar (Araderikh dialect),idssegmented-avararaderikhdialect,avar1256,Avar-Andic-Tsezic,1518,idssegmented
+Ingush,idssegmented-ingush,ingu1240,Nakh,1512,idssegmented
+Godoberi,idssegmented-godoberi,ghod1238,Avar-Andic-Tsezic,1511,idssegmented
+Lak,idssegmented-lak,lakk1252,Daghestanian,1501,idssegmented
+Dargwa (Khajdak dialect),idssegmented-dargwakhajdakdialect,kajt1238,Dargwic,1490,idssegmented
+Karata,idssegmented-karata,kara1474,Avar-Andic-Tsezic,1479,idssegmented
+Bezhta,wold-Bezhta,bezh1248,Avar-Andic-Tsezic,1470,wold
+Kryz,idssegmented-kryz,kryt1240,Lezgic,1468,idssegmented
+Dargwa (Kadar dialect),idssegmented-dargwakadardialect,darg1241,Dargwic,1466,idssegmented
+Dargwa (Gubden dialect),idssegmented-dargwagubdendialect,darg1241,Dargwic,1449,idssegmented
+Lezgi (Mikrakh dialect),idssegmented-lezgimikrakhdialect,lezg1247,Lezgic,1446,idssegmented
+Tsakhur,idssegmented-tsakhur,tsak1249,Lezgic,1438,idssegmented
+Dargwa (Mekegi dialect),idssegmented-dargwamekegidialect,darg1241,Dargwic,1435,idssegmented
+Dargwa (Mugi dialect),idssegmented-dargwamugidialect,darg1241,Dargwic,1431,idssegmented
+Botlikh,idssegmented-botlikh,botl1242,Avar-Andic-Tsezic,1428,idssegmented
+Chechen (Akkin dialect),idssegmented-chechenakkindialect,chec1245,Nakh,1413,idssegmented

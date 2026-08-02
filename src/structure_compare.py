@@ -22,7 +22,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 RES = os.path.join(HERE, "..", "data", "results")
 OUTDIR = os.path.join(HERE, "..", "docs", "figures")
 os.makedirs(OUTDIR, exist_ok=True)
-LABELS = {"ie": "Indo-European", "ie50": "Indo-European (dense)", "an": "Austronesian"}
+LABELS = {"ie": "Indo-European", "ie50": "Indo-European (dense)", "an": "Austronesian", "nd": "Nakh-Daghestanian"}
 
 
 def load(slug):
@@ -104,7 +104,7 @@ def main():
 
     # figure: (A) normalized scree overlay  (B) within/between + silhouette bars  (C) normalized dissimilarity dist
     fig, ax = plt.subplots(1, 3, figsize=(13, 4.2))
-    col = {"ie": "#0072B2", "ie50": "#332288", "an": "#D55E00"}
+    col = {"ie": "#0072B2", "ie50": "#332288", "an": "#D55E00", "nd": "#117733"}
     for s in slugs:
         w = sig[s]["eig"]; w = w[w > 0][:15]
         ax[0].plot(range(1, len(w)+1), w/w[0], "o-", ms=4, color=col.get(s, None), label=LABELS.get(s, s))

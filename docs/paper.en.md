@@ -1,6 +1,6 @@
 # A Point Cloud of Languages
 
-### A reconstruction-free dissimilarity from inferred consonantal correspondences, and the branch structure legible in it — Indo-European, with an Austronesian contrast
+### A reconstruction-free dissimilarity from inferred consonantal correspondences, and the branch structure legible in it — Indo-European, with Austronesian and Caucasian contrasts
 
 **Alejandro Toledo Martínez** — Independent researcher (ORCID: 0009-0000-1277-9697)
 
@@ -27,10 +27,12 @@ matches our purity, and an unfiltered all-concept baseline matches or beats it �
 is generic lexical-phonological similarity rather than an artefact of the coderivation filter. The contribution is
 instead **representational**: a reconstruction-free, feature-decomposable dissimilarity — the system-level face of
 the operator repertoire studied in the pilot — whose geometry makes branch structure legible without positing
-ancestors. Built as a **separate field**, Austronesian (45 doculects) reproduces the method with a markedly weaker,
-higher-dimensional signal (purity 0.80, silhouette +0.13); comparing the two clouds' *abstract structure* — never a
-shared space — suggests that these signatures may fingerprint how a family diversified. Cross-branch proximities
-are rare and only marginally interpretable as areal contact; we do not claim to identify contact.
+ancestors. Built as **separate fields**, Austronesian (45 doculects) and Nakh-Daghestanian (45, NE Caucasian)
+reproduce the method with sharply different signatures — Nakh-Daghestanian sharp and low-dimensional like
+Indo-European (purity 0.98), Austronesian flat and high-dimensional (purity 0.80, silhouette +0.13); comparing the
+three clouds' *abstract structure* — never a shared space — suggests these signatures may fingerprint how a family
+diversified. Cross-branch proximities are rare and only marginally interpretable as areal contact; we do not claim
+to identify contact.
 
 ---
 
@@ -153,24 +155,29 @@ independently identify contact or separate it from descent. A proper test requir
 
 ## 7. A cross-family contrast, in separate fields
 
-We built a second cloud for **Austronesian** (45 doculects) with the identical pipeline. Crucially, the two
-families are **never placed in a shared distance space** — doing so would assert a direct relation we do not claim.
-We compare only *scale-free structural signatures* of each independently-built matrix: the MDS spectrum (effective
-dimensionality via the participation ratio; variance in 2-D), branch separation (within/between mean dissimilarity;
-silhouette; purity), and the self-normalised dissimilarity distribution. No coordinate alignment, no Procrustes.
+We built two further clouds with the identical pipeline: **Austronesian** (45 doculects) and **Nakh-Daghestanian**
+(45 doculects, Northeast Caucasian). Crucially, the families are **never placed in a shared distance space** — doing
+so would assert a direct relation we do not claim. We compare only *scale-free structural signatures* of each
+independently-built matrix: the MDS spectrum (effective dimensionality via the participation ratio; variance in
+2-D), branch separation (within/between mean dissimilarity; silhouette; purity), and the self-normalised
+dissimilarity distribution. No coordinate alignment, no Procrustes.
 
 | Field (separate) | n | eff. dim. (PR) | var. in 2-D | within/between | silhouette | purity |
 |---|---:|---:|---:|---:|---:|---:|
 | Indo-European | 50 | 14.2 | 27.1% | 0.63 | +0.32 | 0.96 |
+| Nakh-Daghestanian | 45 | 9.3 | 38.4% | 0.66 | +0.32 | 0.98 |
 | Austronesian | 45 | 16.8 | 22.1% | 0.75 | +0.13 | 0.80 |
 
-Indo-European's branch geometry is **sharper and lower-dimensional** (tighter within-branch relative to between,
-higher silhouette, fewer effective dimensions) than Austronesian's, whose dissimilarities cluster near their median
-— languages nearly equidistant, a flatter and more diffuse cloud (Figure 2). This is a statement about the *shape*
-of two independent geometries, not about any relation between the families. We record, but do not test here, the
-hypothesis that such a signature may fingerprint a family's mode of diversification.
+Two families — Indo-European and Nakh-Daghestanian — show **sharp, low-dimensional** branch geometry (high
+silhouette, purity ≥ 0.96), Nakh-Daghestanian the most concentrated of all (effective dimension ≈ 9). Austronesian
+is the outlier: **flat and high-dimensional**, its dissimilarities clustered near their own median so that languages
+are nearly equidistant (Figure 2). This is a statement about the *shape* of three independent geometries, not about
+any relation between the families. We record, but do not test here, the hypothesis that such a signature may
+fingerprint a family's mode of diversification — the flat/diffuse Austronesian cloud is consistent with a rapid
+**spread zone** and the concentrated Caucasian one with an accreted **residual zone** in the sense of Nichols
+(1992) — a link left for future, pre-registered work.
 
-![Abstract comparison of the two independently-built clouds — structure only, never a shared space. (A) normalised MDS spectra; (B) branch separation; (C) each cloud's dissimilarity distribution normalised by its own median.](figure-structure-compare.pdf|w=0.98)
+![Abstract comparison of the three independently-built clouds — structure only, never a shared space. (A) normalised MDS spectra; (B) branch separation; (C) each cloud's dissimilarity distribution normalised by its own median.](figure-structure-compare.pdf|w=0.98)
 
 ## 8. Controls and robustness
 
@@ -188,7 +195,8 @@ and is not a metric; the 2-D figure shows about a quarter of the variance and $D
 is higher). The areal reading is at most one case. Only consonants are used; the sample is mixed-provenance (see
 the manifest, Appendix A) with near-twin pairs and creoles; source/transcription effects are not fully controlled.
 Direction and time are out of scope (the directed-layer paper). The cross-family comparison (§7) is deliberately
-structural; extending it to more families (e.g. Caucasian) and to a pre-registered areal test is future work.
+structural and covers three families; extending it to more and to a pre-registered spread/residual-zone test (its
+present spread-vs-residual reading is a hypothesis, not a result) is future work.
 
 ## 10. Reproducibility
 

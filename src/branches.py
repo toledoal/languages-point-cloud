@@ -23,6 +23,7 @@ LEX = os.environ.get("LEX_PATH", os.path.abspath(os.path.join(HERE, "..", "..", 
 FAMILY_ROOT = {
     "Indo-European": "indo1319",
     "Austronesian": "aust1307",
+    "Nakh-Daghestanian": "nakh1245",
     "Sino-Tibetan": "sino1245",
     "Atlantic-Congo": "atla1278",
     "Afro-Asiatic": "afro1255",

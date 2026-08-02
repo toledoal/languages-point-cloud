@@ -12,7 +12,7 @@ OUTDIR = os.path.join(HERE, "..", "docs", "figures")
 os.makedirs(OUTDIR, exist_ok=True)
 
 SLUG = os.environ.get("SLUG", "ie")
-FAMILYLABEL = os.environ.get("FAMILYLABEL", {"ie": "Indo-European", "an": "Austronesian"}.get(SLUG, SLUG))
+FAMILYLABEL = os.environ.get("FAMILYLABEL", {"ie": "Indo-European", "an": "Austronesian", "nd": "Nakh-Daghestanian"}.get(SLUG, SLUG))
 nodes = list(csv.DictReader(open(os.path.join(RES, f"network_coords_{SLUG}.csv"), encoding="utf-8")))
 edges = list(csv.DictReader(open(os.path.join(RES, f"network_edges_{SLUG}.csv"), encoding="utf-8")))
 pos = {n["name"]: n for n in nodes}
