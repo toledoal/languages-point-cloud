@@ -1,3 +1,4 @@
 panphon
 numpy
 lingpy
+matplotlib

@@ -14,3 +14,8 @@ compute:
 
 clean:
 	rm -f data/results/_tn.tsv
+
+# Build the paper PDF (docs/paper.en.pdf). Needs xelatex + matplotlib for the figure.
+paper:
+	$(VENV) src/build_figure_pdf.py
+	bash docs/build-paper.sh
