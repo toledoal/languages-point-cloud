@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this software or its findings, please cite it as below."
-title: "The Languages Point Cloud: genealogy and areality drawn from phonological correspondences alone"
+title: "A Point Cloud of Languages: genealogy and areality drawn from phonological correspondences alone"
 abstract: >-
   A reconstruction-free, family-tree-free distance between documented language systems, defined as the mean number
   of phonological features that differ per aligned consonant slot across statistically detected coderivative sets.

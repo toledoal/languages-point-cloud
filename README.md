@@ -1,4 +1,4 @@
-# The Languages Point Cloud
+# A Point Cloud of Languages
 
 ### Genealogy and areality drawn from phonological correspondences alone — reconstruction-free
 

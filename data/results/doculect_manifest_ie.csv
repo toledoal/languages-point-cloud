@@ -1,0 +1,29 @@
+name,doculect_id,glottocode,branch,n_concepts,dataset
+Bulgarian,idssegmented-bulgarian,bulg1262,Balto-Slavic,2340,idssegmented
+Romanian,wold-Romanian,roma1327,Italic,2265,wold
+Ancient Greek,idssegmented-ancientgreek,anci1242,Graeco-Phrygian,2235,idssegmented
+Judeo-Tat,idssegmented-judeotat,jude1256,Indo-Iranian,2211,idssegmented
+Serbo-Croatian,idssegmented-serbocroatian,sout1528,Balto-Slavic,2117,idssegmented
+Seychelles Creole,wold-SeychellesCreole,sese1246,Italic,2077,wold
+Albanian (Tosk variety),idssegmented-albaniantoskvariety,tosk1239,Albanian,1971,idssegmented
+Armenian (Eastern variety),idssegmented-armenianeasternvariety,nucl1235,Armenic,1862,idssegmented
+Armenian (Western variety),idssegmented-armenianwesternvariety,homs1234,Armenic,1833,idssegmented
+Yiddish,idssegmented-yiddish,east2295,Germanic,1784,idssegmented
+Breton,idssegmented-breton,bret1244,Celtic,1769,idssegmented
+Spanish,keypano-Spanish,stan1288,Italic,1766,keypano
+Lower Sorbian,wold-LowerSorbian,lowe1385,Balto-Slavic,1760,wold
+Romani,idssegmented-romani,vlax1238,Indo-Iranian,1719,idssegmented
+Modern Greek,idssegmented-moderngreek,mode1248,Graeco-Phrygian,1715,idssegmented
+Portuguese,keypano-Portuguese,port1283,Italic,1675,keypano
+Jamaican Creole (Limonese Creole dialect),idssegmented-jamaicancreolelimonesecreoledialect,jama1262,Germanic,1665,idssegmented
+Selice Romani,wold-SeliceRomani,west2376,Indo-Iranian,1617,wold
+Persian,idssegmented-persian,west2369,Indo-Iranian,1614,idssegmented
+Dutch,wold-Dutch,dutc1256,Germanic,1584,wold
+English,wold-English,stan1293,Germanic,1511,wold
+Hindi,northeuralex-hin,hind1269,Indo-Iranian,1395,northeuralex
+Saramaccan,wold-Saramaccan,sara1340,Germanic,1291,wold
+Old High German,wold-OldHighGerman,oldh1241,Germanic,1256,wold
+Lithuanian,northeuralex-lit,lith1251,Balto-Slavic,1227,northeuralex
+Negerhollands,idssegmented-negerhollands,nege1244,Germanic,1219,idssegmented
+Old Church Slavonic,idssegmented-oldchurchslavonic,chur1257,Balto-Slavic,1204,idssegmented
+Croatian,northeuralex-hrv,croa1245,Balto-Slavic,1202,northeuralex

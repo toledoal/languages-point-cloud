@@ -1,0 +1,18 @@
+=== ANALYSIS v2 · Indo-European · 28 doculects (4 creoles) ===
+[1] label-permutation test (10000x, non-creole n=24):
+    purity     obs=0.955  null=0.142±0.091  p=0.0001
+    silhouette obs=+0.283 null=-0.147±0.036  p=0.0001
+[2] MDS diagnostics: top eigvals [19.7  18.99 13.32 11.15 10.3 ] ; %var in 2D = 28.6% ; negative inertia = 0.3% of |eigen| (euclidean-ish if small)
+[3] purity:  all-doculects=0.923 (24/26)   multi-branch non-creole=0.955 (21/22) Wilson95 [0.78,0.99]
+[4] coverage per pair: cons-cons slots median=2008 [312-7493]  gaps median=1434  concepts median=585
+    corr(d, #slots) = +0.00   (near 0 ⇒ distance not driven by coverage)
+[5] ALL cross-branch nearest neighbours (obs d vs nearest same-branch d = residual):
+    Romanian        [Itali]→English       [Germa] d=2.36 sameBr=2.56 
+    Seychelles Creol[Itali]→English       [Germa] d=2.50 sameBr=2.77 creole
+    Albanian (Tosk v[Alban]→Romanian      [Itali] d=2.87 sameBr=nan singleton
+    Breton          [Celti]→English       [Germa] d=2.58 sameBr=nan singleton
+[6] baseline marginal profile           purity=0.364 (8/22)  silhouette=-0.083
+[6] baseline all-concept (no LexStat)   purity=1.000 (22/22)  silhouette=+0.313
+[6] baseline edit-dist skeleton         purity=0.955 (21/22)  silhouette=+0.213
+[6] OURS (pairwise feature dissimilarity)   purity=0.955 (21/22)  silhouette=+0.283
+Readout: [1] gives a VALID p (label permutation on the fixed matrix). [6] shows what the pairwise feature dissimilarity adds over edit distance / marginal profile / no-LexStat selection. [3]-[5] make the purity and areal claims honest. Nothing here needs branch labels to BUILD the map.

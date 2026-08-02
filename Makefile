@@ -23,3 +23,11 @@ paper:
 # Run the robustness controls (concept-permuted null, subsampling, sensitivity).
 controls:
 	LEX_PATH=$${LEX_PATH} $(VENV) src/controls.py
+
+# Doculect manifest (Appendix A).
+manifest:
+	LEX_PATH=$${LEX_PATH} $(VENV) src/manifest.py
+
+# Full v2 analysis: label-permutation significance, MDS diagnostics, baselines, coverage, cross-branch table.
+analysis:
+	LEX_PATH=$${LEX_PATH} $(VENV) src/analysis.py
