@@ -165,7 +165,7 @@ within this sample, $d$ shows **no linear correlation** with the number of retai
 (`corr(d, #slots) = -0.07`). This does not rule out subtler coverage effects (variance, gap proportion, neighbour
 identity); per-pair coverage is published with the results so they can be probed.
 
-![Indo-European doculects placed by the consonantal-correspondence dissimilarity (classical MDS of the network matrix; the plane shows under a third of the variance, so central overlaps are partly projection). Nodes coloured by branch — colours added after layout. Solid links join same-branch nearest neighbours; dashed links join the few cross-branch nearest neighbours. For legibility only a curated subset of nodes is labelled (one per branch, singletons, cross-branch endpoints, and one label per duplicated name); the fully-labelled, interactive version — every node named, hover for its three nearest neighbours — is the published artifact.](figure-network-ie.pdf|w=0.98)
+![Indo-European doculects placed by the consonantal-correspondence dissimilarity (classical MDS of the network matrix; the plane shows under a third of the variance, so central overlaps are partly projection). Nodes coloured by branch — colours added after layout. Solid links join same-branch nearest neighbours; dashed links join the few cross-branch nearest neighbours. Every node is labelled, with leader lines separating labels in dense clusters and a dataset suffix distinguishing same-name twins (e.g. Spanish·keypa / Spanish·north); an interactive version — hover for each node's three nearest neighbours — is the published artifact.](figure-network-ie.pdf|w=0.98)
 
 ## 5. Baselines — what the representation does and does not add
 

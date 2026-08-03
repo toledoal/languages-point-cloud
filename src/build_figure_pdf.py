@@ -52,14 +52,7 @@ for br in order:
         continue
     cx = np.mean([xy[m][0] for m in members]); cy = np.mean([xy[m][1] for m in members])
     anchor.add(min(members, key=lambda m: (xy[m][0]-cx)**2 + (xy[m][1]-cy)**2))
-to_label = set(); _dup_seen = set()          # keyed by unique doculect id (`lang`), since twins share a name
-for n in nodes:
-    nm = n["name"]; base = nm.split(" (")[0]
-    if _namecount[base] > 1:                 # near-twins sit on the same spot → label the base name ONCE
-        if base not in _dup_seen:
-            _dup_seen.add(base); to_label.add(n["lang"])
-    elif _bc[n["branch"]] == 1 or nm in cross_ep or nm in anchor:
-        to_label.add(n["lang"])
+to_label = {n["lang"] for n in nodes}        # label EVERY node (de-collision below keeps them readable)
 
 # draw all nodes
 for n in nodes:
@@ -69,7 +62,7 @@ for n in nodes:
 # selective labels with vertical de-collision + leader lines
 xs = [xy[n["name"]][0] for n in nodes]; ys = [xy[n["name"]][1] for n in nodes]
 xr = max(xs)-min(xs); yr = max(ys)-min(ys); xmid = np.mean(xs)
-ygap = 0.032*yr; xgap = 0.16*xr
+ygap = 0.022*yr; xgap = 0.11*xr
 placed = []
 for n in sorted((n for n in nodes if n["lang"] in to_label), key=lambda n: -xy[n["name"]][1]):
     x, y = xy[n["name"]]; ly = y + 0.012*yr
@@ -78,10 +71,14 @@ for n in sorted((n for n in nodes if n["lang"] in to_label), key=lambda n: -xy[n
     placed.append((x, ly))
     right = x >= xmid
     dxd = 0.015*xr if right else -0.015*xr
-    ax.annotate(n["name"].split(" (")[0], xy=(x, y), xytext=(x+dxd, ly), textcoords="data",
+    lab = n["name"].split(" (")[0]
+    if _namecount[lab] > 1:                   # distinguish twins by dataset suffix
+        ds = n.get("lang", "").split("-")[0][:5]
+        lab = f"{lab}·{ds}" if ds else lab
+    ax.annotate(lab, xy=(x, y), xytext=(x+dxd, ly), textcoords="data",
                 ha=("left" if right else "right"), va="center",
-                fontsize=6.8, color="#2a2620", zorder=5,
-                arrowprops=dict(arrowstyle="-", color="#bbb", lw=0.4, shrinkA=0, shrinkB=2))
+                fontsize=6.0, color="#2a2620", zorder=5,
+                arrowprops=dict(arrowstyle="-", color="#bbb", lw=0.35, shrinkA=0, shrinkB=2))
 
 handles = [Line2D([0], [0], marker="o", ls="", markersize=7, markerfacecolor=color[b],
                   markeredgecolor="white", label=b) for b in order]
