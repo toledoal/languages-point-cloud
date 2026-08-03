@@ -24,7 +24,8 @@ OKABE = ["#0072B2", "#D55E00", "#009E73", "#E69F00", "#CC79A7", "#56B4E9", "#F0E
          "#117733", "#882255", "#44AA99", "#999933", "#AA4499", "#332288", "#DDCC77", "#661100"]
 color = {b: OKABE[i % len(OKABE)] for i, b in enumerate(order)}
 
-fig, ax = plt.subplots(figsize=(9.2, 6.4))
+import numpy as np
+fig, ax = plt.subplots(figsize=(12.5, 8.6))
 # edges first
 for e in edges:
     a, b = pos.get(e["src"]), pos.get(e["dst"])
@@ -34,18 +35,53 @@ for e in edges:
     ax.plot([float(a["x"]), float(b["x"])], [float(a["y"]), float(b["y"])],
             color=("#b9b0a0" if same else "#b98a5e"), lw=(0.6 if same else 0.9),
             ls=("-" if same else (0, (2, 2))), zorder=1, alpha=0.8)
-# nodes + labels (disambiguate duplicate names with a short dataset suffix)
+
+# --- choose which nodes to label (reviewer #18: a curated subset; full labels live in the interactive figure) ---
 _namecount = Counter(n["name"].split(" (")[0] for n in nodes)
+xy = {n["name"]: (float(n["x"]), float(n["y"])) for n in nodes}
+cross_ep = set()
+for e in edges:
+    a, b = pos.get(e["src"]), pos.get(e["dst"])
+    if a and b and a["branch"] != b["branch"]:
+        cross_ep.add(e["src"]); cross_ep.add(e["dst"])
+# one anchor per branch = node closest to its branch centroid
+anchor = set()
+for br in order:
+    members = [n["name"] for n in nodes if n["branch"] == br]
+    if not members:
+        continue
+    cx = np.mean([xy[m][0] for m in members]); cy = np.mean([xy[m][1] for m in members])
+    anchor.add(min(members, key=lambda m: (xy[m][0]-cx)**2 + (xy[m][1]-cy)**2))
+to_label = set(); _dup_seen = set()          # keyed by unique doculect id (`lang`), since twins share a name
 for n in nodes:
-    x, y = float(n["x"]), float(n["y"])
+    nm = n["name"]; base = nm.split(" (")[0]
+    if _namecount[base] > 1:                 # near-twins sit on the same spot → label the base name ONCE
+        if base not in _dup_seen:
+            _dup_seen.add(base); to_label.add(n["lang"])
+    elif _bc[n["branch"]] == 1 or nm in cross_ep or nm in anchor:
+        to_label.add(n["lang"])
+
+# draw all nodes
+for n in nodes:
+    x, y = xy[n["name"]]
     ax.scatter([x], [y], s=70, c=color.get(n["branch"], "#888"),
                edgecolors="white", linewidths=1.1, zorder=3)
-    lab = n["name"].split(" (")[0]
-    if _namecount[lab] > 1:
-        ds = n.get("lang", "").split("-")[0][:4]
-        lab = f"{lab}·{ds}" if ds else lab
-    ax.annotate(lab, (x, y), xytext=(6, 3), textcoords="offset points",
-                fontsize=6.5, color="#3a352b", zorder=4)
+# selective labels with vertical de-collision + leader lines
+xs = [xy[n["name"]][0] for n in nodes]; ys = [xy[n["name"]][1] for n in nodes]
+xr = max(xs)-min(xs); yr = max(ys)-min(ys); xmid = np.mean(xs)
+ygap = 0.032*yr; xgap = 0.16*xr
+placed = []
+for n in sorted((n for n in nodes if n["lang"] in to_label), key=lambda n: -xy[n["name"]][1]):
+    x, y = xy[n["name"]]; ly = y + 0.012*yr
+    while any(abs(px-x) < xgap and abs(py-ly) < ygap for px, py in placed):
+        ly -= ygap
+    placed.append((x, ly))
+    right = x >= xmid
+    dxd = 0.015*xr if right else -0.015*xr
+    ax.annotate(n["name"].split(" (")[0], xy=(x, y), xytext=(x+dxd, ly), textcoords="data",
+                ha=("left" if right else "right"), va="center",
+                fontsize=6.8, color="#2a2620", zorder=5,
+                arrowprops=dict(arrowstyle="-", color="#bbb", lw=0.4, shrinkA=0, shrinkB=2))
 
 handles = [Line2D([0], [0], marker="o", ls="", markersize=7, markerfacecolor=color[b],
                   markeredgecolor="white", label=b) for b in order]

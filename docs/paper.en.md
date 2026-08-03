@@ -165,7 +165,7 @@ within this sample, $d$ shows **no linear correlation** with the number of retai
 (`corr(d, #slots) = -0.07`). This does not rule out subtler coverage effects (variance, gap proportion, neighbour
 identity); per-pair coverage is published with the results so they can be probed.
 
-![Indo-European doculects placed by the consonantal-correspondence dissimilarity (classical MDS of the bundled network matrix; the plane shows under a third of the variance, so central overlaps are partly projection). Nodes coloured by branch — colours added after layout. Solid links join same-branch nearest neighbours; dashed links join the few cross-branch nearest neighbours.](figure-network-ie.pdf|w=0.98)
+![Indo-European doculects placed by the consonantal-correspondence dissimilarity (classical MDS of the network matrix; the plane shows under a third of the variance, so central overlaps are partly projection). Nodes coloured by branch — colours added after layout. Solid links join same-branch nearest neighbours; dashed links join the few cross-branch nearest neighbours. For legibility only a curated subset of nodes is labelled (one per branch, singletons, cross-branch endpoints, and one label per duplicated name); the fully-labelled, interactive version — every node named, hover for its three nearest neighbours — is the published artifact.](figure-network-ie.pdf|w=0.98)
 
 ## 5. Baselines — what the representation does and does not add
 
@@ -198,11 +198,23 @@ defined on, so the two studies' quantities compose.
 By construction $d(\ell,\ell')=\sum_f d_f(\ell,\ell')$, where $d_f$ is the fraction of aligned consonant slots on
 which feature $f$ differs. Real values from the analysis matrix (`src/decompose.py`):
 
-| Pair (doculects) | cont | voi | nas | ant | cor | lab | back | round | strid | hi | lo | son | total | slots |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| Spanish–Portuguese (`keypano`) | 0.20 | 0.15 | 0.06 | 0.17 | 0.16 | 0.10 | 0.09 | 0.00 | 0.17 | 0.18 | 0.07 | 0.14 | **1.50** | 4117 |
-| Persian–Hindi (`idsseg`/`neur`) | 0.30 | 0.28 | 0.15 | 0.24 | 0.27 | 0.18 | 0.20 | 0.01 | 0.16 | 0.27 | 0.12 | 0.26 | **2.43** | 512 |
-| Spanish–Hindi (`keypano`/`neur`) | 0.39 | 0.35 | 0.23 | 0.32 | 0.29 | 0.19 | 0.21 | 0.01 | 0.19 | 0.42 | 0.21 | 0.37 | **3.18** | 552 |
+| Feature $f$ ($d_f$) | Spanish–Portuguese | Persian–Hindi | Spanish–Hindi |
+|---|---:|---:|---:|
+| cont | 0.20 | 0.30 | 0.39 |
+| voi | 0.15 | 0.28 | 0.35 |
+| nas | 0.06 | 0.15 | 0.23 |
+| ant | 0.17 | 0.24 | 0.32 |
+| cor | 0.16 | 0.27 | 0.29 |
+| lab | 0.10 | 0.18 | 0.19 |
+| back | 0.09 | 0.20 | 0.21 |
+| round | 0.00 | 0.01 | 0.01 |
+| strid | 0.17 | 0.16 | 0.19 |
+| hi | 0.18 | 0.27 | 0.42 |
+| lo | 0.07 | 0.12 | 0.21 |
+| son | 0.14 | 0.26 | 0.37 |
+| **total $d$** | **1.50** | **2.43** | **3.18** |
+| consonant slots | 4117 | 512 | 552 |
+| doculects | `keypano` | `idsseg`/`neur` | `keypano`/`neur` |
 
 (Doculects are named to avoid ambiguity — the corpus holds two Spanish and two Portuguese; here both are from the
 `keypano` dataset.) The sum reproduces the total exactly. We read it cautiously: in each pair *continuancy* and
